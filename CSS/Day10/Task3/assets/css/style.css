@@ -1,0 +1,110 @@
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f7fb;
+    padding: 30px;
+}
+
+
+
+
+h1 {
+    text-align: center;
+    color: #243b64;
+    margin-bottom: 30px;
+}
+
+
+
+
+.team-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+
+
+
+.employee-card {
+    width: 30%;
+    background-color: white;
+    padding: 20px;
+    text-align: center;
+    border-radius: 15px;
+
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+
+    transition: 0.3s;
+}
+
+
+
+.employee-card img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 15px;
+}
+
+
+
+.employee-card h2 {
+    color: #243b64;
+    margin-bottom: 12px;
+}
+
+
+
+
+.employee-card p {
+    margin: 8px 0;
+    color: #555;
+}
+
+
+
+.employee-card:hover {
+    transform: translateY(-8px);
+
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+
+
+@media (max-width: 768px) {
+
+    .employee-card {
+        width: 45%;
+    }
+}
+
+
+
+
+@media (max-width: 576px) {
+
+    body {
+        padding: 20px;
+    }
+
+    .employee-card {
+        width: 100%;
+    }
+
+    h1 {
+        font-size: 28px;
+    }
+}

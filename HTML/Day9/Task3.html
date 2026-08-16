@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hospital Patient Registration</title>
+</head>
+<body>
+    <center>
+        <h1>
+            Hospital Patient Registration
+        </h1>
+        <form>
+            <label >Patient ID :</label>
+            <input type="text" placeholder="Enter Patient Name">
+            <br><br>
+            <label>Patient Name :</label>
+            <input type="text" placeholder="Enter Patient Name">
+            <br><br>
+            <label>Age :</label>
+            <input type="number" placeholder="Enter Age">
+            <br><br>
+            <label>Gender :</label>
+            <input type="radio" name="Gender">Male
+            <input type="radio" name="Gender">Female
+            <br><br>
+            <label>Blood Group :</label>
+            <select>
+            <option>Select Blood Group</option>
+            <option>A+</option>
+            <option>A-</option>
+            <option>B+</option>
+            <option>B-</option>
+            <option>O+</option>
+            <option>O-</option>
+            <option>AB+</option>
+            <option>AB-</option>
+            </select>
+
+            <br><br>
+            <label>Select Doctor</label>
+            <select>
+                <option>Dr. Rajesh</option>
+                <option>Dr. Priya</option>
+                <option>Dr. Kumar</option>
+                <option>Dr. Meena</option>
+            </select>
+
+            <br><br>
+
+            <label>Appointment Date :</label>
+            <input type="date">
+            <br><br>
+            <label>Symptoms :</label>
+            <textarea rows="5" cols="30" placeholder="Enter Symptoms"></textarea>
+
+            <br><br>
+
+            <label>Medical Report Upload :</label>
+            <input type="file">
+
+            <br><br>
+
+            <button type="submit">submit</button>
+            <button type="reset">reset</button>
+                        
+        </form>
+        <br><br>
+
+        <h2>Patient Details</h2>
+        <table border="1" cellpadding="10">
+            <thead>
+                <tr>
+                    <th>Patient ID</th>
+                    <th>Patient Name</th>
+                    <th>Doctor</th>
+                    <th>Blood Group</th>
+                    <th>Appointment Date</th>
+                    <th>Status</th>
+                    
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>P001</td>
+                    <td>Rahul</td>
+                    <td>Dr. Rajesh</td>
+                    <td>O+</td>
+                    <td>10-08-2026</td>
+                    <td>Confirmed</td>
+                </tr>
+
+                <tr>
+                    <td>P002</td>
+                    <td>Priya</td>
+                    <td>Dr. Priya</td>
+                    <td>A+</td>
+                    <td>11-08-202</td>
+                    <td>Waiting</td>
+                </tr>
+
+                <tr>
+                    <td>P003</td>
+                    <td>Karthik</td>
+                    <td>Dr. Kumar</td>
+                    <td>B+</td>
+                    <td>12-08-2026</td>
+                    <td>Confirmed</td>
+                </tr>
+
+                <tr>
+                    <td>P004</td>
+                    <td>Anitha</td>
+                    <td>Dr. Meena</td>
+                    <td>AB+</td>
+                    <td>13-08-2026</td>
+                    <td>Completed</td>
+                </tr>
+
+                <tr>
+                    <td>P005</td>
+                    <td>Arun</td>
+                    <td>Dr. Rajesh</td>
+                    <td>O-</td>
+                    <td>14-08-2026</td>
+                    <td>Cancelled</td>
+                </tr>
+            </tbody>
+        </table>
+    </center>
+    
+</body>
+</html>

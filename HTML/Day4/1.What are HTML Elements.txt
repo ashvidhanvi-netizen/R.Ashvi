@@ -1,0 +1,25 @@
+1.What are HTML Elements?
+answer: HTML elements are used to structure and display contents on the web page.
+there are 4 types of HTML elements they are:
+1.Block level
+2.In line
+3.Formating tags 
+4. Interacting tags 
+
+
+2.What are Block Level Elements?
+answer: Block level elements always starts at different line and occupies the  whole width.
+example:<h1>,<p>,<div>,<section>
+
+3.What are Inline Elements?
+answer: In line elements does not starts on a new line and  occupies the actual width of the content.
+example:<span>,<sup>,<sub>,<image>
+
+4. What are Formatting Tags?
+answer: Formatting tags are used to format the content
+they are;
+         <i>,<b>,<strong>,<mark>
+
+5.What are Interactive Tags?
+answer: Interactive tags allows the users to interact with the webpage
+example:<button>,<text area>,<select>,<input>

@@ -1,0 +1,27 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: white;
+}
+
+.container {
+    margin-top: 50px;
+}
+
+.left-section {
+    background-color: lightblue;
+    text-align: center;
+}
+
+.right-section {
+    background-color: lightgreen;
+    text-align: center;
+}
+
+.left-section h2 {
+    color: darkblue;
+}
+
+.right-section h2 {
+    color: darkgreen;
+}

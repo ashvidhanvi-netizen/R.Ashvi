@@ -1,0 +1,54 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    background-color:whitesmoke;
+    text-align:center;
+}
+
+h1{
+    margin:30px;
+}
+
+/* Box 1 */
+.box1{
+    width:250px;
+    height:100px;
+    background-color:lightcoral;
+
+    margin:20px auto;
+}
+
+/* Box 2 */
+.box2{
+    width:250px;
+    height:100px;
+    padding:20px;
+    background-color:lightskyblue;
+
+    margin:20px auto;
+}
+
+/* Box 3 */
+.box3{
+    width:250px;
+    height:100px;
+    padding:20px;
+    border:4px solid green;
+    background-color:lightgreen;
+
+    margin:20px auto;
+}
+
+/* Box 4 */
+.box4{
+    width:250px;
+    height:100px;
+    padding:20px;
+    border:4px solid red;
+    margin:50px auto;
+    background-color:khaki;
+}

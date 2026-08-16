@@ -1,0 +1,25 @@
+*
+{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body
+{
+    background-color: beige;
+}
+
+.Card
+{
+    background-color: crimson;
+    width:400px ;
+    height:400px ;
+    padding: 20px;
+    border: 3px solid orange ;
+    margin: 40px auto; 
+    text-align: center;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: large;
+
+}

@@ -1,0 +1,35 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:Arial, sans-serif;
+    background:#f5f5f5;
+    padding:20px;
+}
+
+h1{
+    color:darkgreen;
+    margin-bottom:20px;
+}
+
+.content p{
+    margin:20px 0;
+}
+
+.whatsapp{
+    position:fixed;
+    bottom:20px;
+    right:20px;
+
+    background:#25D366;
+    color:white;
+    padding:15px 25px;
+    border-radius:30px;
+    font-weight:bold;
+    cursor:pointer;
+    box-shadow:0 0 10px gray;
+}
+

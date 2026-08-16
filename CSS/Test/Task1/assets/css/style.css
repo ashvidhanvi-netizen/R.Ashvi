@@ -1,0 +1,129 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+
+#header {
+    background-color:  #771972;
+    color: white;
+
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+ 
+    padding: 20px 40px;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+
+nav {
+    display: flex;
+    gap: 25px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+
+main {
+    padding: 40px;
+    background-color: #f0dce7;
+    min-height: 80vh;
+    
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+
+.student-card {
+    background-color: white;
+
+  
+    padding: 25px;
+    margin: 20px auto;
+
+    border: 2px solid #ddd;
+    border-radius: 10px;
+
+    max-width: 700px;
+}
+
+.student-card h2 {
+    margin-bottom: 15px;
+}
+
+
+.student-card p {
+    display: block;
+    margin-bottom: 10px;
+}
+
+
+.dashboard {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    flex-wrap: wrap;
+}
+
+
+.card {
+    background-color: white;
+
+  
+    width: 280px;
+    padding: 25px;
+    margin: 10px;
+
+    border: 2px solid #ddd;
+    border-radius: 10px;
+
+    text-align: center;
+}
+
+.card h2 {
+    margin-bottom: 15px;
+}
+
+.card p {
+    margin-bottom: 20px;
+}
+
+
+button {
+    background-color: #6b1e8a;
+    color: white;
+
+    border: none;
+    padding: 10px 20px;
+
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #771972;
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #711e8a;
+    color: white;
+}

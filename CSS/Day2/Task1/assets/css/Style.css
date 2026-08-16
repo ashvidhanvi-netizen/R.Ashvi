@@ -1,0 +1,24 @@
+*
+{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body
+{
+ background-color: crimson;
+ font-size: large;
+ text-align: center;
+}
+
+.Card
+{
+    background-color: orange;
+    color: rgb(129, 37, 37);
+    width: 200vh;
+    height: 20vh;
+    font-size: large;
+    text-align: center;
+    margin: auto;
+}

@@ -1,0 +1,40 @@
+1. What is a Semantic Tag?
+Answer : A semantic tag is the HTML tag that describes the meaning of the content.
+
+2. Why are Semantic Tags Important?
+Answer : Semantic tags are ;
+	1.Better SEO
+	2.Better Accessibility
+	3.Better Readability
+	4.Better Maintainability
+
+3. Name Five Semantic Tags.
+Answer : They are;
+	1.header
+	2.nav
+	3.main
+	4.section
+	5.aside
+
+4. Name Two Non-Semantic Tags.
+Answer : They are;
+	1.div
+	2.span
+
+5. What is the Difference Between Semantic and Non-Semantic Tags?
+Answer : semantic tags provides the meaning of the content .where non-semantic does not provide any meaning.
+
+6. What is the Purpose of the Paragraph Tag?
+Answer : The paragraph tag is used to describe the content in a structured manner
+
+7. Is Paragraph a Block-Level Element?
+Answer : Yes.
+
+8. Which Tag Represents Main Content?
+Answer : <main>.
+
+9. Which Tag Represents Navigation?
+Answer : <nav>.
+
+10. Which Tag Represents Independent Content?
+Answer : <article> .       

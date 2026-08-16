@@ -1,0 +1,77 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f2f2f2;
+    min-height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+h1 {
+    margin-bottom: 40px;
+    font-size: 35px;
+}
+
+.logo-container {
+    display: flex;
+    gap: 30px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.logo {
+    width: 150px;
+    height: 150px;
+
+    background-color: white;
+    border-radius: 20px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-size: 22px;
+    font-weight: bold;
+
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+
+    transition: 1s;
+}
+
+
+.google {
+    color: #4285f4;
+}
+
+
+.microsoft {
+    color: #f25022;
+}
+
+
+.apple {
+    color: #333333;
+}
+
+
+.amazon {
+    color: #ff9900;
+}
+
+
+.tesla {
+    color: #e82127;
+}
+
+
+.logo:hover {
+    transform: rotate(360deg);
+}

@@ -1,0 +1,23 @@
+*
+{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body
+{
+    background-color: saddlebrown;
+    color: rgb(7, 78, 7);
+    text-align: center;
+    font-size: large;
+}
+
+.movies
+{
+background-color: rgb(85, 49, 5);
+color: rgb(201, 248, 71);
+text-align: center;
+font-size: large;
+
+}

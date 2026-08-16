@@ -1,0 +1,44 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    background-color:rgb(21, 21, 24);
+}
+
+.newsCard{
+    width:400px;
+    height:520px;
+    padding:20px;
+    margin:30px auto;
+    border:2px solid gray;
+    background-color:white;
+    text-align:center;
+}
+
+.newsCard img{
+    width:300px;
+    height:180px;
+    margin:15px 0;
+}
+
+.newsCard p{
+    margin-bottom:15px;
+    text-align:justify;
+}
+
+.newsCard h4{
+    margin-top:15px;
+}
+
+.newsCard span{
+    margin-top:10px;
+    color:gray;
+}
+
+/* Different margin for second article */
+.second{
+    margin-top:60px;
+}

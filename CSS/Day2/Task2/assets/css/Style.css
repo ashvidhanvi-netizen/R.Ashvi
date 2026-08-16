@@ -1,0 +1,21 @@
+*
+{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body
+{
+  background-color: rgb(139, 11, 56);
+  font-size: large;
+  text-align: center;
+}
+
+.Companies
+{
+    background-color: rgb(39, 34, 34);
+    color: beige;
+    font-size: large;
+    text-align: center;
+}

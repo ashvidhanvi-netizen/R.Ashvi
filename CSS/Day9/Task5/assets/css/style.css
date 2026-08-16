@@ -1,0 +1,59 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #c6bcda;
+    text-align: center;
+    padding: 40px;
+}
+
+h1 {
+    margin-bottom: 30px;
+    color: #222020;
+}
+
+.card-container {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.student-card {
+    width: 280px;
+    background-color: white;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+
+    /* Required transition */
+    transition: 0.5s;
+}
+
+/* Student Image */
+.student-card img {
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-bottom: 15px;
+}
+
+.student-card h2 {
+    margin-bottom: 15px;
+    color: #222;
+}
+
+.student-card p {
+    margin: 10px 0;
+    color: #555;
+}
+
+/* Required Hover Animation */
+.student-card:hover {
+    transform: scale(1.05) translateY(-8px);
+}

@@ -1,0 +1,40 @@
+*
+{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+}
+
+body
+{
+    background-color: beige;
+}
+
+.Product
+{
+    width: 500px; ;
+    height: 500px; ;
+    padding: 20px; ;
+    margin: 40px auto ;
+    border: 4px solid black ;
+    background-color: rgb(198, 198, 209);
+    text-align: center;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: large;
+}
+
+.Product img{
+ width: 200px;
+ height: 200px;
+
+}
+
+button
+{
+     padding:10px;
+    background-color:green;
+    color:white;
+    border:none;
+}
+
