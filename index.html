@@ -3,62 +3,332 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Frontend Tasks</title>
-    
-    
+    <title>HTML & CSS Daily Tasks Index</title>
+    <style>
+        /* Basic Global Reset */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        body {
+            background-color: #f1f5f9;
+            color: #1e293b;
+            padding: 30px 15px;
+        }
+
+        /* Page Heading */
+        .header {
+            text-align: center;
+            margin-bottom: 35px;
+        }
+
+        .header h1 {
+            font-size: 32px;
+            color: #0f172a;
+            margin-bottom: 8px;
+        }
+
+        .header p {
+            font-size: 16px;
+            color: #475569;
+            font-weight: 500;
+        }
+
+        /* Main Grid Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 20px;
+        }
+
+        /* Standard Day Box Card */
+        .day-card {
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            border: 1px solid #cbd5e1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Card Header with Solid Deep Color */
+        .day-header {
+            padding: 12px 16px;
+            color: #ffffff;
+            font-size: 17px;
+            font-weight: bold;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .task-badge {
+            background-color: rgba(255, 255, 255, 0.25);
+            font-size: 12px;
+            padding: 3px 8px;
+            border-radius: 12px;
+            font-weight: normal;
+        }
+
+        /* Links List Inside Card */
+        .task-list {
+            padding: 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            flex-grow: 1;
+        }
+
+        /* Clickable Task Button */
+        .task-link {
+            display: block;
+            text-decoration: none;
+            padding: 10px 12px;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: bold;
+            color: #ffffff;
+            text-align: center;
+            transition: opacity 0.2s ease, transform 0.1s ease;
+        }
+
+        .task-link:hover {
+            opacity: 0.9;
+            transform: scale(1.02);
+        }
+
+        /* ============================================================
+           RICH & DARK BEAUTIFUL COLOR THEMES FOR EACH DAY
+        ============================================================ */
+
+        /* Day 1: Deep Crimson Red */
+        .day-1 .day-header { background-color: #991b1b; }
+        .day-1 .task-link   { background-color: #b91c1c; }
+
+        /* Day 2: Deep Dark Orange */
+        .day-2 .day-header { background-color: #c2410c; }
+        .day-2 .task-link   { background-color: #ea580c; }
+
+        /* Day 3: Deep Forest Green */
+        .day-3 .day-header { background-color: #065f46; }
+        .day-3 .task-link   { background-color: #047857; }
+
+        /* Day 4: Deep Dark Teal */
+        .day-4 .day-header { background-color: #115e59; }
+        .day-4 .task-link   { background-color: #0f766e; }
+
+        /* Day 5: Deep Royal Blue */
+        .day-5 .day-header { background-color: #1e3a8a; }
+        .day-5 .task-link   { background-color: #2563eb; }
+
+        /* Day 6: Deep Indigo / Violet */
+        .day-6 .day-header { background-color: #3730a3; }
+        .day-6 .task-link   { background-color: #4f46e5; }
+
+        /* Day 7: Deep Dark Magenta / Pink */
+        .day-7 .day-header { background-color: #831843; }
+        .day-7 .task-link   { background-color: #be185d; }
+
+        /* Day 8: Deep Dark Rose / Ruby */
+        .day-8 .day-header { background-color: #881337; }
+        .day-8 .task-link   { background-color: #e11d48; }
+
+        /* Day 9: Deep Dark Purple */
+        .day-9 .day-header { background-color: #581c87; }
+        .day-9 .task-link   { background-color: #7e22ce; }
+
+        /* Day 10: Deep Dark Cyan */
+        .day-10 .day-header { background-color: #155e75; }
+        .day-10 .task-link  { background-color: #0891b2; }
+
+        /* Day 11: Deep Wine / Dark Berry */
+        .day-11 .day-header { background-color: #701a75; }
+        .day-11 .task-link  { background-color: #a21caf; }
+
+        /* Simple Footer */
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            color: #64748b;
+            font-size: 13px;
+        }
+    </style>
 </head>
 <body>
-    <div>
-    <h1>HTML</h1>
 
-    
-    <a href="../Frontend/HTML/Day1/My_Journey_into_Coding.html">Day1</a><br>
-    <a href="../Frontend/HTML/Day2/Index.html">Day2</a><br>
-    <a href="../Frontend/HTML/Day3/Task1/Profile.html">Day3 Task1</a><br>
-    <a href="../Frontend/HTML/Day3/Task2/company.html">Day3 Task2</a><br>
-    <a href="../Frontend/HTML/Day4/1.What are HTML Elements.txt">Day4 Task1</a><br>
-    <a href="../Frontend/HTML/Day4/Block.html">Day4 Task2</a> <br>    
-    <a href="../Frontend/HTML/Day4/Format.html">Day4 Task3</a><br> 
-    <a href="../Frontend/HTML/Day4/Inline.html">Day4 Task4</a><br> 
-    <a href="../Frontend/HTML/Day4/Interactive.html">Day4 Task5</a><br> 
-    <a href="../Frontend/HTML/Day5/Task1.html">Day5 Task1</a><br> 
-    <a href="../Frontend/HTML/Day5/Task2.html">Day5 Task2</a><br> 
-    <a href="../Frontend/HTML/Day5/Task3.html">Day5 Task3</a><br> 
-    <a href="../Frontend/HTML/Day5/Task4.html">Day5 Task4</a><br> 
-    <a href="../Frontend/HTML/Day5/Task5.html">Day5 Task5</a><br> 
-    <a href="../Frontend/HTML/Day5/written test.txt">Day5 written_test</a><br> 
-    <a href="../Frontend/HTML/Day6/Task1.html">Day6 Task1</a><br> 
-    <a href="../Frontend/HTML/Day6/Task2.html">Day6 Task2</a><br> 
-    <a href="../Frontend/HTML/Day6/Task3.html">Day6 Task3</a><br> 
-    <a href="../Frontend/HTML/Day6/Task4.html">Day6 Task4</a><br> 
-    <a href="../Frontend/HTML/Day6/Task5.html">Day6 Task5</a><br> 
-    <a href="../Frontend/HTML/Day6/Task6.html">Day6 Task6</a><br> 
-    <a href="../Frontend/HTML/Day6/written_test.jpeg">Day6 written_test</a><br> 
-    <a href="../Frontend/HTML/Day7/Indianconstitution/index.html">Day7 Indianconstitution</a><br> 
-    <a href="../Frontend/HTML/Day7/ITcompanies/index.html">Day7 IT companies</a><br> 
-    <a href="../Frontend/HTML/Day7/movie/index.html">Day7 movie </a><br> 
-    <a href="../Frontend/HTML/Day8/form.html">Day8 form</form></a><br> 
-    <a href="../Frontend/HTML/Day8/index.html">Day8 index</a><br> 
-    <a href="../Frontend/HTML/Day9/Task1.html">Day9 Task1</a><br> 
-    <a href="../Frontend/HTML/Day9/Task2.html">Day9 Task2</a><br> 
-    <a href="../Frontend/HTML/Day9/Task3.html">Day9 Task3</a><br> 
-    <a href="../Frontend/HTML/Day9/Task4.html">Day9 Task4</a><br> 
-    <a href="../Frontend/HTML/Day9/Task5.html">Day9 Task5</a><br> 
-    <a href="../Frontend/HTML/Day10/Task1.html">Day10 Task1</a><br> 
-    <a href="../Frontend/HTML/Day10/Task2.html">Day10 Task2</a><br> 
-    <a href="../Frontend/HTML/Day10/Task3.html">Day10 Task3</a><br> 
-    <a href="../Frontend/HTML/Day10/Task4.html">Day10 Task4</a><br> 
-    <a href="../Frontend/HTML/Day10/Task5.html">Day10 Task5</a><br> 
-    <a href="../Frontend/HTML/Day11/Task1.html">Day11 Task1</a><br> 
-    <a href="../Frontend/HTML/Day11/Task2.html">Day11 Task2</a><br> 
-    <a href="../Frontend/HTML/Day11/Task3..html">Day11 Task3</a><br> 
-    <a href="../Frontend/HTML/Day11/task4.html">Day11 Task4</a><br> 
-    <a href="../Frontend/HTML/Day11/Task5.html">Day11 Task5</a>
+    <!-- Header Section -->
+    <div class="header">
+        <h1>Frontend HTML Tasks</h1>
+        <p>Click on any button to open the task webpage</p>
+    </div>
 
+    <!-- Tasks Grid -->
+    <div class="container">
 
-    
- </div>
+        <!-- Day 1 (Deep Crimson Red) -->
+        <div class="day-card day-1">
+            <div class="day-header">
+                <span>Day 1</span>
+                <span class="task-badge">1 Task</span>
+            </div>
+            <div class="task-list">
+                <a class="task-link" href="../Frontend/HTML/Day1/My_Journey_into_Coding.html">My Journey into Coding</a>
+            </div>
+        </div>
+
+        <!-- Day 2 (Deep Dark Orange) -->
+        <div class="day-card day-2">
+            <div class="day-header">
+                <span>Day 2</span>
+                <span class="task-badge">1 Task</span>
+            </div>
+            <div class="task-list">
+                <a class="task-link" href="../Frontend/HTML/Day2/Index.html">Day 2 Index</a>
+            </div>
+        </div>
+
+        <!-- Day 3 (Deep Forest Green) -->
+        <div class="day-card day-3">
+            <div class="day-header">
+                <span>Day 3</span>
+                <span class="task-badge">2 Tasks</span>
+            </div>
+            <div class="task-list">
+                <a class="task-link" href="../Frontend/HTML/Day3/Task1/Profile.html">Task 1: Profile</a>
+                <a class="task-link" href="../Frontend/HTML/Day3/Task2/company.html">Task 2: Company</a>
+            </div>
+        </div>
+
+        <!-- Day 4 (Deep Dark Teal) -->
+        <div class="day-card day-4">
+            <div class="day-header">
+                <span>Day 4</span>
+                <span class="task-badge">5 Tasks</span>
+            </div>
+            <div class="task-list">
+                <a class="task-link" href="../Frontend/HTML/Day4/1.What are HTML Elements.txt">Task 1: HTML Elements</a>
+                <a class="task-link" href="../Frontend/HTML/Day4/Block.html">Task 2: Block Elements</a>
+                <a class="task-link" href="../Frontend/HTML/Day4/Format.html">Task 3: Format</a>
+                <a class="task-link" href="../Frontend/HTML/Day4/Inline.html">Task 4: Inline</a>
+                <a class="task-link" href="../Frontend/HTML/Day4/Interactive.html">Task 5: Interactive</a>
+            </div>
+        </div>
+
+        <!-- Day 5 (Deep Royal Blue) -->
+        <div class="day-card day-5">
+            <div class="day-header">
+                <span>Day 5</span>
+                <span class="task-badge">6 Tasks</span>
+            </div>
+            <div class="task-list">
+                <a class="task-link" href="../Frontend/HTML/Day5/Task1.html">Task 1</a>
+                <a class="task-link" href="../Frontend/HTML/Day5/Task2.html">Task 2</a>
+                <a class="task-link" href="../Frontend/HTML/Day5/Task3.html">Task 3</a>
+                <a class="task-link" href="../Frontend/HTML/Day5/Task4.html">Task 4</a>
+                <a class="task-link" href="../Frontend/HTML/Day5/Task5.html">Task 5</a>
+                <a class="task-link" href="../Frontend/HTML/Day5/written test.txt">Day 5 Written Test</a>
+            </div>
+        </div>
+
+        <!-- Day 6 (Deep Indigo) -->
+        <div class="day-card day-6">
+            <div class="day-header">
+                <span>Day 6</span>
+                <span class="task-badge">7 Tasks</span>
+            </div>
+            <div class="task-list">
+                <a class="task-link" href="../Frontend/HTML/Day6/Task1.html">Task 1</a>
+                <a class="task-link" href="../Frontend/HTML/Day6/Task2.html">Task 2</a>
+                <a class="task-link" href="../Frontend/HTML/Day6/Task3.html">Task 3</a>
+                <a class="task-link" href="../Frontend/HTML/Day6/Task4.html">Task 4</a>
+                <a class="task-link" href="../Frontend/HTML/Day6/Task5.html">Task 5</a>
+                <a class="task-link" href="../Frontend/HTML/Day6/Task6.html">Task 6</a>
+                <a class="task-link" href="../Frontend/HTML/Day6/written_test.jpeg">Day 6 Written Test</a>
+            </div>
+        </div>
+
+        <!-- Day 7 (Deep Dark Pink / Magenta) -->
+        <div class="day-card day-7">
+            <div class="day-header">
+                <span>Day 7</span>
+                <span class="task-badge">3 Projects</span>
+            </div>
+            <div class="task-list">
+                <a class="task-link" href="../Frontend/HTML/Day7/Indianconstitution/index.html">Indian Constitution</a>
+                <a class="task-link" href="../Frontend/HTML/Day7/ITcompanies/index.html">IT Companies</a>
+                <a class="task-link" href="../Frontend/HTML/Day7/movie/index.html">Movie Project</a>
+            </div>
+        </div>
+
+        <!-- Day 8 (Deep Dark Rose / Ruby) -->
+        <div class="day-card day-8">
+            <div class="day-header">
+                <span>Day 8</span>
+                <span class="task-badge">2 Tasks</span>
+            </div>
+            <div class="task-list">
+                <a class="task-link" href="../Frontend/HTML/Day8/form.html">Day 8 Form</a>
+                <a class="task-link" href="../Frontend/HTML/Day8/index.html">Day 8 Index</a>
+            </div>
+        </div>
+
+        <!-- Day 9 (Deep Dark Purple) -->
+        <div class="day-card day-9">
+            <div class="day-header">
+                <span>Day 9</span>
+                <span class="task-badge">5 Tasks</span>
+            </div>
+            <div class="task-list">
+                <a class="task-link" href="../Frontend/HTML/Day9/Task1.html">Task 1</a>
+                <a class="task-link" href="../Frontend/HTML/Day9/Task2.html">Task 2</a>
+                <a class="task-link" href="../Frontend/HTML/Day9/Task3.html">Task 3</a>
+                <a class="task-link" href="../Frontend/HTML/Day9/Task4.html">Task 4</a>
+                <a class="task-link" href="../Frontend/HTML/Day9/Task5.html">Task 5</a>
+            </div>
+        </div>
+
+        <!-- Day 10 (Deep Dark Cyan) -->
+        <div class="day-card day-10">
+            <div class="day-header">
+                <span>Day 10</span>
+                <span class="task-badge">5 Tasks</span>
+            </div>
+            <div class="task-list">
+                <a class="task-link" href="../Frontend/HTML/Day10/Task1.html">Task 1</a>
+                <a class="task-link" href="../Frontend/HTML/Day10/Task2.html">Task 2</a>
+                <a class="task-link" href="../Frontend/HTML/Day10/Task3.html">Task 3</a>
+                <a class="task-link" href="../Frontend/HTML/Day10/Task4.html">Task 4</a>
+                <a class="task-link" href="../Frontend/HTML/Day10/Task5.html">Task 5</a>
+            </div>
+        </div>
+
+        <!-- Day 11 (Deep Dark Berry / Wine) -->
+        <div class="day-card day-11">
+            <div class="day-header">
+                <span>Day 11</span>
+                <span class="task-badge">5 Tasks</span>
+            </div>
+            <div class="task-list">
+                <a class="task-link" href="../Frontend/HTML/Day11/Task1.html">Task 1</a>
+                <a class="task-link" href="../Frontend/HTML/Day11/Task2.html">Task 2</a>
+                <a class="task-link" href="../Frontend/HTML/Day11/Task3..html">Task 3</a>
+                <a class="task-link" href="../Frontend/HTML/Day11/task4.html">Task 4</a>
+                <a class="task-link" href="../Frontend/HTML/Day11/Task5.html">Task 5</a>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <p>HTML & CSS Daily Tasks Hub &bull; Frontend Practice</p>
+    </div>
 
 </body>
-</html>   
-    
+</html>
