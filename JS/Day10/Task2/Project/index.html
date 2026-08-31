@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>JavaScript Logic & ES6+ Project</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body>
+
+
+
+    <nav class="navbar navbar-dark bg-dark">
+        <div class="container">
+            <span class="navbar-brand mb-0 h1">
+                JavaScript Practice
+            </span>
+        </div>
+    </nav>
+
+
+   
+
+    <section class="hero text-center">
+        <div class="container">
+
+            <h1>JavaScript Logic & ES6+</h1>
+
+            <p>
+                Day 10 Project — Logical Programs and Modern JavaScript
+            </p>
+
+        </div>
+    </section>
+
+
+    
+
+    <section class="container my-5">
+
+        <h2 class="section-title text-center">
+            10 Logical Programs
+        </h2>
+
+        <div class="row g-4">
+
+
+       
+
+            <div class="col-md-6 col-lg-4">
+
+                <div class="card project-card">
+
+                    <div class="card-body">
+
+                        <h5>1. Even or Odd</h5>
+
+                        <input
+                            type="number"
+                            id="evenInput"
+                            class="form-control"
+                            placeholder="Enter a number">
+
+                        <button
+                            onclick="checkEvenOdd()"
+                            class="btn btn-primary mt-3">
+                            Check
+                        </button>
+
+                        <p id="evenOutput" class="output"></p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+           
+
+            <div class="col-md-6 col-lg-4">
+
+                <div class="card project-card">
+
+                    <div class="card-body">
+
+                        <h5>2. Positive or Negative</h5>
+
+                        <input
+                            type="number"
+                            id="positiveInput"
+                            class="form-control"
+                            placeholder="Enter a number">
+
+                        <button
+                            onclick="checkPositiveNegative()"
+                            class="btn btn-primary mt-3">
+                            Check
+                        </button>
+
+                        <p id="positiveOutput" class="output"></p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+          
+
+            <div class="col-md-6 col-lg-4">
+
+                <div class="card project-card">
+
+                    <div class="card-body">
+
+                        <h5>3. Largest of Two</h5>
+
+                        <input
+                            type="number"
+                            id="numberOne"
+                            class="form-control mb-2"
+                            placeholder="First number">
+
+                        <input
+                            type="number"
+                            id="numberTwo"
+                            class="form-control"
+                            placeholder="Second number">
+
+                        <button
+                            onclick="findLargestTwo()"
+                            class="btn btn-primary mt-3">
+                            Find Largest
+                        </button>
+
+                        <p id="largestTwoOutput" class="output"></p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+           
+
+            <div class="col-md-6 col-lg-4">
+
+                <div class="card project-card">
+
+                    <div class="card-body">
+
+                        <h5>4. Largest of Three</h5>
+
+                        <input
+                            type="number"
+                            id="threeOne"
+                            class="form-control mb-2"
+                            placeholder="First number">
+
+                        <input
+                            type="number"
+                            id="threeTwo"
+                            class="form-control mb-2"
+                            placeholder="Second number">
+
+                        <input
+                            type="number"
+                            id="threeThree"
+                            class="form-control"
+                            placeholder="Third number">
+
+                        <button
+                            onclick="findLargestThree()"
+                            class="btn btn-primary mt-3">
+                            Find Largest
+                        </button>
+
+                        <p id="largestThreeOutput" class="output"></p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="col-md-6 col-lg-4">
+
+                <div class="card project-card">
+
+                    <div class="card-body">
+
+                        <h5>5. Factorial</h5>
+
+                        <input
+                            type="number"
+                            id="factorialInput"
+                            class="form-control"
+                            placeholder="Enter a number">
+
+                        <button
+                            onclick="calculateFactorial()"
+                            class="btn btn-primary mt-3">
+                            Calculate
+                        </button>
+
+                        <p id="factorialOutput" class="output"></p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+           
+
+            <div class="col-md-6 col-lg-4">
+
+                <div class="card project-card">
+
+                    <div class="card-body">
+
+                        <h5>6. Reverse String</h5>
+
+                        <input
+                            type="text"
+                            id="reverseInput"
+                            class="form-control"
+                            placeholder="Enter text">
+
+                        <button
+                            onclick="reverseString()"
+                            class="btn btn-primary mt-3">
+                            Reverse
+                        </button>
+
+                        <p id="reverseOutput" class="output"></p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+          
+
+            <div class="col-md-6 col-lg-4">
+
+                <div class="card project-card">
+
+                    <div class="card-body">
+
+                        <h5>7. Palindrome</h5>
+
+                        <input
+                            type="text"
+                            id="palindromeInput"
+                            class="form-control"
+                            placeholder="Enter word">
+
+                        <button
+                            onclick="checkPalindrome()"
+                            class="btn btn-primary mt-3">
+                            Check
+                        </button>
+
+                        <p id="palindromeOutput" class="output"></p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="col-md-6 col-lg-4">
+
+                <div class="card project-card">
+
+                    <div class="card-body">
+
+                        <h5>8. Sum of Array</h5>
+
+                        <p>
+                            [10, 20, 30, 40]
+                        </p>
+
+                        <button
+                            onclick="calculateArraySum()"
+                            class="btn btn-primary">
+                            Calculate Sum
+                        </button>
+
+                        <p id="sumOutput" class="output"></p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            
+
+            <div class="col-md-6 col-lg-4">
+
+                <div class="card project-card">
+
+                    <div class="card-body">
+
+                        <h5>9. Maximum Number</h5>
+
+                        <p>
+                            [10, 50, 30, 90, 20]
+                        </p>
+
+                        <button
+                            onclick="findMaximum()"
+                            class="btn btn-primary">
+                            Find Maximum
+                        </button>
+
+                        <p id="maximumOutput" class="output"></p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+           
+
+            <div class="col-md-6 col-lg-4">
+
+                <div class="card project-card">
+
+                    <div class="card-body">
+
+                        <h5>10. Count Even Numbers</h5>
+
+                        <p>
+                            [10, 15, 20, 25, 30, 35]
+                        </p>
+
+                        <button
+                            onclick="countEvenNumbers()"
+                            class="btn btn-primary">
+                            Count
+                        </button>
+
+                        <p id="countEvenOutput" class="output"></p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+   
+
+    <section class="container my-5">
+
+        <h2 class="section-title text-center">
+            10 ES6+ Topics
+        </h2>
+
+        <div class="row g-4">
+
+
+
+            <div class="col-md-6 col-lg-4">
+
+                <div class="card topic-card">
+
+                    <div class="card-body">
+
+                        <h5>1. let & const</h5>
+
+                        <p>
+                            Modern variable declarations with block scope.
+                        </p>
+
+                        <button
+                            onclick="showLetConst()"
+                            class="btn btn-success">
+                            Run
+                        </button>
+
+                        <p id="letConstOutput" class="output"></p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            
+
+            <div class="col-md-6 col-lg-4">
+
+                <div class="card topic-card">
+
+                    <div class="card-body">
+
+                        <h5>2. Arrow Function</h5>
+
+                        <p>
+                            Modern shorter function syntax.
+                        </p>
+
+                        <button
+                            onclick="showArrowFunction()"
+                            class="btn btn-success">
+                            Run
+                        </button>
+
+                        <p id="arrowOutput" class="output"></p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+           
+
+            <div class="col-md-6 col-lg-4">
+
+                <div class="card topic-card">
+
+                    <div class="card-body">
+
+                        <h5>3. Template Literal</h5>
+
+                        <p>
+                            Use backticks and ${} for strings.
+                        </p>
+
+                        <button
+                            onclick="showTemplateLiteral()"
+                            class="btn btn-success">
+                            Run
+                        </button>
+
+                        <p id="templateOutput" class="output"></p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="col-md-6 col-lg-4">
+
+                <div class="card topic-card">
+
+                    <div class="card-body">
+
+                        <h5>4. Default Parameter</h5>
+
+                        <p>
+                            Gives a default value to a parameter.
+                        </p>
+
+                        <button
+                            onclick="showDefaultParameter()"
+                            class="btn btn-success">
+                            Run
+                        </button>
+
+                        <p id="defaultOutput" class="output"></p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+           
+
+            <div class="col-md-6 col-lg-4">
+
+                <div class="card topic-card">
+
+                    <div class="card-body">
+
+                        <h5>5. Destructuring</h5>
+
+                        <p>
+                            Extract values from arrays and objects.
+                        </p>
+
+                        <button
+                            onclick="showDestructuring()"
+                            class="btn btn-success">
+                            Run
+                        </button>
+
+                        <p id="destructureOutput" class="output"></p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            
+
+            <div class="col-md-6 col-lg-4">
+
+                <div class="card topic-card">
+
+                    <div class="card-body">
+
+                        <h5>6. Rest Parameter</h5>
+
+                        <p>
+                            Collect multiple arguments.
+                        </p>
+
+                        <button
+                            onclick="showRest()"
+                            class="btn btn-success">
+                            Run
+                        </button>
+
+                        <p id="restOutput" class="output"></p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            
+
+            <div class="col-md-6 col-lg-4">
+
+                <div class="card topic-card">
+
+                    <div class="card-body">
+
+                        <h5>7. Spread Syntax</h5>
+
+                        <p>
+                            Expand an array into individual values.
+                        </p>
+
+                        <button
+                            onclick="showSpread()"
+                            class="btn btn-success">
+                            Run
+                        </button>
+
+                        <p id="spreadOutput" class="output"></p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="col-md-6 col-lg-4">
+
+                <div class="card topic-card">
+
+                    <div class="card-body">
+
+                        <h5>8. Class</h5>
+
+                        <p>
+                            Create objects using a class.
+                        </p>
+
+                        <button
+                            onclick="showClass()"
+                            class="btn btn-success">
+                            Run
+                        </button>
+
+                        <p id="classOutput" class="output"></p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+           
+
+            <div class="col-md-6 col-lg-4">
+
+                <div class="card topic-card">
+
+                    <div class="card-body">
+
+                        <h5>9. Promise</h5>
+
+                        <p>
+                            Handles asynchronous operations.
+                        </p>
+
+                        <button
+                            onclick="showPromise()"
+                            class="btn btn-success">
+                            Run
+                        </button>
+
+                        <p id="promiseOutput" class="output"></p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+           
+
+            <div class="col-md-6 col-lg-4">
+
+                <div class="card topic-card">
+
+                    <div class="card-body">
+
+                        <h5>10. Optional Chaining</h5>
+
+                        <p>
+                            Safely access missing properties.
+                        </p>
+
+                        <button
+                            onclick="showOptionalChaining()"
+                            class="btn btn-success">
+                            Run
+                        </button>
+
+                        <p id="optionalOutput" class="output"></p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+  
+
+    <footer class="bg-dark text-white text-center p-4">
+
+        <p class="mb-0">
+            Day 10 JavaScript Project | Logical Programs & ES6+
+        </p>
+
+    </footer>
+
+
+    <!-- JavaScript -->
+
+    <script src="assets/css/js/index.js"></script>
+
+</body>
+
+</html>
