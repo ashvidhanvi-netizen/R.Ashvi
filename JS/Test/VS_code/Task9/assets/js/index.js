@@ -15,6 +15,7 @@ console.log(squareExpression(5));
 
 // Arrow Function
 
+
 const squareArrow = (number) => {
     return number * number;
 };
