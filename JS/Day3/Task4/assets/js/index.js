@@ -1,37 +1,7 @@
+let age = 22;
 
+let  Id = true;
 
-let count = 10;
-
-
-
- count++
- console.log(count++);
- 
-
- count++
-  console.log(count++);
-
- count--
-  console.log(count--);
-
- count--
-  console.log(count--);
-
-  let number = 10;
-
-
- if(number %2===0){
- console.log("Even");
- }
-   
-   else {
-    console.log("odd");
-    
- }
-
-  
-
- 
-  
-  
-
+console.log(age >= 18 ; && Id);
+console.log(age < 18 ; || Id);
+console.log(!Id );
