@@ -1,15 +1,37 @@
-let age = 22;
-let hasId = true;
 
 
-console.log("Age is 18 or above AND has ID:",
-    age >= 18 && hasId
-);
+let count = 10;
 
-console.log("Age is below 18 OR has ID:",
-    age < 18 || hasId
-);
 
-console.log("NOT hasId:",
-    !hasId
-);
+
+ count++
+ console.log(count++);
+ 
+
+ count++
+  console.log(count++);
+
+ count--
+  console.log(count--);
+
+ count--
+  console.log(count--);
+
+  let number = 10;
+
+
+ if(number %2===0){
+ console.log("Even");
+ }
+   
+   else {
+    console.log("odd");
+    
+ }
+
+  
+
+ 
+  
+  
+
