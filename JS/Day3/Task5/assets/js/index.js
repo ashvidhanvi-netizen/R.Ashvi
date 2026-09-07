@@ -1,7 +1,37 @@
-let age = 10;
 
-age++;
-console.log(" age++:", age);
 
-age--;
-console.log(" age--:", age);
+let count = 10;
+
+
+
+ count++
+ console.log(count++);
+ 
+
+ count++
+  console.log(count++);
+
+ count--
+  console.log(count--);
+
+ count--
+  console.log(count--);
+
+  let number = 10;
+
+
+ if(number %2===0){
+ console.log("Even");
+ }
+   
+   else {
+    console.log("odd");
+    
+ }
+
+  
+
+ 
+  
+  
+

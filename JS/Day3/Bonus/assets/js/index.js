@@ -2,8 +2,8 @@
 let number = 10;
 
 if (number % 2 === 0) {
-    console.log(number, "is EVEN");
+    console.log("EVEN");
 } 
 else {
-    console.log(number, "is ODD");
+    console.log( " ODD");
 }
