@@ -1,12 +1,13 @@
-let courseName = "React";
+let student = "React";
 let mark = 100;
-let isStudent = true;
+let average = 99.5;
+let pass = true;
+let result = undefined;
+let value = null;
 
-console.log("Value:", courseName);
-console.log("Data Type:", typeof courseName);
-
-console.log("Value:", mark);
-console.log("Data Type:", typeof mark);
-
-console.log("Value:", isStudent);
-console.log("Data Type:", typeof isStudent);
+console.log(typeof student);
+console.log(typeof mark);
+console.log(typeof average);
+console.log(typeof pass);
+console.log(typeof result);
+console.log(typeof value);

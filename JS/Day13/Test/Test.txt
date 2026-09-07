@@ -1,0 +1,65 @@
+1. What is DOM in JavaScript? Why do we need DOM?
+ans: *DOM - Document Object Model.
+     *when a webpage loads in a browser it converts HTML into tree like object structure .
+     *DOM helps JavaScript to manipulate the HTML elements of a webpage.
+
+2. What is the difference between HTML and DOM?
+ans: * HTML is a hyper text markup language which is used to structure the content.
+     * DOM helps javascript to manipulate the HTML elements of a webpage.
+
+3. What is the document object in JavaScript?
+ans: The document object represents the HTML webpage loaded in the browser. It is used to access and manipulate HTML elements through JavaScript.
+
+4. What are DOM selectors? Name the important DOM selector methods.
+
+ans: A DOM selector is used to select or access HTML elements from JavaScript.
+
+     *getElementById("title")
+     *getElementsByClassName()
+     *getElementsByTagName()
+     *querySelector()
+     *querySelectorAll()
+
+5. What is the difference between getElementById() and querySelector()?
+
+ans: *getElementById() is used to select one HTML element using its unique ID.
+
+     *querySelector() selects the first matching element using CSS selector syntax.
+     ex:
+[
+     *<h1 id="title">Hello</h1>
+      <p class="text">Welcome</p>       ]
+
+6. What is the difference between querySelector() and querySelectorAll()?
+ans: *querySelector() selects the first matching element using CSS selector syntax.
+
+    * querySelectorAll() selects all matching elements.
+
+HTML:
+
+<p class="text">First</p>
+<p class="text">Second</p>
+<p class="text">Third</p>
+
+7. What is the difference between textContent, innerText, and innerHTML?
+ans: *textContent – gets or changes the text content of an element.
+     *innerText – gets or changes the visible text of an element.
+     *innerHTML – gets or changes the HTML content inside an element.
+
+8. How can we change the CSS style of an HTML element using JavaScript?
+
+ans: We can change the CSS style of an HTML element using the style property in JavaScript. It allows us to modify properties such as color, background color, font size, etc.
+
+
+
+
+
+
+
+
+
+
+
+
+
+

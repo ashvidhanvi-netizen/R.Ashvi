@@ -1,0 +1,41 @@
+
+
+<!DOCTYPE html>
+<html>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<head>
+    <title>Task 2</title>
+
+    <style>
+        .newStyle {
+            font-size: 30px;
+            background-color: rgb(12, 170, 157);
+        }
+    </style>
+</head>
+<body>
+
+    <h1 id="heading">Welcome</h1>
+
+    <button id="btn">Click Me</button>
+
+    <script>
+        const heading = document.getElementById("heading");
+        const button = document.getElementById("btn");
+
+        button.addEventListener("click", function() {
+
+      
+            heading.textContent = "Button Clicked!";
+
+          
+            heading.style.color = "blue";
+
+           
+            heading.classList.add("newStyle");
+        });
+    </script>
+
+</body>
+</html>
