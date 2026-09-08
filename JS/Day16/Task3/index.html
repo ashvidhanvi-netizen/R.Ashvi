@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task3</title>
+
+    <style>
+        .card{
+            width:100%;
+            height:100px;
+            background-color: rgb(51, 4, 20);
+            color: antiquewhite;
+            border: 1px  solid white;
+
+        }
+
+        .dark{
+            background-color: rgb(190, 6, 68);
+            color: aliceblue;
+
+        }
+
+    </style>
+</head>
+<body>
+    <center>
+    <div id = "card" class="card dark">
+    <h2>Welcome To My Page</h2>
+        
+    </div>
+    
+    <br>
+    <button id="btn">Toggle theme</button>
+
+    <script>
+      const card = document.getElementById("card");
+      const btn  = document.getElementById("btn")
+
+      btn.addEventListener ("click",function(){
+       card.classList.toggle("dark");
+
+      })
+      
+      
+      </script>
+    </center>
+</body>
+</html>

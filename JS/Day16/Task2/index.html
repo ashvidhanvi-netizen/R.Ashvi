@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task1</title>
+    <style>
+        .box{
+           width:200 ;
+           height:100;
+           background-color:chocolate;
+           color :aliceblue;
+           padding: 20px;
+
+        }
+
+        .active{
+             background-color:olivedrab;
+             color: antiquewhite;
+
+        }
+
+    </style>
+</head>
+<body>
+    <center>
+
+    <div id = "box"  class="box active">Welcome</div><br>
+    <button id = "btn">Remove Active</button>
+
+    <script>
+        const box = document.getElementById("box");
+        const btn = document.getElementById("btn");
+
+        btn.addEventListener ("click",function(){
+
+            box.classList.remove("active");
+
+        });
+    </script>
+    </center>
+</body>
+</html>

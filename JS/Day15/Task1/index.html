@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Show Hide</title>
+
+    <style>
+        .hidden {
+            display: none;
+        }
+
+        .show {
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+
+    <p id="para" class="hidden">This is my paragraph.</p>
+
+    <button id="btn">Show / Hide</button>
+
+    <script>
+        const paragraph = document.getElementById("para");
+        const button = document.getElementById("btn");
+
+        button.addEventListener("click", function() {
+            paragraph.classList.toggle("hidden");
+        });
+    </script>
+
+</body>
+</html>

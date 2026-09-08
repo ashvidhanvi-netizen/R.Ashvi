@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Card Toggle</title>
+
+    <style>
+        .card {
+            width: 300px;
+            padding: 20px;
+            border: 1px solid black;
+        }
+
+        .card img {
+            width: 100%;
+        }
+
+        .details {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease;
+        }
+
+        .details.show {
+            max-height: 200px;
+        }
+    </style>
+</head>
+
+<body>
+    <center>
+
+    <div class="card">
+
+        <img src="../../../HTML/Day7/ITcompanies/assets/images/banner_1.png" alt="Card Image">
+
+        <h2>My Card</h2>
+
+        <div id="details" class="details">
+            <p>
+                This is the card description. 
+                These are the additional details of the card.
+            </p>
+        </div>
+
+        <button id="btn">Show Details</button>
+
+    </div>
+
+    <script src="assets/js/index.js"></script>
+     
+    </center>
+</body>
+</html>
