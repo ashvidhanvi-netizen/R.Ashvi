@@ -61,7 +61,7 @@
       <div class="flex items-center gap-2 mx-auto md:mx-0">
         <span class="w-2 h-2 rounded-full bg-[#C68A4C] animate-pulse"></span>
         <span class="font-medium tracking-wide">
-          24/7 Artisan Brew Bar &bull; Free express local delivery on orders above ₹499
+          24/7 Artisan Brew Bar &bull; Free express local delivery on orders above ₹99
         </span>
       </div>
       <div class="hidden md:flex items-center gap-5 text-xs font-medium text-[#E8D9C8]">
@@ -97,15 +97,17 @@
         </div>
       </a>
 
-      <!-- Desktop Navigation Links -->
-      <nav class="hidden lg:flex items-center gap-7 text-sm font-medium">
-        <a href="#" class="nav-link-custom active">Home</a>
-        <a href="#story" class="nav-link-custom">Our Story</a>
-        <a href="#categories" onclick="filterFromCategoryCard('coffee')" class="nav-link-custom">Coffee</a>
-        <a href="#categories" onclick="filterFromCategoryCard('tea')" class="nav-link-custom">Tea</a>
-        <a href="#categories" onclick="filterFromCategoryCard('iced')" class="nav-link-custom">Iced Drinks</a>
-        <a href="#shop" class="nav-link-custom">Shop</a>
-        <a href="#reviews" class="nav-link-custom">Reviews</a>
+      <!-- Desktop Navigation Links with Category Auto-Filter -->
+      <nav class="hidden lg:flex items-center gap-6 text-sm font-medium">
+        <a href="#" class="nav-link-custom active" data-nav="home">Home</a>
+        <a href="#story" class="nav-link-custom" data-nav="story">Our Story</a>
+        <a href="#shop" onclick="navigateToCategory('coffee', event)" class="nav-link-custom" data-nav="coffee">Coffee</a>
+        <a href="#shop" onclick="navigateToCategory('tea', event)" class="nav-link-custom" data-nav="tea">Tea</a>
+        <a href="#shop" onclick="navigateToCategory('iced', event)" class="nav-link-custom" data-nav="iced">Iced Drinks</a>
+        <a href="#offers" class="nav-link-custom text-[#C68A4C] font-semibold" data-nav="offers">Offers 🎉</a>
+        <a href="#mood-notes" class="nav-link-custom" data-nav="mood-notes">Mood Notes 💭</a>
+        <a href="#shop" onclick="navigateToCategory('all', event)" class="nav-link-custom" data-nav="all">Shop</a>
+        <a href="#reviews" class="nav-link-custom" data-nav="reviews">Reviews</a>
       </nav>
 
       <!-- Action Items: Cart & Mobile Trigger -->
@@ -122,7 +124,7 @@
         </button>
 
         <!-- CTA Button in Header -->
-        <a href="#shop" class="hidden sm:inline-flex btn-primary-aura text-xs py-2 px-4 shadow-sm">
+        <a href="#shop" onclick="navigateToCategory('all', event)" class="hidden sm:inline-flex btn-primary-aura text-xs py-2 px-4 shadow-sm">
           Order Now
         </a>
 
@@ -138,16 +140,30 @@
       <nav class="flex flex-col gap-4 text-base font-medium">
         <a href="#" onclick="toggleMobileMenu()" class="text-[#271711] py-1 border-b border-[#4E3224]/5">Home</a>
         <a href="#story" onclick="toggleMobileMenu()" class="text-[#271711] py-1 border-b border-[#4E3224]/5">Our Story</a>
-        <a href="#categories" onclick="toggleMobileMenu(); filterFromCategoryCard('coffee');" class="text-[#271711] py-1 border-b border-[#4E3224]/5">☕ Coffee</a>
-        <a href="#categories" onclick="toggleMobileMenu(); filterFromCategoryCard('tea');" class="text-[#271711] py-1 border-b border-[#4E3224]/5">🍵 Tea</a>
-        <a href="#categories" onclick="toggleMobileMenu(); filterFromCategoryCard('iced');" class="text-[#271711] py-1 border-b border-[#4E3224]/5">🧊 Iced Drinks</a>
-        <a href="#shop" onclick="toggleMobileMenu()" class="text-[#271711] py-1 border-b border-[#4E3224]/5">Shop Bestsellers</a>
+        <a href="#offers" onclick="toggleMobileMenu()" class="text-[#C68A4C] font-semibold py-1 border-b border-[#4E3224]/5 flex items-center justify-between">
+          <span>Special Offers 🎉</span>
+          <span class="text-xs bg-[#C68A4C]/15 px-2 py-0.5 rounded-full text-[#C68A4C]">Up to 50% OFF</span>
+        </a>
+        <a href="#mood-notes" onclick="toggleMobileMenu()" class="text-[#271711] py-1 border-b border-[#4E3224]/5">Sip & Feel Notes 💭</a>
+        <a href="#shop" onclick="toggleMobileMenu(); navigateToCategory('coffee', event);" class="text-[#271711] py-1 border-b border-[#4E3224]/5 flex items-center justify-between">
+          <span>☕ Coffee</span>
+          <span class="text-xs text-[#C68A4C]">From ₹25 →</span>
+        </a>
+        <a href="#shop" onclick="toggleMobileMenu(); navigateToCategory('tea', event);" class="text-[#271711] py-1 border-b border-[#4E3224]/5 flex items-center justify-between">
+          <span>🍵 Tea</span>
+          <span class="text-xs text-[#4E6E58]">From ₹15 →</span>
+        </a>
+        <a href="#shop" onclick="toggleMobileMenu(); navigateToCategory('iced', event);" class="text-[#271711] py-1 border-b border-[#4E3224]/5 flex items-center justify-between">
+          <span>🧊 Iced Drinks</span>
+          <span class="text-xs text-[#0284C7]">From ₹25 →</span>
+        </a>
+        <a href="#shop" onclick="toggleMobileMenu(); navigateToCategory('all', event);" class="text-[#271711] py-1 border-b border-[#4E3224]/5">Shop All Bestsellers</a>
         <a href="#quiz" onclick="toggleMobileMenu()" class="text-[#271711] py-1 border-b border-[#4E3224]/5">Brew Matcher Quiz</a>
         <a href="#lifestyle" onclick="toggleMobileMenu()" class="text-[#271711] py-1 border-b border-[#4E3224]/5">Lifestyle & Gifts</a>
         <a href="#reviews" onclick="toggleMobileMenu()" class="text-[#271711] py-1">Customer Reviews</a>
       </nav>
       <div class="mt-5 pt-4 border-t border-[#4E3224]/10 flex flex-col gap-2">
-        <a href="#shop" onclick="toggleMobileMenu()" class="btn-caramel w-full py-2.5 text-center text-sm font-semibold">
+        <a href="#shop" onclick="toggleMobileMenu(); navigateToCategory('all', event);" class="btn-caramel w-full py-2.5 text-center text-sm font-semibold">
           Shop Our Collection
         </a>
       </div>
@@ -182,7 +198,7 @@
 
           <!-- Dual CTAs -->
           <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-2">
-            <a href="#shop" class="btn-primary-aura w-full sm:w-auto text-sm shadow-md">
+            <a href="#shop" onclick="navigateToCategory('all', event)" class="btn-primary-aura w-full sm:w-auto text-sm shadow-md">
               <i data-lucide="shopping-bag" class="w-4 h-4"></i>
               <span>Shop Our Collection</span>
             </a>
@@ -231,7 +247,7 @@
             </div>
 
             <!-- Floating Sub-Card 1: Fresh Tea Leaves & Herbal Brew -->
-            <div class="absolute -top-6 -left-6 bg-white/95 backdrop-blur-md p-3.5 rounded-2xl shadow-xl border border-[#4E3224]/10 hidden sm:flex items-center gap-3">
+            <div onclick="navigateToCategory('tea')" class="absolute -top-6 -left-6 bg-white/95 backdrop-blur-md p-3.5 rounded-2xl shadow-xl border border-[#4E3224]/10 hidden sm:flex items-center gap-3 cursor-pointer hover:scale-105 transition-transform">
               <img src="https://images.unsplash.com/photo-1576092768241-dec231879fc3?q=80&w=200&auto=format&fit=crop" 
                    alt="Whole Leaf Tea" 
                    class="w-12 h-12 rounded-xl object-cover">
@@ -242,7 +258,7 @@
             </div>
 
             <!-- Floating Sub-Card 2: Iced Cold Brew with Condensation -->
-            <div class="absolute -bottom-6 -right-6 bg-white/95 backdrop-blur-md p-3.5 rounded-2xl shadow-xl border border-[#4E3224]/10 hidden sm:flex items-center gap-3">
+            <div onclick="navigateToCategory('iced')" class="absolute -bottom-6 -right-6 bg-white/95 backdrop-blur-md p-3.5 rounded-2xl shadow-xl border border-[#4E3224]/10 hidden sm:flex items-center gap-3 cursor-pointer hover:scale-105 transition-transform">
               <img src="https://images.unsplash.com/photo-1517701550927-30cf4ba1dba5?q=80&w=200&auto=format&fit=crop" 
                    alt="Iced Cold Brew" 
                    class="w-12 h-12 rounded-xl object-cover">
@@ -271,14 +287,14 @@
           Explore Our Collection
         </h2>
         <p class="text-sm sm:text-base text-[#4A3C34] mt-3">
-          Discover hand-roasted artisan coffees, calming whole-leaf teas, and crisp iced refreshers crafted to elevate your daily ritual.
+          Click on any category below to immediately view and order its handcrafted selections in our shop.
         </p>
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
         
-        <!-- Category 1: COFFEE -->
-        <div onclick="filterFromCategoryCard('coffee')" 
+        <!-- Category 1: COFFEE (Clicking smoothly filters shop to Coffee) -->
+        <div onclick="navigateToCategory('coffee')" 
              class="category-card bg-white rounded-3xl p-6 sm:p-8 border border-[#4E3224]/10 shadow-md cursor-pointer group flex flex-col justify-between">
           <div>
             <div class="h-56 rounded-2xl overflow-hidden mb-6 relative">
@@ -304,13 +320,13 @@
             </ul>
           </div>
           <div class="mt-6 pt-4 border-t border-[#4E3224]/10 flex items-center justify-between text-xs font-semibold text-[#C68A4C] group-hover:text-[#271711]">
-            <span>Explore Coffee Range</span>
+            <span>View Coffee Products →</span>
             <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
           </div>
         </div>
 
-        <!-- Category 2: TEA -->
-        <div onclick="filterFromCategoryCard('tea')" 
+        <!-- Category 2: TEA (Clicking smoothly filters shop to Tea) -->
+        <div onclick="navigateToCategory('tea')" 
              class="category-card bg-white rounded-3xl p-6 sm:p-8 border border-[#4E3224]/10 shadow-md cursor-pointer group flex flex-col justify-between">
           <div>
             <div class="h-56 rounded-2xl overflow-hidden mb-6 relative">
@@ -336,13 +352,13 @@
             </ul>
           </div>
           <div class="mt-6 pt-4 border-t border-[#4E3224]/10 flex items-center justify-between text-xs font-semibold text-[#4E6E58] group-hover:text-[#271711]">
-            <span>Explore Tea Range</span>
+            <span>View Tea Products →</span>
             <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
           </div>
         </div>
 
-        <!-- Category 3: ICED DRINKS -->
-        <div onclick="filterFromCategoryCard('iced')" 
+        <!-- Category 3: ICED DRINKS (Clicking smoothly filters shop to Iced Drinks) -->
+        <div onclick="navigateToCategory('iced')" 
              class="category-card bg-white rounded-3xl p-6 sm:p-8 border border-[#4E3224]/10 shadow-md cursor-pointer group flex flex-col justify-between">
           <div>
             <div class="h-56 rounded-2xl overflow-hidden mb-6 relative">
@@ -368,7 +384,7 @@
             </ul>
           </div>
           <div class="mt-6 pt-4 border-t border-[#4E3224]/10 flex items-center justify-between text-xs font-semibold text-[#0284C7] group-hover:text-[#271711]">
-            <span>Explore Iced Range</span>
+            <span>View Iced Drinks →</span>
             <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
           </div>
         </div>
@@ -382,7 +398,7 @@
   <section id="shop" class="py-24 bg-[#FDFBF7]">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       
-      <div class="text-center max-w-2xl mx-auto mb-10">
+      <div class="text-center max-w-2xl mx-auto mb-8">
         <span class="text-xs uppercase tracking-widest font-semibold text-[#C68A4C] block mb-2">
           Handcrafted Daily
         </span>
@@ -392,6 +408,13 @@
         <p class="text-sm sm:text-base text-[#4A3C34] mt-3">
           Explore our most cherished artisan coffees, organic whole-leaf teas, and chilled craft refreshers.
         </p>
+
+        <!-- Dynamic Category Status Badge -->
+        <div class="mt-4">
+          <span id="shop-category-status" class="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-[#E8D9C8]/50 border border-[#4E3224]/10 text-xs font-semibold text-[#4E3224]">
+            Showing All Handcrafted Drinks (12 Bestsellers)
+          </span>
+        </div>
       </div>
 
       <!-- Filter Buttons (All | Coffee | Tea | Iced Drinks) -->
@@ -410,10 +433,10 @@
         </button>
       </div>
 
-      <!-- Product Cards Grid (12 Diverse Products) -->
+      <!-- Product Cards Grid (12 Diverse Products: 4 Coffee, 4 Tea, 4 Iced Drinks) -->
       <div id="products-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
 
-        <!-- Product 1: Caramel Latte -->
+        <!-- ================= COFFEE 1: Caramel Latte ================= -->
         <div class="product-card flex flex-col justify-between" data-category="coffee">
           <div>
             <div class="product-card-img-wrap h-52 bg-[#F8F3EC]">
@@ -441,7 +464,7 @@
                 <span class="text-[#7E6F66] font-medium">Select Size:</span>
                 <select id="size-p2" class="bg-[#FAF6F0] text-[#271711] border border-[#4E3224]/15 rounded-md px-2 py-1 text-xs font-semibold focus:outline-none">
                   <option value="Regular (280ml)">Regular (280ml)</option>
-                  <option value="Large (380ml)">Large (380ml) +₹40</option>
+                  <option value="Large (380ml)">Large (380ml) +₹20</option>
                 </select>
               </div>
             </div>
@@ -449,16 +472,16 @@
           <div class="px-5 pb-5 pt-1 flex items-center justify-between border-t border-[#4E3224]/5">
             <div>
               <span class="text-[10px] uppercase text-[#7E6F66] font-semibold block">Price</span>
-              <span class="text-lg font-bold text-[#271711] font-serif">₹180</span>
+              <span class="text-lg font-bold text-[#271711] font-serif">₹35</span>
             </div>
-            <button onclick="addToCart('p2', 'Caramel Latte', 180, 'https://images.unsplash.com/photo-1534778101976-62847782c213?q=80&w=600&auto=format&fit=crop')" 
+            <button onclick="addToCart('p2', 'Caramel Latte', 35, 'https://images.unsplash.com/photo-1534778101976-62847782c213?q=80&w=600&auto=format&fit=crop')" 
                     class="btn-caramel px-4 py-2 text-xs font-semibold">
               <i data-lucide="plus" class="w-3.5 h-3.5"></i> Add to Cart
             </button>
           </div>
         </div>
 
-        <!-- Product 2: Lemon & Thyme Tea -->
+        <!-- ================= TEA 1: Lemon & Thyme Tea ================= -->
         <div class="product-card flex flex-col justify-between" data-category="tea">
           <div>
             <div class="product-card-img-wrap h-52 bg-[#F8F3EC]">
@@ -486,7 +509,7 @@
                 <span class="text-[#7E6F66] font-medium">Select Serve:</span>
                 <select id="size-p3" class="bg-[#FAF6F0] text-[#271711] border border-[#4E3224]/15 rounded-md px-2 py-1 text-xs font-semibold focus:outline-none">
                   <option value="Hot Pot (300ml)">Hot Pot (300ml)</option>
-                  <option value="Sharing Pot (500ml)">Sharing Pot (500ml) +₹50</option>
+                  <option value="Sharing Pot (500ml)">Sharing Pot (500ml) +₹20</option>
                 </select>
               </div>
             </div>
@@ -494,16 +517,16 @@
           <div class="px-5 pb-5 pt-1 flex items-center justify-between border-t border-[#4E3224]/5">
             <div>
               <span class="text-[10px] uppercase text-[#7E6F66] font-semibold block">Price</span>
-              <span class="text-lg font-bold text-[#271711] font-serif">₹150</span>
+              <span class="text-lg font-bold text-[#271711] font-serif">₹20</span>
             </div>
-            <button onclick="addToCart('p3', 'Lemon & Thyme Tea', 150, 'https://images.unsplash.com/photo-1576092768241-dec231879fc3?q=80&w=600&auto=format&fit=crop')" 
+            <button onclick="addToCart('p3', 'Lemon & Thyme Tea', 20, 'https://images.unsplash.com/photo-1576092768241-dec231879fc3?q=80&w=600&auto=format&fit=crop')" 
                     class="btn-caramel px-4 py-2 text-xs font-semibold">
               <i data-lucide="plus" class="w-3.5 h-3.5"></i> Add to Cart
             </button>
           </div>
         </div>
 
-        <!-- Product 3: Iced Vanilla Cold Brew -->
+        <!-- ================= ICED 1: Vanilla Cold Brew ================= -->
         <div class="product-card flex flex-col justify-between" data-category="iced">
           <div>
             <div class="product-card-img-wrap h-52 bg-[#F8F3EC]">
@@ -531,7 +554,7 @@
                 <span class="text-[#7E6F66] font-medium">Select Size:</span>
                 <select id="size-p4" class="bg-[#FAF6F0] text-[#271711] border border-[#4E3224]/15 rounded-md px-2 py-1 text-xs font-semibold focus:outline-none">
                   <option value="Tall (350ml)">Tall (350ml)</option>
-                  <option value="Grande (450ml)">Grande (450ml) +₹40</option>
+                  <option value="Grande (450ml)">Grande (450ml) +₹20</option>
                 </select>
               </div>
             </div>
@@ -539,16 +562,16 @@
           <div class="px-5 pb-5 pt-1 flex items-center justify-between border-t border-[#4E3224]/5">
             <div>
               <span class="text-[10px] uppercase text-[#7E6F66] font-semibold block">Price</span>
-              <span class="text-lg font-bold text-[#271711] font-serif">₹220</span>
+              <span class="text-lg font-bold text-[#271711] font-serif">₹35</span>
             </div>
-            <button onclick="addToCart('p4', 'Vanilla Cold Brew', 220, 'https://images.unsplash.com/photo-1517701550927-30cf4ba1dba5?q=80&w=600&auto=format&fit=crop')" 
+            <button onclick="addToCart('p4', 'Vanilla Cold Brew', 35, 'https://images.unsplash.com/photo-1517701550927-30cf4ba1dba5?q=80&w=600&auto=format&fit=crop')" 
                     class="btn-caramel px-4 py-2 text-xs font-semibold">
               <i data-lucide="plus" class="w-3.5 h-3.5"></i> Add to Cart
             </button>
           </div>
         </div>
 
-        <!-- Product 4: Classic Espresso -->
+        <!-- ================= COFFEE 2: Classic Espresso ================= -->
         <div class="product-card flex flex-col justify-between" data-category="coffee">
           <div>
             <div class="product-card-img-wrap h-52 bg-[#F8F3EC]">
@@ -576,7 +599,7 @@
                 <span class="text-[#7E6F66] font-medium">Shot Type:</span>
                 <select id="size-p1" class="bg-[#FAF6F0] text-[#271711] border border-[#4E3224]/15 rounded-md px-2 py-1 text-xs font-semibold focus:outline-none">
                   <option value="Single Shot (30ml)">Single Shot (30ml)</option>
-                  <option value="Double Shot (60ml)">Double Shot (60ml)</option>
+                  <option value="Double Shot (60ml)">Double Shot (60ml) +₹15</option>
                 </select>
               </div>
             </div>
@@ -584,16 +607,16 @@
           <div class="px-5 pb-5 pt-1 flex items-center justify-between border-t border-[#4E3224]/5">
             <div>
               <span class="text-[10px] uppercase text-[#7E6F66] font-semibold block">Price</span>
-              <span class="text-lg font-bold text-[#271711] font-serif">₹140</span>
+              <span class="text-lg font-bold text-[#271711] font-serif">₹25</span>
             </div>
-            <button onclick="addToCart('p1', 'Classic Espresso', 140, 'https://images.unsplash.com/photo-1510591509098-f4fdc6d0ff04?q=80&w=600&auto=format&fit=crop')" 
+            <button onclick="addToCart('p1', 'Classic Espresso', 25, 'https://images.unsplash.com/photo-1510591509098-f4fdc6d0ff04?q=80&w=600&auto=format&fit=crop')" 
                     class="btn-caramel px-4 py-2 text-xs font-semibold">
               <i data-lucide="plus" class="w-3.5 h-3.5"></i> Add to Cart
             </button>
           </div>
         </div>
 
-        <!-- Product 5: Peach Iced Tea -->
+        <!-- ================= ICED 2: Peach Iced Tea ================= -->
         <div class="product-card flex flex-col justify-between" data-category="iced">
           <div>
             <div class="product-card-img-wrap h-52 bg-[#F8F3EC]">
@@ -621,7 +644,7 @@
                 <span class="text-[#7E6F66] font-medium">Select Size:</span>
                 <select id="size-p5" class="bg-[#FAF6F0] text-[#271711] border border-[#4E3224]/15 rounded-md px-2 py-1 text-xs font-semibold focus:outline-none">
                   <option value="Tall (350ml)">Tall (350ml)</option>
-                  <option value="Grande (450ml)">Grande (450ml) +₹35</option>
+                  <option value="Grande (450ml)">Grande (450ml) +₹20</option>
                 </select>
               </div>
             </div>
@@ -629,16 +652,16 @@
           <div class="px-5 pb-5 pt-1 flex items-center justify-between border-t border-[#4E3224]/5">
             <div>
               <span class="text-[10px] uppercase text-[#7E6F66] font-semibold block">Price</span>
-              <span class="text-lg font-bold text-[#271711] font-serif">₹175</span>
+              <span class="text-lg font-bold text-[#271711] font-serif">₹30</span>
             </div>
-            <button onclick="addToCart('p5', 'Peach Iced Tea', 175, 'https://images.unsplash.com/photo-1556679343-c7306c1976bc?q=80&w=600&auto=format&fit=crop')" 
+            <button onclick="addToCart('p5', 'Peach Iced Tea', 30, 'https://images.unsplash.com/photo-1556679343-c7306c1976bc?q=80&w=600&auto=format&fit=crop')" 
                     class="btn-caramel px-4 py-2 text-xs font-semibold">
               <i data-lucide="plus" class="w-3.5 h-3.5"></i> Add to Cart
             </button>
           </div>
         </div>
 
-        <!-- Product 6: Velvet Cappuccino -->
+        <!-- ================= COFFEE 3: Velvet Cappuccino ================= -->
         <div class="product-card flex flex-col justify-between" data-category="coffee">
           <div>
             <div class="product-card-img-wrap h-52 bg-[#F8F3EC]">
@@ -666,8 +689,8 @@
                 <span class="text-[#7E6F66] font-medium">Select Milk:</span>
                 <select id="size-p6" class="bg-[#FAF6F0] text-[#271711] border border-[#4E3224]/15 rounded-md px-2 py-1 text-xs font-semibold focus:outline-none">
                   <option value="Whole Milk">Whole Milk</option>
-                  <option value="Oat Milk">Oat Milk +₹30</option>
-                  <option value="Almond Milk">Almond Milk +₹30</option>
+                  <option value="Oat Milk">Oat Milk +₹15</option>
+                  <option value="Almond Milk">Almond Milk +₹15</option>
                 </select>
               </div>
             </div>
@@ -675,16 +698,16 @@
           <div class="px-5 pb-5 pt-1 flex items-center justify-between border-t border-[#4E3224]/5">
             <div>
               <span class="text-[10px] uppercase text-[#7E6F66] font-semibold block">Price</span>
-              <span class="text-lg font-bold text-[#271711] font-serif">₹165</span>
+              <span class="text-lg font-bold text-[#271711] font-serif">₹30</span>
             </div>
-            <button onclick="addToCart('p6', 'Velvet Cappuccino', 165, 'https://images.unsplash.com/photo-1572442388796-11668a67e53d?q=80&w=600&auto=format&fit=crop')" 
+            <button onclick="addToCart('p6', 'Velvet Cappuccino', 30, 'https://images.unsplash.com/photo-1572442388796-11668a67e53d?q=80&w=600&auto=format&fit=crop')" 
                     class="btn-caramel px-4 py-2 text-xs font-semibold">
               <i data-lucide="plus" class="w-3.5 h-3.5"></i> Add to Cart
             </button>
           </div>
         </div>
 
-        <!-- Product 7: Masala Chai -->
+        <!-- ================= TEA 2: Kashmiri Masala Chai ================= -->
         <div class="product-card flex flex-col justify-between" data-category="tea">
           <div>
             <div class="product-card-img-wrap h-52 bg-[#F8F3EC]">
@@ -712,7 +735,7 @@
                 <span class="text-[#7E6F66] font-medium">Clay Kullhad:</span>
                 <select id="size-p7" class="bg-[#FAF6F0] text-[#271711] border border-[#4E3224]/15 rounded-md px-2 py-1 text-xs font-semibold focus:outline-none">
                   <option value="Artisan Kullhad (200ml)">Artisan Kullhad (200ml)</option>
-                  <option value="Grand Kullhad (350ml)">Grand Kullhad (350ml) +₹30</option>
+                  <option value="Grand Kullhad (350ml)">Grand Kullhad (350ml) +₹15</option>
                 </select>
               </div>
             </div>
@@ -720,44 +743,44 @@
           <div class="px-5 pb-5 pt-1 flex items-center justify-between border-t border-[#4E3224]/5">
             <div>
               <span class="text-[10px] uppercase text-[#7E6F66] font-semibold block">Price</span>
-              <span class="text-lg font-bold text-[#271711] font-serif">₹130</span>
+              <span class="text-lg font-bold text-[#271711] font-serif">₹15</span>
             </div>
-            <button onclick="addToCart('p7', 'Masala Chai', 130, 'https://images.unsplash.com/photo-1561336313-0bd5e0b27ec8?q=80&w=600&auto=format&fit=crop')" 
+            <button onclick="addToCart('p7', 'Masala Chai', 15, 'https://images.unsplash.com/photo-1561336313-0bd5e0b27ec8?q=80&w=600&auto=format&fit=crop')" 
                     class="btn-caramel px-4 py-2 text-xs font-semibold">
               <i data-lucide="plus" class="w-3.5 h-3.5"></i> Add to Cart
             </button>
           </div>
         </div>
 
-        <!-- Product 8: Iced Dark Mocha -->
-        <div class="product-card flex flex-col justify-between" data-category="iced">
+        <!-- ================= COFFEE 4: Belgian Dark Mocha ================= -->
+        <div class="product-card flex flex-col justify-between" data-category="coffee">
           <div>
             <div class="product-card-img-wrap h-52 bg-[#F8F3EC]">
-              <img src="https://images.unsplash.com/photo-1517256064527-09c73fc73e38?q=80&w=600&auto=format&fit=crop" 
-                   alt="Iced Belgian Mocha" 
+              <img src="https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?q=80&w=600&auto=format&fit=crop" 
+                   alt="Belgian Dark Mocha" 
                    class="w-full h-full object-cover">
-              <span class="absolute top-3 left-3 badge-iced badge-pill font-medium shadow-sm">Iced</span>
+              <span class="absolute top-3 left-3 badge-coffee badge-pill font-medium shadow-sm">Coffee</span>
             </div>
             <div class="p-5">
               <div class="flex items-center justify-between text-xs text-[#F59E0B] mb-1.5">
                 <div class="flex items-center gap-1">
                   <i data-lucide="star" class="w-3.5 h-3.5 fill-current"></i>
                   <span class="font-bold text-[#271711]">4.9</span>
-                  <span class="text-[#7E6F66]">(290)</span>
+                  <span class="text-[#7E6F66]">(340)</span>
                 </div>
-                <span class="text-[11px] font-semibold text-[#0284C7]">Chilled Indulgence</span>
+                <span class="text-[11px] font-semibold text-[#C68A4C]">Rich Roast</span>
               </div>
-              <h3 class="font-serif text-lg font-bold text-[#271711] mb-1">Iced Dark Mocha</h3>
+              <h3 class="font-serif text-lg font-bold text-[#271711] mb-1">Belgian Dark Mocha</h3>
               <p class="text-xs text-[#4A3C34] line-clamp-2 leading-relaxed mb-3">
-                Decadent Belgian 70% dark chocolate melted into freshly pulled espresso, poured over cold milk and ice.
+                Velvety hot espresso infused with melted Belgian 70% dark chocolate and creamy textured milk.
               </p>
 
               <!-- Size Selector -->
               <div class="flex items-center justify-between text-xs py-2 border-t border-[#4E3224]/10 mb-3">
                 <span class="text-[#7E6F66] font-medium">Select Size:</span>
-                <select id="size-p8" class="bg-[#FAF6F0] text-[#271711] border border-[#4E3224]/15 rounded-md px-2 py-1 text-xs font-semibold focus:outline-none">
-                  <option value="Regular (350ml)">Regular (350ml)</option>
-                  <option value="Large (450ml)">Large (450ml) +₹40</option>
+                <select id="size-p13" class="bg-[#FAF6F0] text-[#271711] border border-[#4E3224]/15 rounded-md px-2 py-1 text-xs font-semibold focus:outline-none">
+                  <option value="Regular (280ml)">Regular (280ml)</option>
+                  <option value="Large (380ml)">Large (380ml) +₹20</option>
                 </select>
               </div>
             </div>
@@ -765,16 +788,16 @@
           <div class="px-5 pb-5 pt-1 flex items-center justify-between border-t border-[#4E3224]/5">
             <div>
               <span class="text-[10px] uppercase text-[#7E6F66] font-semibold block">Price</span>
-              <span class="text-lg font-bold text-[#271711] font-serif">₹210</span>
+              <span class="text-lg font-bold text-[#271711] font-serif">₹35</span>
             </div>
-            <button onclick="addToCart('p8', 'Iced Dark Mocha', 210, 'https://images.unsplash.com/photo-1517256064527-09c73fc73e38?q=80&w=600&auto=format&fit=crop')" 
+            <button onclick="addToCart('p13', 'Belgian Dark Mocha', 35, 'https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?q=80&w=600&auto=format&fit=crop')" 
                     class="btn-caramel px-4 py-2 text-xs font-semibold">
               <i data-lucide="plus" class="w-3.5 h-3.5"></i> Add to Cart
             </button>
           </div>
         </div>
 
-        <!-- Product 9: Organic Green Tea -->
+        <!-- ================= TEA 3: Organic Green Tea ================= -->
         <div class="product-card flex flex-col justify-between" data-category="tea">
           <div>
             <div class="product-card-img-wrap h-52 bg-[#F8F3EC]">
@@ -802,7 +825,7 @@
                 <span class="text-[#7E6F66] font-medium">Select Serve:</span>
                 <select id="size-p9" class="bg-[#FAF6F0] text-[#271711] border border-[#4E3224]/15 rounded-md px-2 py-1 text-xs font-semibold focus:outline-none">
                   <option value="Ceramic Pot (300ml)">Ceramic Pot (300ml)</option>
-                  <option value="Grand Pot (500ml)">Grand Pot (500ml) +₹40</option>
+                  <option value="Grand Pot (500ml)">Grand Pot (500ml) +₹20</option>
                 </select>
               </div>
             </div>
@@ -810,16 +833,16 @@
           <div class="px-5 pb-5 pt-1 flex items-center justify-between border-t border-[#4E3224]/5">
             <div>
               <span class="text-[10px] uppercase text-[#7E6F66] font-semibold block">Price</span>
-              <span class="text-lg font-bold text-[#271711] font-serif">₹140</span>
+              <span class="text-lg font-bold text-[#271711] font-serif">₹20</span>
             </div>
-            <button onclick="addToCart('p9', 'Organic Green Tea', 140, 'https://images.unsplash.com/photo-1627435601361-ec25f5b1d0e5?q=80&w=600&auto=format&fit=crop')" 
+            <button onclick="addToCart('p9', 'Organic Green Tea', 20, 'https://images.unsplash.com/photo-1627435601361-ec25f5b1d0e5?q=80&w=600&auto=format&fit=crop')" 
                     class="btn-caramel px-4 py-2 text-xs font-semibold">
               <i data-lucide="plus" class="w-3.5 h-3.5"></i> Add to Cart
             </button>
           </div>
         </div>
 
-        <!-- Product 10: Iced Latte -->
+        <!-- ================= ICED 3: Iced Latte ================= -->
         <div class="product-card flex flex-col justify-between" data-category="iced">
           <div>
             <div class="product-card-img-wrap h-52 bg-[#F8F3EC]">
@@ -847,7 +870,7 @@
                 <span class="text-[#7E6F66] font-medium">Select Size:</span>
                 <select id="size-p10" class="bg-[#FAF6F0] text-[#271711] border border-[#4E3224]/15 rounded-md px-2 py-1 text-xs font-semibold focus:outline-none">
                   <option value="Regular (350ml)">Regular (350ml)</option>
-                  <option value="Large (450ml)">Large (450ml) +₹30</option>
+                  <option value="Large (450ml)">Large (450ml) +₹20</option>
                 </select>
               </div>
             </div>
@@ -855,16 +878,16 @@
           <div class="px-5 pb-5 pt-1 flex items-center justify-between border-t border-[#4E3224]/5">
             <div>
               <span class="text-[10px] uppercase text-[#7E6F66] font-semibold block">Price</span>
-              <span class="text-lg font-bold text-[#271711] font-serif">₹170</span>
+              <span class="text-lg font-bold text-[#271711] font-serif">₹30</span>
             </div>
-            <button onclick="addToCart('p10', 'Iced Latte', 170, 'https://images.unsplash.com/photo-1461023058943-07fcbe16d735?q=80&w=600&auto=format&fit=crop')" 
+            <button onclick="addToCart('p10', 'Iced Latte', 30, 'https://images.unsplash.com/photo-1461023058943-07fcbe16d735?q=80&w=600&auto=format&fit=crop')" 
                     class="btn-caramel px-4 py-2 text-xs font-semibold">
               <i data-lucide="plus" class="w-3.5 h-3.5"></i> Add to Cart
             </button>
           </div>
         </div>
 
-        <!-- Product 11: Classic Lemon Iced Tea -->
+        <!-- ================= ICED 4: Classic Lemon Iced Tea ================= -->
         <div class="product-card flex flex-col justify-between" data-category="iced">
           <div>
             <div class="product-card-img-wrap h-52 bg-[#F8F3EC]">
@@ -892,7 +915,7 @@
                 <span class="text-[#7E6F66] font-medium">Select Size:</span>
                 <select id="size-p11" class="bg-[#FAF6F0] text-[#271711] border border-[#4E3224]/15 rounded-md px-2 py-1 text-xs font-semibold focus:outline-none">
                   <option value="Regular (350ml)">Regular (350ml)</option>
-                  <option value="Large (450ml)">Large (450ml) +₹30</option>
+                  <option value="Large (450ml)">Large (450ml) +₹15</option>
                 </select>
               </div>
             </div>
@@ -900,16 +923,16 @@
           <div class="px-5 pb-5 pt-1 flex items-center justify-between border-t border-[#4E3224]/5">
             <div>
               <span class="text-[10px] uppercase text-[#7E6F66] font-semibold block">Price</span>
-              <span class="text-lg font-bold text-[#271711] font-serif">₹160</span>
+              <span class="text-lg font-bold text-[#271711] font-serif">₹25</span>
             </div>
-            <button onclick="addToCart('p11', 'Lemon Iced Tea', 160, 'https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?q=80&w=600&auto=format&fit=crop')" 
+            <button onclick="addToCart('p11', 'Lemon Iced Tea', 25, 'https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?q=80&w=600&auto=format&fit=crop')" 
                     class="btn-caramel px-4 py-2 text-xs font-semibold">
               <i data-lucide="plus" class="w-3.5 h-3.5"></i> Add to Cart
             </button>
           </div>
         </div>
 
-        <!-- Product 12: Herbal Chamomile Tea -->
+        <!-- ================= TEA 4: Herbal Chamomile Tea ================= -->
         <div class="product-card flex flex-col justify-between" data-category="tea">
           <div>
             <div class="product-card-img-wrap h-52 bg-[#F8F3EC]">
@@ -937,7 +960,7 @@
                 <span class="text-[#7E6F66] font-medium">Select Serve:</span>
                 <select id="size-p12" class="bg-[#FAF6F0] text-[#271711] border border-[#4E3224]/15 rounded-md px-2 py-1 text-xs font-semibold focus:outline-none">
                   <option value="Ceramic Pot (300ml)">Ceramic Pot (300ml)</option>
-                  <option value="Grand Pot (500ml)">Grand Pot (500ml) +₹40</option>
+                  <option value="Grand Pot (500ml)">Grand Pot (500ml) +₹20</option>
                 </select>
               </div>
             </div>
@@ -945,9 +968,9 @@
           <div class="px-5 pb-5 pt-1 flex items-center justify-between border-t border-[#4E3224]/5">
             <div>
               <span class="text-[10px] uppercase text-[#7E6F66] font-semibold block">Price</span>
-              <span class="text-lg font-bold text-[#271711] font-serif">₹160</span>
+              <span class="text-lg font-bold text-[#271711] font-serif">₹20</span>
             </div>
-            <button onclick="addToCart('p12', 'Herbal Tea', 160, 'https://images.unsplash.com/photo-1597481499750-3e6b22637e12?q=80&w=600&auto=format&fit=crop')" 
+            <button onclick="addToCart('p12', 'Herbal Tea', 20, 'https://images.unsplash.com/photo-1597481499750-3e6b22637e12?q=80&w=600&auto=format&fit=crop')" 
                     class="btn-caramel px-4 py-2 text-xs font-semibold">
               <i data-lucide="plus" class="w-3.5 h-3.5"></i> Add to Cart
             </button>
@@ -1028,7 +1051,7 @@
   </section>
 
   <!-- ================= 5. SIGNATURE TEA SECTION ================= -->
-  <section class="py-24 tea-signature-bg border-b border-[#4E3224]/10 relative overflow-hidden">
+  <section id="signature-tea" class="py-24 tea-signature-bg border-b border-[#4E3224]/10 relative overflow-hidden">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
         
@@ -1102,9 +1125,9 @@
           <div class="flex items-center gap-4 pt-2">
             <div>
               <span class="text-xs text-[#7E6F66] block">Artisan Serve</span>
-              <span class="text-2xl font-bold text-[#271711] font-serif">₹150</span>
+              <span class="text-2xl font-bold text-[#271711] font-serif">₹20</span>
             </div>
-            <button onclick="addToCart('p3', 'Lemon & Thyme Tea', 150, 'https://images.unsplash.com/photo-1576092768241-dec231879fc3?q=80&w=600&auto=format&fit=crop')" 
+            <button onclick="addToCart('p3', 'Lemon & Thyme Tea', 20, 'https://images.unsplash.com/photo-1576092768241-dec231879fc3?q=80&w=600&auto=format&fit=crop')" 
                     class="btn-caramel px-7 py-3 text-sm font-semibold shadow-md flex items-center gap-2">
               <i data-lucide="shopping-bag" class="w-4 h-4"></i>
               Add Signature Tea to Cart
@@ -1136,12 +1159,12 @@
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
 
         <!-- Item 1: AURA ROAST Coffee Beans -->
-        <div class="product-card flex flex-col justify-between">
+        <div class="bg-white rounded-2xl border border-[#4E3224]/10 shadow-sm overflow-hidden flex flex-col justify-between hover:shadow-md transition-shadow">
           <div>
-            <div class="product-card-img-wrap h-48 bg-[#F8F3EC]">
+            <div class="h-48 bg-[#F8F3EC] relative overflow-hidden">
               <img src="https://images.unsplash.com/photo-1587734195503-904fca47e0e9?q=80&w=600&auto=format&fit=crop" 
                    alt="AURA ROAST Coffee Beans" 
-                   class="w-full h-full object-cover">
+                   class="w-full h-full object-cover hover:scale-105 transition-transform duration-300">
               <span class="absolute top-2.5 left-2.5 badge-coffee badge-pill text-[10px] font-medium">Whole Bean</span>
             </div>
             <div class="p-4">
@@ -1152,8 +1175,8 @@
             </div>
           </div>
           <div class="p-4 pt-0 flex items-center justify-between border-t border-[#4E3224]/10 mt-2">
-            <span class="text-base font-bold text-[#271711] font-serif">₹520</span>
-            <button onclick="addToCart('life1', 'AURA ROAST Coffee Beans (250g)', 520, 'https://images.unsplash.com/photo-1587734195503-904fca47e0e9?q=80&w=600&auto=format&fit=crop')" 
+            <span class="text-base font-bold text-[#271711] font-serif">₹49</span>
+            <button onclick="addToCart('life1', 'AURA ROAST Coffee Beans (250g)', 49, 'https://images.unsplash.com/photo-1587734195503-904fca47e0e9?q=80&w=600&auto=format&fit=crop')" 
                     class="btn-caramel px-3 py-1.5 text-xs font-semibold">
               <i data-lucide="plus" class="w-3.5 h-3.5"></i> Add
             </button>
@@ -1161,12 +1184,12 @@
         </div>
 
         <!-- Item 2: Signature Mug -->
-        <div class="product-card flex flex-col justify-between">
+        <div class="bg-white rounded-2xl border border-[#4E3224]/10 shadow-sm overflow-hidden flex flex-col justify-between hover:shadow-md transition-shadow">
           <div>
-            <div class="product-card-img-wrap h-48 bg-[#F8F3EC]">
+            <div class="h-48 bg-[#F8F3EC] relative overflow-hidden">
               <img src="https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?q=80&w=600&auto=format&fit=crop" 
                    alt="Artisan Signature Mug" 
-                   class="w-full h-full object-cover">
+                   class="w-full h-full object-cover hover:scale-105 transition-transform duration-300">
               <span class="absolute top-2.5 left-2.5 badge-lifestyle badge-pill text-[10px] font-medium">Ceramic</span>
             </div>
             <div class="p-4">
@@ -1177,8 +1200,8 @@
             </div>
           </div>
           <div class="p-4 pt-0 flex items-center justify-between border-t border-[#4E3224]/10 mt-2">
-            <span class="text-base font-bold text-[#271711] font-serif">₹380</span>
-            <button onclick="addToCart('life2', 'Artisan Signature Ceramic Mug', 380, 'https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?q=80&w=600&auto=format&fit=crop')" 
+            <span class="text-base font-bold text-[#271711] font-serif">₹39</span>
+            <button onclick="addToCart('life2', 'Artisan Signature Ceramic Mug', 39, 'https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?q=80&w=600&auto=format&fit=crop')" 
                     class="btn-caramel px-3 py-1.5 text-xs font-semibold">
               <i data-lucide="plus" class="w-3.5 h-3.5"></i> Add
             </button>
@@ -1186,12 +1209,12 @@
         </div>
 
         <!-- Item 3: Travel Tumbler -->
-        <div class="product-card flex flex-col justify-between">
+        <div class="bg-white rounded-2xl border border-[#4E3224]/10 shadow-sm overflow-hidden flex flex-col justify-between hover:shadow-md transition-shadow">
           <div>
-            <div class="product-card-img-wrap h-48 bg-[#F8F3EC]">
+            <div class="h-48 bg-[#F8F3EC] relative overflow-hidden">
               <img src="https://images.unsplash.com/photo-1577937927133-66ef06acdf18?q=80&w=600&auto=format&fit=crop" 
                    alt="Travel Tumbler" 
-                   class="w-full h-full object-cover">
+                   class="w-full h-full object-cover hover:scale-105 transition-transform duration-300">
               <span class="absolute top-2.5 left-2.5 badge-iced badge-pill text-[10px] font-medium">Insulated</span>
             </div>
             <div class="p-4">
@@ -1202,8 +1225,8 @@
             </div>
           </div>
           <div class="p-4 pt-0 flex items-center justify-between border-t border-[#4E3224]/10 mt-2">
-            <span class="text-base font-bold text-[#271711] font-serif">₹750</span>
-            <button onclick="addToCart('life3', 'Insulated Travel Tumbler', 750, 'https://images.unsplash.com/photo-1577937927133-66ef06acdf18?q=80&w=600&auto=format&fit=crop')" 
+            <span class="text-base font-bold text-[#271711] font-serif">₹69</span>
+            <button onclick="addToCart('life3', 'Insulated Travel Tumbler', 69, 'https://images.unsplash.com/photo-1577937927133-66ef06acdf18?q=80&w=600&auto=format&fit=crop')" 
                     class="btn-caramel px-3 py-1.5 text-xs font-semibold">
               <i data-lucide="plus" class="w-3.5 h-3.5"></i> Add
             </button>
@@ -1211,12 +1234,12 @@
         </div>
 
         <!-- Item 4: Tea Gift Box -->
-        <div class="product-card flex flex-col justify-between">
+        <div class="bg-white rounded-2xl border border-[#4E3224]/10 shadow-sm overflow-hidden flex flex-col justify-between hover:shadow-md transition-shadow">
           <div>
-            <div class="product-card-img-wrap h-48 bg-[#F8F3EC]">
+            <div class="h-48 bg-[#F8F3EC] relative overflow-hidden">
               <img src="https://images.unsplash.com/photo-1544787219-7f47ccb76574?q=80&w=600&auto=format&fit=crop" 
                    alt="Botanical Tea Gift Box" 
-                   class="w-full h-full object-cover">
+                   class="w-full h-full object-cover hover:scale-105 transition-transform duration-300">
               <span class="absolute top-2.5 left-2.5 badge-tea badge-pill text-[10px] font-medium">4 Blends</span>
             </div>
             <div class="p-4">
@@ -1227,8 +1250,8 @@
             </div>
           </div>
           <div class="p-4 pt-0 flex items-center justify-between border-t border-[#4E3224]/10 mt-2">
-            <span class="text-base font-bold text-[#271711] font-serif">₹890</span>
-            <button onclick="addToCart('life4', 'Botanical Tea Gift Box', 890, 'https://images.unsplash.com/photo-1544787219-7f47ccb76574?q=80&w=600&auto=format&fit=crop')" 
+            <span class="text-base font-bold text-[#271711] font-serif">₹59</span>
+            <button onclick="addToCart('life4', 'Botanical Tea Gift Box', 59, 'https://images.unsplash.com/photo-1544787219-7f47ccb76574?q=80&w=600&auto=format&fit=crop')" 
                     class="btn-caramel px-3 py-1.5 text-xs font-semibold">
               <i data-lucide="plus" class="w-3.5 h-3.5"></i> Add
             </button>
@@ -1236,12 +1259,12 @@
         </div>
 
         <!-- Item 5: Coffee & Tea Combo Box -->
-        <div class="product-card flex flex-col justify-between">
+        <div class="bg-white rounded-2xl border border-[#4E3224]/10 shadow-sm overflow-hidden flex flex-col justify-between hover:shadow-md transition-shadow">
           <div>
-            <div class="product-card-img-wrap h-48 bg-[#F8F3EC]">
+            <div class="h-48 bg-[#F8F3EC] relative overflow-hidden">
               <img src="https://images.unsplash.com/photo-1517256064527-09c73fc73e38?q=80&w=600&auto=format&fit=crop" 
                    alt="Coffee & Tea Combo Box" 
-                   class="w-full h-full object-cover">
+                   class="w-full h-full object-cover hover:scale-105 transition-transform duration-300">
               <span class="absolute top-2.5 left-2.5 badge-lifestyle badge-pill text-[10px] font-medium">Grand Crate</span>
             </div>
             <div class="p-4">
@@ -1252,8 +1275,8 @@
             </div>
           </div>
           <div class="p-4 pt-0 flex items-center justify-between border-t border-[#4E3224]/10 mt-2">
-            <span class="text-base font-bold text-[#271711] font-serif">₹1,150</span>
-            <button onclick="addToCart('life5', 'Coffee & Tea Combo Box', 1150, 'https://images.unsplash.com/photo-1517256064527-09c73fc73e38?q=80&w=600&auto=format&fit=crop')" 
+            <span class="text-base font-bold text-[#271711] font-serif">₹99</span>
+            <button onclick="addToCart('life5', 'Coffee & Tea Combo Box', 99, 'https://images.unsplash.com/photo-1517256064527-09c73fc73e38?q=80&w=600&auto=format&fit=crop')" 
                     class="btn-caramel px-3 py-1.5 text-xs font-semibold">
               <i data-lucide="plus" class="w-3.5 h-3.5"></i> Add
             </button>
@@ -1291,7 +1314,7 @@
                    alt="Morning Ritual Bundle" 
                    class="w-full h-full object-cover">
               <span class="absolute top-3 left-3 bg-[#271711] text-white text-[10px] uppercase tracking-wider font-bold px-2.5 py-1 rounded-full">
-                Save 15%
+                Save 23%
               </span>
             </div>
             <h3 class="font-serif text-xl font-bold text-[#271711] mb-1">Morning Ritual</h3>
@@ -1302,10 +1325,10 @@
           </div>
           <div class="pt-4 border-t border-[#4E3224]/10 flex items-center justify-between">
             <div>
-              <span class="text-[10px] text-[#7E6F66] line-through block">₹580</span>
-              <span class="text-xl font-bold text-[#271711] font-serif">₹490</span>
+              <span class="text-[10px] text-[#7E6F66] line-through block">₹70</span>
+              <span class="text-xl font-bold text-[#271711] font-serif">₹49</span>
             </div>
-            <button onclick="addToCart('combo1', 'Morning Ritual Bundle (Coffee + Mug)', 490, 'https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?q=80&w=600&auto=format&fit=crop')" 
+            <button onclick="addToCart('combo1', 'Morning Ritual Bundle (Coffee + Mug)', 49, 'https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?q=80&w=600&auto=format&fit=crop')" 
                     class="btn-caramel px-4 py-2 text-xs font-semibold">
               Add Bundle
             </button>
@@ -1320,7 +1343,7 @@
                    alt="Tea Time Bundle" 
                    class="w-full h-full object-cover">
               <span class="absolute top-3 left-3 bg-[#4E6E58] text-white text-[10px] uppercase tracking-wider font-bold px-2.5 py-1 rounded-full">
-                Save 20%
+                Save 35%
               </span>
             </div>
             <h3 class="font-serif text-xl font-bold text-[#271711] mb-1">Tea Time</h3>
@@ -1331,10 +1354,10 @@
           </div>
           <div class="pt-4 border-t border-[#4E3224]/10 flex items-center justify-between">
             <div>
-              <span class="text-[10px] text-[#7E6F66] line-through block">₹720</span>
-              <span class="text-xl font-bold text-[#271711] font-serif">₹580</span>
+              <span class="text-[10px] text-[#7E6F66] line-through block">₹60</span>
+              <span class="text-xl font-bold text-[#271711] font-serif">₹39</span>
             </div>
-            <button onclick="addToCart('combo2', 'Tea Time Bundle (Tea + Cookies + Mug)', 580, 'https://images.unsplash.com/photo-1544787219-7f47ccb76574?q=80&w=600&auto=format&fit=crop')" 
+            <button onclick="addToCart('combo2', 'Tea Time Bundle (Tea + Cookies + Mug)', 39, 'https://images.unsplash.com/photo-1544787219-7f47ccb76574?q=80&w=600&auto=format&fit=crop')" 
                     class="btn-caramel px-4 py-2 text-xs font-semibold">
               Add Bundle
             </button>
@@ -1349,7 +1372,7 @@
                    alt="Coffee Lover Bundle" 
                    class="w-full h-full object-cover">
               <span class="absolute top-3 left-3 bg-[#271711] text-white text-[10px] uppercase tracking-wider font-bold px-2.5 py-1 rounded-full">
-                Save 18%
+                Save 31%
               </span>
             </div>
             <h3 class="font-serif text-xl font-bold text-[#271711] mb-1">Coffee Lover</h3>
@@ -1360,10 +1383,10 @@
           </div>
           <div class="pt-4 border-t border-[#4E3224]/10 flex items-center justify-between">
             <div>
-              <span class="text-[10px] text-[#7E6F66] line-through block">₹1,270</span>
-              <span class="text-xl font-bold text-[#271711] font-serif">₹1,090</span>
+              <span class="text-[10px] text-[#7E6F66] line-through block">₹130</span>
+              <span class="text-xl font-bold text-[#271711] font-serif">₹89</span>
             </div>
-            <button onclick="addToCart('combo3', 'Coffee Lover Bundle (Beans + Tumbler)', 1090, 'https://images.unsplash.com/photo-1577937927133-66ef06acdf18?q=80&w=600&auto=format&fit=crop')" 
+            <button onclick="addToCart('combo3', 'Coffee Lover Bundle (Beans + Tumbler)', 89, 'https://images.unsplash.com/photo-1577937927133-66ef06acdf18?q=80&w=600&auto=format&fit=crop')" 
                     class="btn-caramel px-4 py-2 text-xs font-semibold">
               Add Bundle
             </button>
@@ -1378,7 +1401,7 @@
                    alt="AURA Gift Box" 
                    class="w-full h-full object-cover">
               <span class="absolute top-3 left-3 bg-[#C68A4C] text-white text-[10px] uppercase tracking-wider font-bold px-2.5 py-1 rounded-full">
-                Grand Gift (Save 25%)
+                Grand Gift (Save 28%)
               </span>
             </div>
             <h3 class="font-serif text-xl font-bold text-[#271711] mb-1">AURA Gift Box</h3>
@@ -1389,10 +1412,10 @@
           </div>
           <div class="pt-4 border-t border-[#4E3224]/10 flex items-center justify-between">
             <div>
-              <span class="text-[10px] text-[#7E6F66] line-through block">₹1,950</span>
-              <span class="text-xl font-bold text-[#271711] font-serif">₹1,450</span>
+              <span class="text-[10px] text-[#7E6F66] line-through block">₹180</span>
+              <span class="text-xl font-bold text-[#271711] font-serif">₹129</span>
             </div>
-            <button onclick="addToCart('combo4', 'AURA Grand Gift Box', 1450, 'https://images.unsplash.com/photo-1517256064527-09c73fc73e38?q=80&w=600&auto=format&fit=crop')" 
+            <button onclick="addToCart('combo4', 'AURA Grand Gift Box', 129, 'https://images.unsplash.com/photo-1517256064527-09c73fc73e38?q=80&w=600&auto=format&fit=crop')" 
                     class="btn-caramel px-4 py-2 text-xs font-semibold">
               Add Bundle
             </button>
@@ -1404,48 +1427,191 @@
     </div>
   </section>
 
-  <!-- ================= 8. ABOUT / OUR STORY ================= -->
-  <section id="story" class="py-24 bg-[#FDFBF7] relative">
+  <!-- ================= 8. SPECIAL OFFERS & 1-CLICK DEALS ================= -->
+  <section id="offers" class="py-20 bg-[#FAF6F0] border-y border-[#4E3224]/10">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+      
+      <div class="text-center max-w-2xl mx-auto mb-14">
+        <span class="text-xs uppercase tracking-widest font-semibold text-[#C68A4C] block mb-2">
+          Exclusive Pocket-Friendly Savings
+        </span>
+        <h2 class="font-serif text-3xl sm:text-4xl font-bold text-[#271711]">
+          Today's Special Offers
+        </h2>
+        <p class="text-sm text-[#4A3C34] mt-2">
+          Click any offer below to claim instant discounts or add special value deals to your cart in 1-Click!
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+
+        <!-- Offer 1: 50% OFF First Order -->
+        <div class="offer-card flex flex-col justify-between group">
+          <div>
+            <div class="h-48 relative overflow-hidden bg-[#271711]">
+              <img src="https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?q=80&w=600&auto=format&fit=crop" 
+                   alt="50% First Order Offer" 
+                   class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+              <span class="offer-badge bg-[#DC2626] text-white">50% OFF</span>
+            </div>
+            <div class="p-5">
+              <span class="text-[11px] font-semibold text-[#C68A4C] uppercase tracking-wider block mb-1">New Customer Gift</span>
+              <h3 class="font-serif text-lg font-bold text-[#271711] mb-2">Flat 50% OFF on 1st Order</h3>
+              <p class="text-xs text-[#7E6F66] leading-relaxed mb-3">
+                Experience any of our handcrafted coffees, artisan teas, or cold brews at half price.
+              </p>
+              <div class="offer-code-pill mb-2">
+                <span>CODE:</span>
+                <span class="text-[#C68A4C]">AURA50</span>
+              </div>
+            </div>
+          </div>
+          <div class="p-5 pt-0">
+            <button onclick="claimOffer('AURA50', 50, 'Flat 50% OFF First Order')" 
+                    class="btn-caramel w-full py-2.5 text-xs font-semibold flex items-center justify-center gap-1.5 shadow-sm">
+              <i data-lucide="sparkles" class="w-3.5 h-3.5"></i>
+              <span>Claim 50% OFF (1-Click)</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Offer 2: Buy 1 Get 1 Free Happy Hour -->
+        <div class="offer-card flex flex-col justify-between group">
+          <div>
+            <div class="h-48 relative overflow-hidden bg-[#271711]">
+              <img src="https://images.unsplash.com/photo-1517701550927-30cf4ba1dba5?q=80&w=600&auto=format&fit=crop" 
+                   alt="BOGO Happy Hour Offer" 
+                   class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+              <span class="offer-badge bg-[#0284C7] text-white">BUY 1 GET 1</span>
+            </div>
+            <div class="p-5">
+              <span class="text-[11px] font-semibold text-[#0284C7] uppercase tracking-wider block mb-1">Daily 4 PM – 7 PM</span>
+              <h3 class="font-serif text-lg font-bold text-[#271711] mb-2">Buy 1 Get 1 FREE</h3>
+              <p class="text-xs text-[#7E6F66] leading-relaxed mb-3">
+                Order any Iced Refresher or Cold Brew, receive a second handcrafted drink completely free.
+              </p>
+              <div class="offer-code-pill mb-2">
+                <span>CODE:</span>
+                <span class="text-[#0284C7]">BOGOHOUR</span>
+              </div>
+            </div>
+          </div>
+          <div class="p-5 pt-0">
+            <button onclick="claimOffer('BOGOHOUR', 50, 'Buy 1 Get 1 Free Happy Hour')" 
+                    class="btn-caramel w-full py-2.5 text-xs font-semibold flex items-center justify-center gap-1.5 shadow-sm">
+              <i data-lucide="gift" class="w-3.5 h-3.5"></i>
+              <span>Claim BOGO Deal (1-Click)</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Offer 3: Morning Starter Deal @ ₹29 Only -->
+        <div class="offer-card flex flex-col justify-between group">
+          <div>
+            <div class="h-48 relative overflow-hidden bg-[#271711]">
+              <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?q=80&w=600&auto=format&fit=crop" 
+                   alt="Morning Starter Deal" 
+                   class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+              <span class="offer-badge bg-[#15803D] text-white">ONLY ₹29</span>
+            </div>
+            <div class="p-5">
+              <span class="text-[11px] font-semibold text-[#4E6E58] uppercase tracking-wider block mb-1">Breakfast Special</span>
+              <h3 class="font-serif text-lg font-bold text-[#271711] mb-2">Morning Brew + Cookie</h3>
+              <p class="text-xs text-[#7E6F66] leading-relaxed mb-3">
+                Piping hot Double Espresso or Masala Chai paired with crunchy almond butter cookies.
+              </p>
+              <div class="flex items-center gap-2 mb-2 text-xs">
+                <span class="text-[#7E6F66] line-through">₹50</span>
+                <span class="text-base font-bold text-[#15803D] font-serif">₹29 Only</span>
+              </div>
+            </div>
+          </div>
+          <div class="p-5 pt-0">
+            <button onclick="addOneClickDeal('deal-starter', 'Morning Starter Deal (Brew + Cookies)', 29, 'https://images.unsplash.com/photo-1509042239860-f550ce710b93?q=80&w=600&auto=format&fit=crop')" 
+                    class="btn-caramel w-full py-2.5 text-xs font-semibold flex items-center justify-center gap-1.5 shadow-sm">
+              <i data-lucide="shopping-bag" class="w-3.5 h-3.5"></i>
+              <span>Add ₹29 Deal (1-Click)</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Offer 4: Student & Daily Work Pass @ ₹15 -->
+        <div class="offer-card flex flex-col justify-between group">
+          <div>
+            <div class="h-48 relative overflow-hidden bg-[#271711]">
+              <img src="https://images.unsplash.com/photo-1517256064527-09c73fc73e38?q=80&w=600&auto=format&fit=crop" 
+                   alt="Student Daily Sips Pass" 
+                   class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+              <span class="offer-badge bg-[#7C3AED] text-white">₹15 SIPS PASS</span>
+            </div>
+            <div class="p-5">
+              <span class="text-[11px] font-semibold text-[#7C3AED] uppercase tracking-wider block mb-1">Student & Remote Pass</span>
+              <h3 class="font-serif text-lg font-bold text-[#271711] mb-2">Flat ₹15 Sips All Day</h3>
+              <p class="text-xs text-[#7E6F66] leading-relaxed mb-3">
+                Unlimited fresh refills on Himalayan Green Tea, Nilgiri Tea, or Single Shot Espresso.
+              </p>
+              <div class="offer-code-pill mb-2">
+                <span>CODE:</span>
+                <span class="text-[#7C3AED]">CAMPUS15</span>
+              </div>
+            </div>
+          </div>
+          <div class="p-5 pt-0">
+            <button onclick="claimOffer('CAMPUS15', 35, 'Student & Remote Worker Pass (Flat ₹15 Sips)')" 
+                    class="btn-caramel w-full py-2.5 text-xs font-semibold flex items-center justify-center gap-1.5 shadow-sm">
+              <i data-lucide="tag" class="w-3.5 h-3.5"></i>
+              <span>Claim ₹15 Pass (1-Click)</span>
+            </button>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ================= 9. ABOUT / OUR STORY (Uniform Font & Font Size) ================= -->
+  <section id="story" class="py-20 bg-[#FDFBF7] relative border-b border-[#4E3224]/10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
         
         <!-- Story Text -->
-        <div class="lg:col-span-6 space-y-6">
+        <div class="lg:col-span-6 space-y-4">
           <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#E8D9C8]/60 text-[#271711] text-xs font-bold uppercase tracking-wider">
             <i data-lucide="book-open" class="w-3.5 h-3.5 text-[#C68A4C]"></i> The Origin of AURA ROAST
           </div>
 
-          <h2 class="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-[#271711] leading-tight">
-            Our Story
+          <h2 class="story-main-title text-base font-bold text-[#271711] tracking-wide">
+            Our Story — Handcrafted With Purpose
           </h2>
 
-          <p class="text-base text-[#4A3C34] leading-relaxed">
-            At <strong>AURA ROAST</strong>, we believe that life's most meaningful moments often unfold over a warm cup or a chilled glass. What began as an artisan roastery driven by a passion for pure organic coffee has grown into a celebration of all everyday beverage moments.
+          <p class="story-text text-sm text-[#4A3C34] leading-relaxed">
+            At <strong>AURA ROAST</strong>, we believe that life's most meaningful moments unfold over a warm cup or a chilled glass. What began as a local roastery driven by a passion for pure organic coffee has grown into an affordable celebration of everyday beverage rituals.
           </p>
 
-          <p class="text-base text-[#4A3C34] leading-relaxed">
-            Today, we curate honest, beautifully crafted drinks: single-estate coffees roasted gently to caramelize natural sugars, whole-leaf mountain teas infused with real herbs and citrus, and refreshing cold drinks crafted to revitalize your day. We work directly with family-run farms committed to chemical-free agriculture, ethical wages, and sustainable harvesting.
+          <p class="story-text text-sm text-[#7E6F66] leading-relaxed">
+            Today, we curate honest, beautifully crafted drinks at budget-friendly prices: single-estate coffees roasted daily to preserve natural caramel sugars, whole-leaf mountain teas infused with real herbs and citrus, and refreshing cold drinks crafted to revitalize your day without burning a hole in your pocket.
           </p>
 
           <!-- 3 Value Pillars -->
-          <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-4 border-t border-[#4E3224]/10">
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-3 border-t border-[#4E3224]/10">
             <div class="space-y-1">
-              <span class="font-serif text-lg font-bold text-[#271711] block">Direct Sourced</span>
-              <p class="text-xs text-[#7E6F66]">Direct relationships with organic estates across Coorg, Nilgiris & Darjeeling.</p>
+              <span class="story-pillar-title text-sm font-bold text-[#271711] block">Direct Sourced</span>
+              <p class="story-pillar-desc text-xs text-[#7E6F66]">Direct relationships with organic estates across Coorg and Nilgiris.</p>
             </div>
             <div class="space-y-1">
-              <span class="font-serif text-lg font-bold text-[#271711] block">Artisan Craft</span>
-              <p class="text-xs text-[#7E6F66]">Roasted in micro-batches daily to preserve peak sweetness and aroma.</p>
+              <span class="story-pillar-title text-sm font-bold text-[#271711] block">Artisan Craft</span>
+              <p class="story-pillar-desc text-xs text-[#7E6F66]">Roasted in small micro-batches daily to preserve peak sweetness and aroma.</p>
             </div>
             <div class="space-y-1">
-              <span class="font-serif text-lg font-bold text-[#271711] block">Whole Botanicals</span>
-              <p class="text-xs text-[#7E6F66]">Pure intact leaves, natural Meyer lemon, and crushed garden thyme herbs.</p>
+              <span class="story-pillar-title text-sm font-bold text-[#271711] block">Pure Botanicals</span>
+              <p class="story-pillar-desc text-xs text-[#7E6F66]">Whole intact leaves, fresh lemon notes, and crushed garden thyme herbs.</p>
             </div>
           </div>
 
           <div class="pt-2">
-            <a href="#shop" class="btn-primary-aura text-xs py-3 px-6">
-              Taste Our Story
+            <a href="#shop" onclick="navigateToCategory('all', event)" class="btn-primary-aura text-xs py-2.5 px-5">
+              Taste Our Story →
             </a>
           </div>
 
@@ -1455,25 +1621,25 @@
         <div class="lg:col-span-6">
           <div class="grid grid-cols-2 gap-4">
             <div class="space-y-4">
-              <div class="rounded-2xl overflow-hidden shadow-lg border border-[#4E3224]/10 h-64">
+              <div class="rounded-2xl overflow-hidden shadow-md border border-[#4E3224]/10 h-56">
                 <img src="https://images.unsplash.com/photo-1442512595331-e89e73853f31?q=80&w=600&auto=format&fit=crop" 
                      alt="Roasting Coffee Beans" 
                      class="w-full h-full object-cover hover:scale-105 transition-transform duration-500">
               </div>
-              <div class="rounded-2xl overflow-hidden shadow-lg border border-[#4E3224]/10 h-40 bg-[#FAF6F0] p-6 flex flex-col justify-center">
-                <span class="font-serif text-3xl font-bold text-[#C68A4C]">24/7</span>
-                <span class="text-xs font-semibold text-[#271711] mt-1">Artisan Coffee & Tea House</span>
-                <span class="text-[11px] text-[#7E6F66]">Open round-the-clock for beverage lovers.</span>
+              <div class="rounded-2xl overflow-hidden shadow-sm border border-[#4E3224]/10 bg-[#FAF6F0] p-4 flex flex-col justify-center">
+                <span class="story-stat-number text-base font-bold text-[#C68A4C]">24/7 Service</span>
+                <span class="story-card-text text-xs font-semibold text-[#271711] mt-0.5">Artisan Beverage House</span>
+                <span class="story-card-text text-xs text-[#7E6F66]">Open round-the-clock for coffee and tea lovers.</span>
               </div>
             </div>
 
-            <div class="space-y-4 pt-6">
-              <div class="rounded-2xl overflow-hidden shadow-lg border border-[#4E3224]/10 h-40 bg-[#FAF6F0] p-6 flex flex-col justify-center">
-                <span class="font-serif text-3xl font-bold text-[#4E6E58]">100%</span>
-                <span class="text-xs font-semibold text-[#271711] mt-1">Organic Purity</span>
-                <span class="text-[11px] text-[#7E6F66]">Zero artificial syrups, dyes, or flavor sprays.</span>
+            <div class="space-y-4 pt-4">
+              <div class="rounded-2xl overflow-hidden shadow-sm border border-[#4E3224]/10 bg-[#FAF6F0] p-4 flex flex-col justify-center">
+                <span class="story-stat-number text-base font-bold text-[#4E6E58]">100% Organic</span>
+                <span class="story-card-text text-xs font-semibold text-[#271711] mt-0.5">Clean Ingredients</span>
+                <span class="story-card-text text-xs text-[#7E6F66]">Zero artificial syrups, food dyes, or synthetic flavor sprays.</span>
               </div>
-              <div class="rounded-2xl overflow-hidden shadow-lg border border-[#4E3224]/10 h-64">
+              <div class="rounded-2xl overflow-hidden shadow-md border border-[#4E3224]/10 h-56">
                 <img src="https://images.unsplash.com/photo-1544787219-7f47ccb76574?q=80&w=600&auto=format&fit=crop" 
                      alt="Harvesting Whole Leaf Tea" 
                      class="w-full h-full object-cover hover:scale-105 transition-transform duration-500">
@@ -1483,6 +1649,105 @@
         </div>
 
       </div>
+    </div>
+  </section>
+
+  <!-- ================= 10. SIP & FEEL: COMMUNITY MOOD NOTES ================= -->
+  <section id="mood-notes" class="py-20 bg-[#FAF6F0] border-b border-[#4E3224]/10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-2xl mx-auto mb-12">
+        <span class="text-xs uppercase tracking-widest font-semibold text-[#C68A4C] block mb-2">
+          Sip, Feel & Share
+        </span>
+        <h2 class="font-serif text-3xl sm:text-4xl font-bold text-[#271711]">
+          குடிச்சதும் உங்க ஃபீலிங் என்ன?
+        </h2>
+        <p class="text-sm text-[#4A3C34] mt-2">
+          Did you enjoy a cup of Coffee, Tea, or an Iced Drink? Share your mood, feelings, and thoughts on our live community wall!
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+        
+        <!-- Form: Write Mood Note -->
+        <div class="lg:col-span-5 bg-white rounded-3xl p-6 sm:p-7 border border-[#4E3224]/10 shadow-md">
+          <h3 class="font-serif text-lg font-bold text-[#271711] mb-4 flex items-center gap-2">
+            <i data-lucide="pen-tool" class="w-4 h-4 text-[#C68A4C]"></i>
+            Write Your Sip & Feel Note
+          </h3>
+
+          <form onsubmit="postMoodNote(event)" class="space-y-4">
+            <!-- Step 1: Select Drink -->
+            <div>
+              <label class="block text-xs font-semibold text-[#271711] mb-2">1. What did you drink?</label>
+              <div class="grid grid-cols-3 gap-2 text-xs">
+                <button type="button" onclick="selectMoodDrink('☕ Coffee', this)" class="mood-drink-btn active bg-[#271711] text-white py-2 px-2.5 rounded-xl border border-[#4E3224]/15 font-semibold text-center transition-all">
+                  ☕ Coffee
+                </button>
+                <button type="button" onclick="selectMoodDrink('🍵 Tea', this)" class="mood-drink-btn py-2 px-2.5 rounded-xl border border-[#4E3224]/15 bg-[#FAF6F0] font-semibold text-center text-[#271711] transition-all">
+                  🍵 Tea
+                </button>
+                <button type="button" onclick="selectMoodDrink('🧊 Iced Drink', this)" class="mood-drink-btn py-2 px-2.5 rounded-xl border border-[#4E3224]/15 bg-[#FAF6F0] font-semibold text-center text-[#271711] transition-all">
+                  🧊 Iced
+                </button>
+              </div>
+            </div>
+
+            <!-- Step 2: Select Mood Feeling -->
+            <div>
+              <label class="block text-xs font-semibold text-[#271711] mb-2">2. What is your mood/feeling?</label>
+              <div class="flex flex-wrap gap-2">
+                <span onclick="selectMoodFeeling('⚡ Energized & Focus', this)" class="mood-chip active">⚡ Energized</span>
+                <span onclick="selectMoodFeeling('🌿 Pure Peace & Calm', this)" class="mood-chip">🌿 Relaxed</span>
+                <span onclick="selectMoodFeeling('❄️ Crisp & Refreshed', this)" class="mood-chip">❄️ Refreshed</span>
+                <span onclick="selectMoodFeeling('💛 Warm Comfort', this)" class="mood-chip">💛 Comforted</span>
+                <span onclick="selectMoodFeeling('🎨 Creative Spark', this)" class="mood-chip">🎨 Inspired</span>
+              </div>
+            </div>
+
+            <!-- Step 3: Write Note -->
+            <div>
+              <label class="block text-xs font-semibold text-[#271711] mb-1">3. Share your feeling / notes</label>
+              <textarea id="user-mood-note" required rows="3" 
+                        placeholder="e.g. Masala Chai at 5 PM refreshed my whole evening! Loved the cardamom warmth..." 
+                        class="w-full bg-[#FAF6F0] border border-[#4E3224]/15 rounded-xl px-4 py-2.5 text-xs text-[#271711] focus:outline-none focus:border-[#C68A4C]"></textarea>
+            </div>
+
+            <!-- Author & City -->
+            <div>
+              <label class="block text-xs font-semibold text-[#271711] mb-1">Your Name / Nickname</label>
+              <input type="text" id="user-mood-author" placeholder="e.g. Aarthi (Chennai)" 
+                     class="w-full bg-[#FAF6F0] border border-[#4E3224]/15 rounded-xl px-4 py-2 text-xs text-[#271711] focus:outline-none focus:border-[#C68A4C]">
+            </div>
+
+            <button type="submit" class="btn-caramel w-full py-3 text-xs font-semibold shadow-sm flex items-center justify-center gap-2">
+              <i data-lucide="send" class="w-3.5 h-3.5"></i>
+              <span>Post Mood Note (பகிர் ✍️)</span>
+            </button>
+          </form>
+        </div>
+
+        <!-- Live Community Tasting Wall -->
+        <div class="lg:col-span-7">
+          <div class="flex items-center justify-between mb-4">
+            <h3 class="font-serif text-lg font-bold text-[#271711] flex items-center gap-2">
+              <i data-lucide="message-square" class="w-4 h-4 text-[#C68A4C]"></i>
+              Live Community Tasting Wall
+            </h3>
+            <span class="text-xs text-[#4E6E58] font-semibold bg-[#E7EFE9] px-2.5 py-1 rounded-full flex items-center gap-1">
+              <span class="w-2 h-2 rounded-full bg-[#4E6E58] animate-pulse"></span>
+              Live Notes
+            </span>
+          </div>
+
+          <div id="tasting-wall-grid" class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <!-- Injected via app.js -->
+          </div>
+        </div>
+
+      </div>
+
     </div>
   </section>
 
@@ -1787,16 +2052,16 @@
           </div>
         </div>
 
-        <!-- Quick Links -->
+        <!-- Quick Links with Auto-Filtering -->
         <div class="lg:col-span-2 space-y-3">
           <h4 class="font-serif text-base font-bold text-white mb-2">Explore</h4>
           <ul class="space-y-2 text-xs text-[#E8D9C8]/80">
             <li><a href="#" class="hover:text-white transition-colors">Home</a></li>
             <li><a href="#story" class="hover:text-white transition-colors">Our Story</a></li>
-            <li><a href="#categories" onclick="filterFromCategoryCard('coffee')" class="hover:text-white transition-colors">Coffee Collection</a></li>
-            <li><a href="#categories" onclick="filterFromCategoryCard('tea')" class="hover:text-white transition-colors">Tea Collection</a></li>
-            <li><a href="#categories" onclick="filterFromCategoryCard('iced')" class="hover:text-white transition-colors">Iced Refreshers</a></li>
-            <li><a href="#shop" class="hover:text-white transition-colors">Bestsellers</a></li>
+            <li><a href="#shop" onclick="navigateToCategory('coffee', event)" class="hover:text-white transition-colors">Coffee Collection</a></li>
+            <li><a href="#shop" onclick="navigateToCategory('tea', event)" class="hover:text-white transition-colors">Tea Collection</a></li>
+            <li><a href="#shop" onclick="navigateToCategory('iced', event)" class="hover:text-white transition-colors">Iced Refreshers</a></li>
+            <li><a href="#shop" onclick="navigateToCategory('all', event)" class="hover:text-white transition-colors">Bestsellers</a></li>
           </ul>
         </div>
 
@@ -1882,9 +2147,13 @@
           <span>Subtotal</span>
           <span id="cart-subtotal" class="font-semibold text-[#271711]">₹0</span>
         </div>
+        <div id="cart-discount-row" class="flex items-center justify-between text-[#15803D] font-semibold" style="display: none;">
+          <span id="cart-discount-label">Offer Discount</span>
+          <span id="cart-discount">-₹0</span>
+        </div>
         <div class="flex items-center justify-between text-[#7E6F66]">
           <span>Fresh Local Delivery</span>
-          <span class="text-[#4E6E58] font-semibold">Free (Orders > ₹499)</span>
+          <span id="cart-delivery" class="text-[#4E6E58] font-semibold">Free (Orders > ₹99)</span>
         </div>
         <div class="flex items-center justify-between text-base font-bold text-[#271711] pt-2 border-t border-[#4E3224]/10 font-serif">
           <span>Total</span>
@@ -1978,6 +2247,89 @@
           Confirm & Place Order
         </button>
       </form>
+    </div>
+  </div>
+
+  <!-- ================= ORDER CONFIRMATION & EXPRESS TRACKING MODAL ================= -->
+  <div id="order-success-modal" 
+       class="fixed inset-0 bg-[#271711]/75 backdrop-blur-sm z-50 opacity-0 pointer-events-none flex items-center justify-center p-4 transition-opacity duration-300">
+    <div class="bg-white rounded-3xl p-6 sm:p-8 max-w-lg w-full border border-[#4E3224]/10 shadow-2xl relative max-h-[90vh] overflow-y-auto">
+      <button onclick="closeOrderSuccessModal()" class="absolute top-5 right-5 p-1 text-[#7E6F66] hover:text-[#271711]">
+        <i data-lucide="x" class="w-5 h-5"></i>
+      </button>
+
+      <div class="text-center mb-6">
+        <div class="w-16 h-16 rounded-full bg-[#E7EFE9] text-[#4E6E58] flex items-center justify-center mx-auto mb-3 shadow-inner">
+          <i data-lucide="check-circle-2" class="w-9 h-9"></i>
+        </div>
+        <span class="text-xs uppercase tracking-widest font-bold text-[#4E6E58] block mb-1">Order Placed Successfully! (ஆர்டர் உறுதியானது)</span>
+        <h3 class="font-serif text-2xl font-bold text-[#271711]">Thank You, <span id="success-customer-name">Valued Customer</span>!</h3>
+        <p class="text-xs text-[#7E6F66] mt-1">Your order <span id="success-order-id" class="font-bold text-[#C68A4C]">#AR-000000</span> is confirmed and our baristas are preparing your drinks.</p>
+      </div>
+
+      <!-- Live Order Status Tracker -->
+      <div class="bg-[#FAF6F0] rounded-2xl p-4 mb-5 border border-[#4E3224]/10">
+        <div class="flex items-center justify-between text-xs font-semibold mb-3">
+          <span class="text-[#271711]">Live Order Status</span>
+          <span class="text-[#4E6E58] flex items-center gap-1">
+            <span class="w-2 h-2 rounded-full bg-[#4E6E58] animate-pulse"></span>
+            Estimated Delivery: 20-30 mins
+          </span>
+        </div>
+        <div class="space-y-3">
+          <div class="order-tracker-step flex items-start gap-3">
+            <div class="order-tracker-dot w-5 h-5 rounded-full bg-[#15803D] text-white flex items-center justify-center text-[10px] font-bold shrink-0 mt-0.5">✓</div>
+            <div>
+              <span class="text-xs font-bold text-[#271711] block">Order Received & Verified</span>
+              <span class="text-[11px] text-[#7E6F66]">Sent to barista bar</span>
+            </div>
+          </div>
+          <div class="order-tracker-step flex items-start gap-3">
+            <div class="order-tracker-dot w-5 h-5 rounded-full bg-[#C68A4C] text-white flex items-center justify-center text-[10px] font-bold shrink-0 mt-0.5 animate-pulse">●</div>
+            <div>
+              <span class="text-xs font-bold text-[#271711] block">Artisan Brewing & Steeping</span>
+              <span class="text-[11px] text-[#7E6F66]">Fresh organic extraction in progress</span>
+            </div>
+          </div>
+          <div class="order-tracker-step flex items-start gap-3 opacity-60">
+            <div class="order-tracker-dot w-5 h-5 rounded-full bg-[#E8D9C8] text-[#271711] flex items-center justify-center text-[10px] font-bold shrink-0 mt-0.5">○</div>
+            <div>
+              <span class="text-xs font-bold text-[#271711] block">Packed in Eco-Thermal Bag</span>
+              <span class="text-[11px] text-[#7E6F66]">Sealed for temperature lock</span>
+            </div>
+          </div>
+          <div class="order-tracker-step flex items-start gap-3 opacity-60">
+            <div class="order-tracker-dot w-5 h-5 rounded-full bg-[#E8D9C8] text-[#271711] flex items-center justify-center text-[10px] font-bold shrink-0 mt-0.5">○</div>
+            <div>
+              <span class="text-xs font-bold text-[#271711] block">Dispatched for 24/7 Express Delivery</span>
+              <span class="text-[11px] text-[#7E6F66]">Arriving at your doorstep</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Itemized Receipt Summary -->
+      <div class="mb-5 border border-[#4E3224]/10 rounded-2xl p-4">
+        <h4 class="text-xs font-bold uppercase tracking-wider text-[#7E6F66] mb-2">Order Items (பொருட்கள் பட்டியல்)</h4>
+        <ul id="success-order-items" class="space-y-1 mb-3">
+          <!-- Populated by JS -->
+        </ul>
+        <div class="flex items-center justify-between text-xs font-bold border-t border-[#4E3224]/10 pt-2 text-[#271711]">
+          <span>Paid Total</span>
+          <span id="success-order-total" class="font-serif text-lg text-[#C68A4C]">₹0</span>
+        </div>
+      </div>
+
+      <!-- Address & Info -->
+      <div class="text-xs text-[#7E6F66] mb-5 bg-[#FAF6F0] p-3 rounded-xl">
+        <span class="font-semibold text-[#271711] block mb-0.5">Delivery Destination:</span>
+        <span id="success-delivery-address">Address</span>
+      </div>
+
+      <button onclick="closeOrderSuccessModal()" class="btn-caramel w-full py-3 text-xs font-semibold shadow-md flex items-center justify-center gap-2">
+        <span>Track More / Continue Shopping (தொடரவும்)</span>
+        <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+      </button>
     </div>
   </div>
 
