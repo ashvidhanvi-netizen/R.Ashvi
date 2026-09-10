@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Employee Details</title>
+</head>
+<body>
+
+    <h2>Employee Details</h2>
+
+    <input type="text" id="empName" placeholder="Employee Name">
+    <input type="text" id="department" placeholder="Department">
+    <input type="number" id="salary" placeholder="Salary">
+
+    <button onclick="addEmployee()">Add Employee</button>
+
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Department</th>
+                <th>Salary</th>
+            </tr>
+        </thead>
+
+        <tbody id="employeeList"></tbody>
+    </table>
+
+    <script>
+        let employees = [];
+
+        function addEmployee() {
+            let name = document.getElementById("empName").value;
+            let department = document.getElementById("department").value;
+            let salary = document.getElementById("salary").value;
+
+            let employee = {
+                name: name,
+                department: department,
+                salary: salary
+            };
+
+            employees.push(employee);
+
+            document.getElementById("employeeList").innerHTML = "";
+
+            employees.forEach(function(employee) {
+                let row = document.createElement("tr");
+
+                row.innerHTML =
+                    "<td>" + employee.name + "</td>" +
+                    "<td>" + employee.department + "</td>" +
+                    "<td>" + employee.salary + "</td>";
+
+                document.getElementById("employeeList").appendChild(row);
+            });
+        }
+    </script>
+
+</body>
+</html>
