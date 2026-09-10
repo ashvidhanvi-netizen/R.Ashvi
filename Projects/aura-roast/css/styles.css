@@ -515,6 +515,7 @@ header#main-header.scrolled {
 /* --------------------------------------------------------------------------
    17. Sip & Feel Mood Notes Tasting Wall
    -------------------------------------------------------------------------- */
+<<<<<<< HEAD
 .mood-drink-btn {
   display: inline-flex;
   align-items: center;
@@ -544,6 +545,8 @@ header#main-header.scrolled {
   transform: translateY(-1px);
 }
 
+=======
+>>>>>>> c9ded83c08380a383496a83703cadbd8dbb2a16f
 .mood-chip {
   display: inline-flex;
   align-items: center;

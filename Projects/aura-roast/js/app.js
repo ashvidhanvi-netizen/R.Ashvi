@@ -121,10 +121,17 @@ function filterProducts(category, buttonEl) {
   const statusBadge = document.getElementById("shop-category-status");
   if (statusBadge) {
     const titles = {
+<<<<<<< HEAD
       all: "Showing All Handcrafted Drinks (24 Bestsellers)",
       coffee: "Showing Coffee Selection (Espresso, Americano, Cappuccino, Flat White, Cortado & Lattes)",
       tea: "Showing Tea Selection (Masala Chai, Adrak Chai, Dubai Karak, Himalayan Green & Herbal Teas)",
       iced: "Showing Iced Refreshers (18h Cold Brew, Iced Lattes, Fruit Sparklers & Coolers)"
+=======
+      all: "Showing All Handcrafted Drinks (12 Bestsellers)",
+      coffee: "Showing Coffee Selection (Artisan Roasted Espresso, Latte & Cappuccino)",
+      tea: "Showing Tea Selection (Whole-Leaf Nilgiri, Lemon & Thyme, Masala Chai & Green Tea)",
+      iced: "Showing Iced Refreshers (18h Cold Brew, Iced Latte & Fruit Teas)"
+>>>>>>> c9ded83c08380a383496a83703cadbd8dbb2a16f
     };
     statusBadge.innerText = titles[category] || `Showing ${category}`;
   }
@@ -262,10 +269,17 @@ function updateCartUI() {
   }
 
   if (deliveryEl) {
+<<<<<<< HEAD
     if (finalTotal >= 299 || finalTotal === 0) {
       deliveryEl.innerHTML = `<span class="text-[#4E6E58] font-semibold">FREE (Orders > ₹299)</span>`;
     } else {
       deliveryEl.innerHTML = `<span class="text-[#7E6F66]">₹69 (Add ₹${299 - finalTotal} for Free Delivery)</span>`;
+=======
+    if (finalTotal >= 99 || finalTotal === 0) {
+      deliveryEl.innerHTML = `<span class="text-[#4E6E58] font-semibold">FREE (Orders > ₹99)</span>`;
+    } else {
+      deliveryEl.innerHTML = `<span class="text-[#7E6F66]">₹15 (Add ₹${99 - finalTotal} for Free Delivery)</span>`;
+>>>>>>> c9ded83c08380a383496a83703cadbd8dbb2a16f
     }
   }
 
@@ -281,7 +295,11 @@ function updateCartUI() {
         </div>
         <h4 class="font-serif text-lg font-bold text-[#271711]">Your cart is empty</h4>
         <p class="text-xs text-[#7E6F66] max-w-xs mx-auto">
+<<<<<<< HEAD
           Explore our handcrafted coffees (from ₹99), mountain teas (from ₹79), and chilled refreshers!
+=======
+          Explore our pocket-friendly coffees (from ₹25), mountain teas (from ₹15), and refreshers!
+>>>>>>> c9ded83c08380a383496a83703cadbd8dbb2a16f
         </p>
         <button onclick="toggleCartDrawer(); navigateToCategory('all');" 
                 class="btn-caramel px-5 py-2.5 text-xs font-semibold mt-2 inline-flex items-center gap-1.5">
@@ -520,9 +538,15 @@ const DEFAULT_MOOD_NOTES = [
 
 function selectMoodDrink(drink, buttonEl) {
   selectedBeverageType = drink;
+<<<<<<< HEAD
   document.querySelectorAll(".mood-drink-btn").forEach(btn => btn.classList.remove("active"));
   if (buttonEl) {
     buttonEl.classList.add("active");
+=======
+  document.querySelectorAll(".mood-drink-btn").forEach(btn => btn.classList.remove("active", "bg-[#271711]", "text-white"));
+  if (buttonEl) {
+    buttonEl.classList.add("active", "bg-[#271711]", "text-white");
+>>>>>>> c9ded83c08380a383496a83703cadbd8dbb2a16f
   }
 }
 
@@ -549,7 +573,11 @@ function postMoodNote(event) {
     mood: selectedMoodFeeling,
     note: textarea.value.trim(),
     author: authorInput && authorInput.value.trim() ? authorInput.value.trim() : "AURA Beverage Lover",
+<<<<<<< HEAD
     city: "Bangalore",
+=======
+    city: "Tamil Nadu",
+>>>>>>> c9ded83c08380a383496a83703cadbd8dbb2a16f
     time: "Just now"
   };
 

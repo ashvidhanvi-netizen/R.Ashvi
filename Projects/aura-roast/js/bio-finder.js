@@ -14,7 +14,11 @@ const BREW_PROFILES = {
     tastingNotes: ["Dark Cocoa", "Roasted Hazelnut", "Golden Crema"],
     brewMethod: "High-Pressure 9-Bar Extraction (93°C)",
     servingTemp: "Piping Hot • 60ml",
+<<<<<<< HEAD
     price: 99,
+=======
+    price: 25,
+>>>>>>> c9ded83c08380a383496a83703cadbd8dbb2a16f
     image: "https://images.unsplash.com/photo-1510591509098-f4fdc6d0ff04?q=80&w=900&auto=format&fit=crop"
   },
   creamy: {
@@ -27,7 +31,11 @@ const BREW_PROFILES = {
     tastingNotes: ["Golden Caramel", "Warm Vanilla", "Velvet Micro-Foam"],
     brewMethod: "Steamed Silk Texture Micro-Foam",
     servingTemp: "Warm & Silky • 280ml",
+<<<<<<< HEAD
     price: 239,
+=======
+    price: 35,
+>>>>>>> c9ded83c08380a383496a83703cadbd8dbb2a16f
     image: "https://images.unsplash.com/photo-1534778101976-62847782c213?q=80&w=900&auto=format&fit=crop"
   },
   refreshing: {
@@ -40,7 +48,11 @@ const BREW_PROFILES = {
     tastingNotes: ["Sun-Ripened Peach", "Crisp Nilgiri Black Tea", "Garden Mint"],
     brewMethod: "Cold Steeped 12-Hour Extraction",
     servingTemp: "Ice Cold • 350ml",
+<<<<<<< HEAD
     price: 169,
+=======
+    price: 30,
+>>>>>>> c9ded83c08380a383496a83703cadbd8dbb2a16f
     image: "https://images.unsplash.com/photo-1556679343-c7306c1976bc?q=80&w=900&auto=format&fit=crop"
   },
   calm: {
@@ -53,7 +65,11 @@ const BREW_PROFILES = {
     tastingNotes: ["Meyer Lemon Citrus", "French Garden Thyme", "Wild Mountain Honey"],
     brewMethod: "8-Minute Whole-Leaf Infusion (88°C)",
     servingTemp: "Soothing Warmth • 300ml",
+<<<<<<< HEAD
     price: 149,
+=======
+    price: 20,
+>>>>>>> c9ded83c08380a383496a83703cadbd8dbb2a16f
     image: "https://images.unsplash.com/photo-1576092768241-dec231879fc3?q=80&w=900&auto=format&fit=crop"
   }
 };
