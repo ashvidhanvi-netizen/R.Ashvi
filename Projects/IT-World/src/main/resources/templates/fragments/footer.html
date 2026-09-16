@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+
+<!-- Reusable Footer Fragment -->
+<footer class="site-footer" th:fragment="footer">
+  <div class="container px-4">
+    
+    <!-- Credible Research & Sources Reference Box -->
+    <div class="sources-box">
+      <div class="sources-title">Research & Analytical Perspective — Global 2030 Outlook</div>
+      <p class="text-secondary small mb-3">
+        Factual foundation and macroeconomic data cited across this exhibition are synthesized from benchmark institutional research. Data is contextualized for analytical exploration and explicitly separated from the speculative thought experiments presented in Chapters 02 and 03.
+      </p>
+      <ul class="sources-list">
+        <li>World Economic Forum — Future of Jobs Report 2025 (Labour-market net dynamics & skill shifts)</li>
+        <li>World Bank — Digital Progress and Trends Report (Global telecommunication access & infrastructure)</li>
+        <li>McKinsey Global Institute — Research on AI-native architectures & agentic software systems</li>
+      </ul>
+    </div>
+
+    <!-- Editorial Identity & Manifesto -->
+    <div class="row g-4 align-items-center justify-content-between pt-4 border-top border-secondary border-opacity-10">
+      <div class="col-md-6">
+        <div class="d-flex align-items-center gap-2 mb-2">
+          <span class="brand-symbol" style="width: 20px; height: 20px; font-size: 0.65rem;">IT</span>
+          <span class="text-mono font-weight-bold text-primary">IT: THE WORLD WE BUILT</span>
+        </div>
+        <p class="text-dim small mb-0">
+          An interactive digital exhibition investigating Information Technology as the foundational infrastructure of human civilization.
+        </p>
+      </div>
+
+      <div class="col-md-5 text-md-end">
+        <div class="d-flex flex-wrap justify-content-md-end gap-3 text-mono small">
+          <a href="index.html" th:href="@{/}" class="text-secondary text-decoration-none">01 TOMORROW</a>
+          <span class="text-dim">/</span>
+          <a href="without-it.html" th:href="@{/without}" class="text-secondary text-decoration-none">02 WITHOUT</a>
+          <span class="text-dim">/</span>
+          <a href="beyond-it.html" th:href="@{/beyond}" class="text-secondary text-decoration-none">03 BEYOND</a>
+        </div>
+        <p class="text-dim small mt-2 mb-0">
+          Designed with semantic HTML5, Bootstrap 5, and vanilla modern JavaScript.
+        </p>
+      </div>
+    </div>
+
+  </div>
+</footer>
+
+</body>
+</html>

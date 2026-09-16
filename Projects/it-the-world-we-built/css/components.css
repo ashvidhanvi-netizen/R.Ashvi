@@ -1,0 +1,1652 @@
+/**
+ * IT: THE WORLD WE BUILT — COMPONENT ARCHITECTURE & 3D VISUALS (components.css)
+ * Premium Light Purple 3D Technology Exhibition Design System
+ * Frosted glass panels, 3D depth, interactive builders, outage cascade simulator,
+ * quantum superposition mechanics, and bright daylight editorial photography.
+ */
+
+/* ==========================================================================
+   1. EDITORIAL HERO SECTIONS (LIGHT 3D EXHIBITION)
+   ========================================================================== */
+.hero-wrapper {
+  position: relative;
+  min-height: 92vh;
+  display: flex;
+  align-items: center;
+  padding-top: calc(var(--header-height) + 30px);
+  padding-bottom: 70px;
+  overflow: hidden;
+}
+
+.hero-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.hero-glow-ambient {
+  position: absolute;
+  top: 15%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 800px;
+  height: 800px;
+  background: var(--glow-ambient);
+  filter: blur(140px);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 1;
+  animation: pulseAmbient 9s ease-in-out infinite alternate;
+}
+
+@keyframes pulseAmbient {
+  0% { transform: translate(-50%, -50%) scale(0.9); opacity: 0.7; }
+  100% { transform: translate(-50%, -50%) scale(1.15); opacity: 1; }
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: clamp(2.5rem, 5vw, 5rem);
+  align-items: center;
+}
+
+@media (max-width: 992px) {
+  .hero-grid { grid-template-columns: 1fr; }
+}
+
+.hero-content {
+  position: relative;
+  z-index: 5;
+}
+
+.hero-title {
+  margin-bottom: 24px;
+}
+
+.hero-desc {
+  font-size: clamp(1.18rem, 1.8vw, 1.38rem);
+  line-height: 1.7;
+  color: var(--color-text);
+  margin-bottom: 38px;
+  max-width: 660px;
+  font-weight: 400;
+}
+
+.hero-cta-group {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  flex-wrap: wrap;
+  margin-bottom: 44px;
+}
+
+/* Floating 3D Telemetry Visual Console (Light Frosted Glass) */
+.hero-visual-col {
+  position: relative;
+  z-index: 5;
+}
+
+.hero-console-card {
+  padding: clamp(1.8rem, 3vw, 2.4rem);
+  border-radius: 28px;
+  background: var(--color-surface);
+  border: 1px solid var(--border-glass);
+  box-shadow: var(--shadow-cinematic);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.4s var(--ease-out-expo), box-shadow 0.4s ease;
+}
+
+.hero-console-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 32px 70px -16px rgba(109, 40, 217, 0.16), 0 10px 30px rgba(0, 0, 0, 0.04);
+}
+
+.hero-console-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--gradient-primary);
+  opacity: 0.8;
+}
+
+.console-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 16px;
+  margin-bottom: 22px;
+  border-bottom: 1px solid var(--border-glass);
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--color-text-dim);
+}
+
+.console-dots {
+  display: flex;
+  gap: 6px;
+}
+
+.console-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: rgba(124, 58, 237, 0.2);
+}
+
+.console-dot.red { background: #EF4444; }
+.console-dot.yellow { background: #F59E0B; }
+.console-dot.green { background: #10B981; }
+
+.telemetry-metrics-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.telemetry-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.92rem;
+}
+
+.telemetry-label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--color-text);
+  font-weight: 600;
+}
+
+.telemetry-value {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  color: var(--color-primary);
+}
+
+.telemetry-bar-track {
+  width: 100%;
+  height: 6px;
+  border-radius: 9999px;
+  background: rgba(139, 92, 246, 0.12);
+  margin-top: 8px;
+  overflow: hidden;
+}
+
+.telemetry-bar-fill {
+  height: 100%;
+  border-radius: 9999px;
+  background: var(--gradient-primary);
+  box-shadow: 0 0 10px var(--glow-primary);
+  transition: width 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* ==========================================================================
+   2. BUTTONS & DIMENSIONAL CONTROLS
+   ========================================================================== */
+.btn-primary-3d {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 15px 30px;
+  border-radius: 14px;
+  background: var(--gradient-primary);
+  color: #FFFFFF;
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 0.98rem;
+  letter-spacing: -0.01em;
+  box-shadow: 0 8px 20px var(--glow-primary), 0 2px 0 var(--color-primary-dark);
+  transition: var(--transition-fast);
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-primary-3d:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 30px var(--glow-primary), 0 2px 0 var(--color-primary-dark);
+  color: #FFFFFF;
+}
+
+.btn-primary-3d:active {
+  transform: translateY(1px);
+  box-shadow: 0 4px 12px var(--glow-primary), 0 1px 0 var(--color-primary-dark);
+}
+
+.btn-outline-glass {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 15px 30px;
+  border-radius: 14px;
+  background: var(--color-surface);
+  color: var(--color-heading);
+  border: 1px solid var(--border-glass);
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.98rem;
+  backdrop-filter: blur(14px);
+  box-shadow: var(--shadow-sm);
+  transition: var(--transition-fast);
+}
+
+.btn-outline-glass:hover {
+  background: var(--color-surface-elevated);
+  border-color: var(--border-glass-hover);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+/* ==========================================================================
+   3. ASYMMETRIC EDITORIAL PHOTO BLOCKS & NARRATIVE MEDIA
+   ========================================================================== */
+.editorial-media-wrapper {
+  position: relative;
+  border-radius: 26px;
+  overflow: hidden;
+  box-shadow: var(--shadow-cinematic);
+  border: 1px solid var(--border-glass);
+  background: #FFFFFF;
+}
+
+.editorial-media-wrapper img {
+  width: 100%;
+  height: clamp(340px, 45vw, 520px);
+  object-fit: cover;
+  transition: transform 0.8s var(--ease-out-expo);
+  filter: contrast(102%) brightness(100%);
+}
+
+.editorial-media-wrapper:hover img {
+  transform: scale(1.03);
+}
+
+.editorial-media-overlay {
+  position: absolute;
+  inset: 0;
+  background: var(--gradient-overlay);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: clamp(1.8rem, 4vw, 3rem);
+  z-index: 2;
+}
+
+.editorial-media-kicker {
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--color-accent);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  margin-bottom: 8px;
+}
+
+.editorial-media-title {
+  font-family: var(--font-serif-editorial);
+  font-size: clamp(1.4rem, 2.4vw, 2.2rem);
+  font-weight: 600;
+  line-height: 1.25;
+  color: var(--color-heading);
+  margin-bottom: 6px;
+}
+
+.editorial-media-caption {
+  font-size: 0.94rem;
+  color: var(--color-text);
+  line-height: 1.6;
+  max-width: 580px;
+  margin-bottom: 0;
+}
+
+/* Floating Information Card Layered Over Image */
+.floating-stat-capsule {
+  position: absolute;
+  bottom: -20px;
+  right: 28px;
+  padding: 16px 24px;
+  border-radius: 16px;
+  background: var(--color-surface-elevated);
+  border: 1px solid var(--border-glass-hover);
+  box-shadow: var(--shadow-lg);
+  backdrop-filter: blur(20px);
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+@media (max-width: 600px) {
+  .floating-stat-capsule { position: static; margin-top: 16px; width: 100%; }
+}
+
+.stat-capsule-num {
+  font-family: var(--font-mono);
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: var(--color-primary);
+}
+
+.stat-capsule-label {
+  font-size: 0.82rem;
+  color: var(--color-text-dim);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  line-height: 1.3;
+}
+
+/* ==========================================================================
+   4. INTERACTIVE IT INFRASTRUCTURE LAB (Page 1)
+   ========================================================================== */
+.builder-dashboard-frame {
+  display: grid;
+  grid-template-columns: 340px 1fr;
+  gap: 32px;
+  padding: clamp(1.8rem, 3vw, 2.6rem);
+  border-radius: 28px;
+  background: var(--color-surface);
+  border: 1px solid var(--border-glass);
+  box-shadow: var(--shadow-cinematic);
+}
+
+@media (max-width: 992px) {
+  .builder-dashboard-frame { grid-template-columns: 1fr; }
+}
+
+.builder-controls-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.component-toggle-btn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 18px;
+  border-radius: 14px;
+  background: var(--color-surface-elevated);
+  border: 1px solid var(--border-glass);
+  margin-bottom: 12px;
+  transition: var(--transition-fast);
+  text-align: left;
+  box-shadow: var(--shadow-sm);
+}
+
+.component-toggle-btn:hover {
+  border-color: var(--border-glass-hover);
+  transform: translateX(4px);
+}
+
+.component-toggle-btn.active {
+  background: var(--nav-active-bg);
+  border-color: var(--color-primary);
+  box-shadow: 0 4px 16px var(--glow-primary);
+}
+
+.component-btn-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.component-icon {
+  font-size: 1.4rem;
+}
+
+.component-name {
+  font-weight: 600;
+  color: var(--color-heading);
+  font-size: 0.95rem;
+}
+
+.component-status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #94A3B8;
+}
+
+.component-toggle-btn.active .component-status-dot {
+  background: #10B981;
+  box-shadow: 0 0 10px #10B981;
+}
+
+.builder-canvas-viewport {
+  position: relative;
+  min-height: 480px;
+  border-radius: 22px;
+  overflow: hidden;
+  background: radial-gradient(circle at center, #F4EFFB 0%, var(--color-bg) 100%);
+  border: 1px solid var(--border-glass);
+  display: flex;
+  flex-direction: column;
+}
+
+.builder-telemetry-strip {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 16px 20px;
+  background: rgba(255, 255, 255, 0.90);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border-glass);
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+
+/* ==========================================================================
+   5. INTERACTIVE SOCIETY OUTAGE SIMULATOR (Page 2: Without IT)
+   ========================================================================== */
+.simulator-crisis-dashboard {
+  padding: clamp(2rem, 4vw, 3.5rem);
+  border-radius: 30px;
+  background: var(--color-surface);
+  border: 1px solid var(--border-glass);
+  box-shadow: var(--shadow-cinematic);
+}
+
+.simulator-header-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 34px;
+  flex-wrap: wrap;
+  gap: 24px;
+}
+
+.crisis-tier-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px;
+  border-radius: 8px;
+  background: rgba(190, 18, 60, 0.08);
+  border: 1px solid rgba(190, 18, 60, 0.25);
+  color: #881337;
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.crisis-meter-box {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  background: #FFFFFF;
+  padding: 18px 28px;
+  border-radius: 18px;
+  border: 1px solid var(--border-glass);
+  box-shadow: var(--shadow-sm);
+}
+
+.crisis-gauge-num {
+  font-family: var(--font-mono);
+  font-size: 2.6rem;
+  font-weight: 900;
+  color: var(--color-primary);
+  line-height: 1;
+}
+
+.crisis-sectors-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+  margin-bottom: 34px;
+}
+
+.sector-card-toggle {
+  padding: 22px;
+  border-radius: 18px;
+  background: var(--color-surface-elevated);
+  border: 1px solid var(--border-glass);
+  cursor: pointer;
+  transition: var(--transition-fast);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  box-shadow: var(--shadow-sm);
+}
+
+.sector-card-toggle:hover {
+  transform: translateY(-4px);
+  border-color: var(--border-glass-hover);
+  box-shadow: var(--shadow-md);
+}
+
+.sector-card-toggle.offline {
+  background: rgba(254, 226, 226, 0.6);
+  border-color: #E11D48;
+  box-shadow: 0 8px 24px rgba(225, 29, 72, 0.15);
+}
+
+.switch-toggle-pill {
+  width: 44px;
+  height: 24px;
+  border-radius: 9999px;
+  background: #10B981;
+  position: relative;
+  transition: background 0.3s ease;
+}
+
+.switch-toggle-pill::after {
+  content: '';
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #FFFFFF;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+  transition: transform 0.3s ease;
+}
+
+.sector-card-toggle.offline .switch-toggle-pill {
+  background: #E11D48;
+}
+
+.sector-card-toggle.offline .switch-toggle-pill::after {
+  transform: translateX(20px);
+}
+
+.sector-name {
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 1.05rem;
+  color: var(--color-heading);
+}
+
+.sector-impact-status {
+  font-size: 0.85rem;
+  color: var(--color-text-dim);
+}
+
+.sector-card-toggle.offline .sector-impact-status {
+  color: #BE123C;
+  font-weight: 600;
+}
+
+.simulation-ticker-box {
+  background: #FFFFFF;
+  border: 1px solid var(--border-glass);
+  border-radius: 16px;
+  padding: 20px 24px;
+  font-family: var(--font-mono);
+  font-size: 0.92rem;
+  color: var(--color-heading);
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  box-shadow: var(--shadow-sm);
+}
+
+.ticker-pulse-alert {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--color-primary);
+  box-shadow: 0 0 10px var(--color-primary);
+  flex-shrink: 0;
+  animation: pulseDot 1.2s infinite;
+}
+
+@keyframes pulseDot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.3; transform: scale(0.85); }
+}
+
+/* ==========================================================================
+   6. INTERACTIVE QUANTUM LAB & 6 FUTURE NARRATIVES (Page 3: Beyond IT)
+   ========================================================================== */
+.quantum-laboratory-frame {
+  padding: clamp(2rem, 4vw, 3.5rem);
+  border-radius: 30px;
+  background: var(--color-surface);
+  border: 1px solid var(--border-glass);
+  box-shadow: var(--shadow-cinematic);
+}
+
+.quantum-dual-comparison {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 36px;
+  align-items: center;
+  margin-top: 36px;
+}
+
+@media (max-width: 900px) {
+  .quantum-dual-comparison { grid-template-columns: 1fr; }
+}
+
+.classical-model-card,
+.quantum-model-card {
+  padding: 28px;
+  border-radius: 22px;
+  background: var(--color-surface-elevated);
+  border: 1px solid var(--border-glass);
+  box-shadow: var(--shadow-sm);
+}
+
+.quantum-model-card {
+  border-color: rgba(16, 185, 129, 0.30);
+  box-shadow: 0 8px 30px rgba(16, 185, 129, 0.08);
+}
+
+/* Classical Bit Visualizer */
+.bit-wire-diagram {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  margin: 32px 0;
+  font-family: var(--font-mono);
+}
+
+.bit-state-node {
+  width: 52px;
+  height: 52px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+  font-weight: 800;
+  border: 2px solid rgba(139, 92, 246, 0.2);
+  color: var(--color-text-dim);
+  background: #FFFFFF;
+}
+
+.bit-state-node.active {
+  border-color: var(--color-primary);
+  background: var(--gradient-primary);
+  color: #FFFFFF;
+  box-shadow: 0 4px 14px var(--glow-primary);
+}
+
+.bit-wire-line {
+  flex: 1;
+  height: 2px;
+  background: rgba(139, 92, 246, 0.2);
+  position: relative;
+}
+
+/* Future Tech Narrative Blocks (6 Frontiers) */
+.future-tech-narrative-block {
+  padding: clamp(3.5rem, 6vw, 6rem) 0;
+  border-top: 1px solid var(--border-glass);
+  position: relative;
+  transition: background 0.4s ease;
+}
+
+.future-tech-narrative-block.active-focus {
+  background: radial-gradient(circle at 50% 50%, var(--glow-ambient), transparent 80%);
+}
+
+.tech-frontier-num {
+  font-family: var(--font-mono);
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--color-accent);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.tech-frontier-num::after {
+  content: '';
+  display: block;
+  width: 36px;
+  height: 2px;
+  background: var(--color-accent);
+}
+
+/* ==========================================================================
+   7. PAGE CROSS-CHAPTER CARPETS
+   ========================================================================== */
+.chapter-cross-carpet {
+  padding: clamp(4rem, 8vw, 7rem) clamp(2rem, 4vw, 5rem);
+  border-radius: 34px;
+  background: var(--color-surface);
+  border: 1px solid var(--border-glass);
+  box-shadow: var(--shadow-cinematic);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.chapter-cross-carpet::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at center, var(--glow-ambient), transparent 75%);
+  pointer-events: none;
+}
+
+/* ==========================================================================
+   8. TRANSFORMATION SECTORS & EVOLUTION STRIPS (Chapter 01)
+   ========================================================================== */
+.transformation-sector-block {
+  padding: clamp(3.5rem, 6vw, 6rem) 0;
+  border-top: 1px solid var(--border-glass);
+  position: relative;
+}
+
+.transformation-sector-block:last-child {
+  border-bottom: 1px solid var(--border-glass);
+}
+
+.sector-meta-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--color-accent);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+.evolution-step-chain {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+  margin: 22px 0 26px;
+  font-family: var(--font-mono);
+  font-size: 0.84rem;
+}
+
+.step-node {
+  padding: 6px 14px;
+  border-radius: 8px;
+  background: rgba(124, 58, 237, 0.05);
+  border: 1px solid var(--border-glass);
+  color: var(--color-text);
+  font-weight: 500;
+}
+
+.step-node.active {
+  background: var(--badge-bg);
+  border-color: var(--badge-border);
+  color: var(--badge-color);
+  font-weight: 700;
+}
+
+.step-arrow {
+  color: var(--color-primary);
+  font-weight: bold;
+}
+
+/* ==========================================================================
+   9. GEOGRAPHIC PROGRESSION (Chapter 02: Chennai -> India -> World)
+   ========================================================================== */
+.geographic-tier-block {
+  padding: clamp(4rem, 7vw, 7.5rem) 0;
+  border-top: 1px solid var(--border-glass);
+  position: relative;
+}
+
+.geo-scope-indicator {
+  font-family: var(--font-mono);
+  font-size: 0.88rem;
+  font-weight: 800;
+  color: var(--color-primary);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  margin-bottom: 14px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.geo-scope-indicator::after {
+  content: '';
+  flex: 1;
+  max-width: 80px;
+  height: 2px;
+  background: var(--color-primary);
+}
+
+.geo-breakdown-table {
+  width: 100%;
+  margin-top: 28px;
+  border-collapse: separate;
+  border-spacing: 0 10px;
+}
+
+.geo-breakdown-row {
+  background: var(--color-surface);
+  border: 1px solid var(--border-glass);
+  border-radius: 14px;
+  display: grid;
+  grid-template-columns: 180px 1fr 1fr;
+  gap: 20px;
+  padding: 18px 22px;
+  align-items: center;
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.geo-breakdown-row:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+@media (max-width: 768px) {
+  .geo-breakdown-row {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+}
+
+.geo-row-sector {
+  font-family: var(--font-mono);
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--color-heading);
+}
+
+.geo-row-with-it {
+  font-size: 0.90rem;
+  color: var(--color-text-muted);
+}
+
+.geo-row-without-it {
+  font-size: 0.90rem;
+  color: #881337;
+  font-weight: 600;
+}
+
+/* ==========================================================================
+   10. ALTERNATIVE JOB MARKET LANDSCAPE (Chapter 03)
+   ========================================================================== */
+.alternative-jobs-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+  margin-top: 40px;
+}
+
+.job-discipline-card {
+  padding: 28px;
+  border-radius: 20px;
+  background: var(--color-surface);
+  border: 1px solid var(--border-glass);
+  transition: transform 0.4s var(--ease-out-expo), border-color 0.4s ease, box-shadow 0.4s ease;
+  position: relative;
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+}
+
+.job-discipline-card:hover {
+  transform: translateY(-6px);
+  border-color: var(--border-glass-hover);
+  box-shadow: var(--shadow-cinematic);
+}
+
+.job-discipline-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--gradient-primary);
+  opacity: 0.85;
+}
+
+.job-icon-wrap {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  background: rgba(124, 58, 237, 0.08);
+  border: 1px solid var(--border-glass);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+}
+
+.job-title {
+  font-size: 1.22rem;
+  color: var(--color-heading);
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.job-desc {
+  font-size: 0.92rem;
+  color: var(--color-text-muted);
+  line-height: 1.6;
+  margin-bottom: 16px;
+}
+
+.job-meta-tag {
+  font-family: var(--font-mono);
+  font-size: 0.76rem;
+  font-weight: 600;
+  color: var(--color-accent);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+/* ==========================================================================
+   11. CHAPTER 1: EVOLUTION PIPELINE (Horizontal Step Ribbon)
+   ========================================================================== */
+.evolution-pipeline-strip {
+  display: flex;
+  align-items: stretch;
+  gap: 12px;
+  overflow-x: auto;
+  padding: 18px 4px 24px;
+  scrollbar-width: thin;
+}
+
+.evolution-pipe-step {
+  flex: 1;
+  min-width: 140px;
+  padding: 16px 14px;
+  border-radius: 14px;
+  background: var(--color-surface);
+  border: 1px solid var(--border-glass);
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+  transition: transform 0.25s ease, border-color 0.25s ease;
+}
+
+.evolution-pipe-step:hover {
+  transform: translateY(-4px);
+  border-color: var(--border-glass-hover);
+}
+
+.evolution-pipe-step.highlight {
+  background: linear-gradient(135deg, rgba(124, 58, 237, 0.08) 0%, rgba(255, 255, 255, 0.95) 100%);
+  border-color: var(--color-primary);
+  box-shadow: 0 8px 24px var(--glow-primary);
+}
+
+.pipe-step-num {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--color-accent);
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+
+.pipe-step-title {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--color-heading);
+  line-height: 1.35;
+}
+
+.pipe-step-arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-text-dim);
+  font-size: 1.1rem;
+  padding: 0 4px;
+}
+
+/* ==========================================================================
+   12. CHAPTER 1: 12 IT DISCIPLINES GRID
+   ========================================================================== */
+.disciplines-grid-12 {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 22px;
+  margin-top: 36px;
+}
+
+.discipline-card {
+  padding: 24px;
+  border-radius: 18px;
+  background: var(--color-surface);
+  border: 1px solid var(--border-glass);
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease, border-color 0.3s ease;
+  position: relative;
+}
+
+.discipline-card:hover {
+  transform: translateY(-5px);
+  border-color: var(--border-glass-hover);
+  box-shadow: var(--shadow-cinematic);
+}
+
+.discipline-icon-head {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.discipline-icon-badge {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background: rgba(124, 58, 237, 0.08);
+  border: 1px solid var(--border-glass);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+}
+
+.discipline-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--color-heading);
+  margin: 0;
+}
+
+.discipline-text {
+  font-size: 0.88rem;
+  color: var(--color-text-muted);
+  line-height: 1.55;
+  margin: 0;
+}
+
+/* ==========================================================================
+   13. CHAPTER 1: WORKFLOW COMPARISON (TODAY vs POSSIBLE FUTURE)
+   ========================================================================== */
+.workflow-comparison-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+  margin: 40px 0;
+}
+
+@media (max-width: 860px) {
+  .workflow-comparison-container {
+    grid-template-columns: 1fr;
+  }
+}
+
+.workflow-column-card {
+  padding: 32px;
+  border-radius: 24px;
+  background: var(--color-surface);
+  border: 1px solid var(--border-glass);
+  box-shadow: var(--shadow-cinematic);
+  position: relative;
+}
+
+.workflow-column-card.future-col {
+  border-color: rgba(124, 58, 237, 0.35);
+  box-shadow: 0 16px 40px rgba(124, 58, 237, 0.08);
+}
+
+.workflow-col-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--border-glass);
+}
+
+.workflow-col-badge {
+  font-family: var(--font-mono);
+  font-size: 0.76rem;
+  font-weight: 700;
+  padding: 5px 12px;
+  border-radius: 999px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.workflow-col-badge.today {
+  background: rgba(100, 116, 139, 0.12);
+  color: #475569;
+}
+
+.workflow-col-badge.future {
+  background: rgba(124, 58, 237, 0.14);
+  color: #6D28D9;
+}
+
+.workflow-steps-vertical {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.workflow-step-node {
+  padding: 12px 16px;
+  border-radius: 12px;
+  background: var(--color-surface-elevated);
+  border: 1px solid var(--border-glass);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--color-heading);
+}
+
+.workflow-step-node .actor-tag {
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: 700;
+}
+
+.actor-tag.human {
+  background: rgba(59, 130, 246, 0.1);
+  color: #1D4ED8;
+}
+
+.actor-tag.ai {
+  background: rgba(124, 58, 237, 0.12);
+  color: #6D28D9;
+}
+
+.workflow-step-down-arrow {
+  text-align: center;
+  color: var(--color-text-dim);
+  font-size: 0.9rem;
+  line-height: 1;
+}
+
+/* ==========================================================================
+   14. CHAPTER 1: THE 70/30 THOUGHT EXPERIMENT
+   ========================================================================== */
+.seventy-thirty-container {
+  padding: clamp(2rem, 5vw, 3.5rem);
+  border-radius: 28px;
+  background: var(--color-surface);
+  border: 1px solid var(--border-glass);
+  box-shadow: var(--shadow-cinematic);
+  margin: 44px 0;
+  position: relative;
+}
+
+.seventy-thirty-disclaimer-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px;
+  border-radius: 999px;
+  background: rgba(245, 158, 11, 0.12);
+  border: 1px solid rgba(245, 158, 11, 0.3);
+  color: #B45309;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 20px;
+}
+
+.ratio-slider-wrap {
+  max-width: 600px;
+  margin: 24px auto 36px;
+  text-align: center;
+}
+
+.ratio-slider-track-wrap {
+  position: relative;
+  margin: 14px 0;
+}
+
+.ratio-slider-input {
+  width: 100%;
+  accent-color: var(--color-primary);
+  cursor: pointer;
+}
+
+.ratio-meter-display {
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--font-mono);
+  font-size: 0.94rem;
+  font-weight: 700;
+  margin-top: 8px;
+}
+
+.ratio-cards-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+
+@media (max-width: 768px) {
+  .ratio-cards-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.ratio-domain-card {
+  padding: 24px;
+  border-radius: 18px;
+  background: var(--color-surface-elevated);
+  border: 1px solid var(--border-glass);
+}
+
+.ratio-domain-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: 16px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--border-glass);
+}
+
+.ratio-domain-title {
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: var(--color-heading);
+}
+
+.ratio-domain-pct {
+  font-family: var(--font-mono);
+  font-size: 1.45rem;
+  font-weight: 800;
+  color: var(--color-primary);
+}
+
+.ratio-domain-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.ratio-domain-list li {
+  font-size: 0.88rem;
+  color: var(--color-text);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.ratio-domain-list li::before {
+  content: '•';
+  color: var(--color-primary);
+  font-weight: bold;
+}
+
+/* ==========================================================================
+   15. CHAPTER 1: FUTURE IT JOBS & ROLE EVOLUTIONS
+   ========================================================================== */
+.role-evolution-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 20px;
+  margin: 32px 0;
+}
+
+.role-evolution-card {
+  padding: 22px;
+  border-radius: 18px;
+  background: var(--color-surface);
+  border: 1px solid var(--border-glass);
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform 0.25s ease;
+}
+
+.role-evolution-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--border-glass-hover);
+}
+
+.role-original-title {
+  font-size: 0.85rem;
+  color: var(--color-text-dim);
+  text-transform: uppercase;
+  font-family: var(--font-mono);
+  margin-bottom: 4px;
+}
+
+.role-evolved-title {
+  font-size: 1.18rem;
+  font-weight: 800;
+  color: var(--color-heading);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.role-evolved-desc {
+  font-size: 0.88rem;
+  color: var(--color-text-muted);
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* ==========================================================================
+   16. CHAPTER 2: MONUMENTAL STATEMENT BAND & SPECULATIVE BADGE
+   ========================================================================== */
+.speculative-badge-banner {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 18px;
+  border-radius: 999px;
+  background: rgba(190, 18, 60, 0.08);
+  border: 1px solid rgba(190, 18, 60, 0.25);
+  color: #881337;
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-bottom: 22px;
+}
+
+.monumental-quote-box {
+  padding: clamp(3rem, 6vw, 5rem) clamp(1.8rem, 4vw, 3.5rem);
+  border-radius: 28px;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(245, 236, 240, 0.85) 100%);
+  border: 1px solid rgba(190, 18, 60, 0.20);
+  box-shadow: var(--shadow-cinematic);
+  text-align: center;
+  margin: 50px 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.monumental-quote-box h3 {
+  font-size: clamp(1.8rem, 3.8vw, 3rem);
+  font-weight: 800;
+  color: #260C16;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+  max-width: 900px;
+  margin: 0 auto 18px;
+}
+
+.monumental-quote-box p {
+  font-size: clamp(1.05rem, 2vw, 1.3rem);
+  font-weight: 600;
+  color: #881337;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  max-width: 780px;
+  margin: 0 auto;
+}
+
+.six-human-needs-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 18px;
+  margin: 36px 0 24px;
+}
+
+.human-need-card {
+  padding: 20px;
+  border-radius: 16px;
+  background: var(--color-surface);
+  border: 1px solid var(--border-glass);
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.human-need-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: rgba(190, 18, 60, 0.08);
+  border: 1px solid var(--border-glass);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.3rem;
+  flex-shrink: 0;
+}
+
+.human-need-title {
+  font-size: 1.02rem;
+  font-weight: 700;
+  color: var(--color-heading);
+  line-height: 1.35;
+}
+
+/* ==========================================================================
+   17. CHAPTER 3: PROBLEM-TO-ALTERNATIVE MAPPING & DUAL WORLD COMPARISON
+   ========================================================================== */
+.problem-solution-matrix {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 20px;
+  margin: 36px 0 48px;
+}
+
+.problem-solution-card {
+  padding: 22px;
+  border-radius: 18px;
+  background: var(--color-surface);
+  border: 1px solid var(--border-glass);
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+  transition: transform 0.25s ease;
+}
+
+.problem-solution-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--border-glass-hover);
+}
+
+.problem-source-tag {
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  color: #B45309;
+  background: rgba(245, 158, 11, 0.1);
+  padding: 4px 10px;
+  border-radius: 6px;
+  align-self: flex-start;
+  margin-bottom: 8px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.problem-text {
+  font-size: 0.98rem;
+  font-weight: 700;
+  color: var(--color-heading);
+  margin-bottom: 12px;
+}
+
+.solution-arrow-divider {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  color: var(--color-accent);
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.solution-text {
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+  line-height: 1.5;
+  margin: 0;
+}
+
+.dual-world-comparison-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px;
+  margin: 40px 0;
+}
+
+@media (max-width: 800px) {
+  .dual-world-comparison-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.dual-world-card {
+  padding: 32px;
+  border-radius: 22px;
+  background: var(--color-surface);
+  border: 1px solid var(--border-glass);
+  box-shadow: var(--shadow-cinematic);
+}
+
+.dual-world-card.alternative-world {
+  border-color: rgba(5, 150, 105, 0.35);
+  box-shadow: 0 16px 40px rgba(5, 150, 105, 0.08);
+}
+
+.dual-world-title {
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: var(--color-heading);
+  margin-bottom: 16px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--border-glass);
+}
+
+.dual-world-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.dual-world-list li {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  font-size: 0.92rem;
+  padding: 8px 12px;
+  border-radius: 8px;
+  background: var(--color-surface-elevated);
+}
+
+.dual-world-list .domain-label {
+  font-weight: 700;
+  color: var(--color-heading);
+}
+
+.dual-world-list .domain-vector {
+  font-family: var(--font-mono);
+  font-size: 0.84rem;
+  color: var(--color-accent);
+  font-weight: 600;
+}
+
+/* ==========================================================================
+   18. CHAPTER 3: THE ALTERNATIVE WORLD SYNTHESIS MATRIX
+   ========================================================================== */
+.synthesis-matrix-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 22px;
+  margin: 36px 0;
+}
+
+.synthesis-card {
+  padding: 26px;
+  border-radius: 20px;
+  background: var(--color-surface);
+  border: 1px solid var(--border-glass);
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.synthesis-card:hover {
+  transform: translateY(-5px);
+  border-color: var(--border-glass-hover);
+  box-shadow: var(--shadow-cinematic);
+}
+
+.synthesis-domain-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--border-glass);
+}
+
+.synthesis-icon {
+  width: 42px;
+  height: 42px;
+  border-radius: 10px;
+  background: rgba(5, 150, 105, 0.08);
+  border: 1px solid var(--border-glass);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.3rem;
+  flex-shrink: 0;
+}
+
+.synthesis-title {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--color-heading);
+  margin: 0;
+}
+
+.synthesis-contrast-block {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.synthesis-real-world {
+  font-size: 0.86rem;
+  color: var(--color-text-muted);
+}
+
+.synthesis-alternative {
+  font-size: 0.90rem;
+  color: var(--color-heading);
+  font-weight: 600;
+  padding: 10px 14px;
+  border-radius: 10px;
+  background: var(--color-surface-elevated);
+  border-left: 3px solid #059669;
+}
+
+

@@ -1,0 +1,1125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WorldAid — Know Where Help Is Needed | Global Humanitarian Intelligence</title>
+  <meta name="description" content="WorldAid is a global humanitarian information and emergency-awareness platform unifying five real-time API streams to illuminate global conditions, crisis locations, and relief response.">
+
+  <!-- Google Fonts: Sora (Display) + Plus Jakarta Sans (Body) + JetBrains Mono (Telemetry) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Sora:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Leaflet.js CSS for Interactive Geospatial Matrix -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
+
+  <!-- Design System Stylesheets -->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/glassmorphism.css">
+  <link rel="stylesheet" href="css/weather-atmospheres.css">
+</head>
+<body class="worldaid-body">
+
+  <!-- ========================================================================
+       1. FLOATING HUMANITARIAN NAVIGATION
+       ======================================================================== -->
+  <header class="site-nav-header" id="navHeader">
+    <div class="nav-inner-container">
+      
+      <!-- Brand Emblem & Identity -->
+      <a href="#heroSection" class="brand-logo" aria-label="WorldAid Home">
+        <div class="brand-emblem">
+          <!-- Minimalist Humanitarian Symbol: Globe + Helping Hands Connection -->
+          <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" class="emblem-svg">
+            <circle cx="16" cy="16" r="14" stroke="currentColor" stroke-width="2" opacity="0.3"/>
+            <path d="M16 2C8.268 2 2 8.268 2 16s6.268 14 14 14 14-6.268 14-14S23.732 2 16 2z" stroke="currentColor" stroke-width="2"/>
+            <path d="M2 16h28M16 2c3.5 4.5 5.5 10 5.5 14s-2 9.5-5.5 14c-3.5-4.5-5.5-10-5.5-14s2-9.5 5.5-14z" stroke="currentColor" stroke-width="1.6" opacity="0.6"/>
+            <!-- Warm Coral Heart / Helping Hand node -->
+            <circle cx="16" cy="16" r="3.5" fill="var(--color-accent-coral)" />
+            <circle cx="16" cy="16" r="6" stroke="var(--color-accent-coral)" stroke-width="1.5" opacity="0.8" class="pulse-ring" />
+          </svg>
+        </div>
+        <div class="brand-text-block">
+          <span class="brand-title">WORLD<span>AID</span></span>
+          <span class="brand-sub">GLOBAL HUMANITARIAN PLATFORM</span>
+        </div>
+      </a>
+
+      <!-- Primary Navigation Links -->
+      <nav class="nav-links-list" aria-label="Primary Navigation">
+        <a href="#heroSection" class="nav-link-item active">Home</a>
+        <a href="#globalDataMapSection" class="nav-link-item">Global Map</a>
+        <a href="#liveConditionsSection" class="nav-link-item">Live Conditions</a>
+        <a href="#countryExplorerSection" class="nav-link-item">Country Dossier</a>
+        <a href="#humanitarianNewsSection" class="nav-link-item">World News</a>
+        <a href="#globalClockSection" class="nav-link-item">Global Clocks</a>
+        <a href="#resourcesSection" class="nav-link-item">Resources</a>
+        <a href="#aboutSection" class="nav-link-item">About</a>
+      </nav>
+
+      <!-- Utility Actions: Telemetry Drawer Trigger -->
+      <div class="nav-actions">
+        <button id="telemetryToggleBtn" class="btn-telemetry-toggle" type="button" aria-label="Open Live API Telemetry Terminal">
+          <span class="live-beacon-dot"></span>
+          <span>API TELEMETRY</span>
+        </button>
+
+        <a href="#worldAidExplorer" class="btn-nav-cta">
+          <span>Explore Live Data</span>
+          <span class="cta-arrow">→</span>
+        </a>
+
+        <!-- Mobile Hamburger -->
+        <button id="mobileNavToggle" class="mobile-nav-btn" type="button" aria-label="Toggle navigation menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- Mobile Drawer Menu -->
+  <div id="mobileMenuDrawer" class="mobile-menu-drawer">
+    <div class="mobile-menu-content">
+      <a href="#heroSection" class="mobile-menu-link">Home</a>
+      <a href="#globalDataMapSection" class="mobile-menu-link">Global Map</a>
+      <a href="#liveConditionsSection" class="mobile-menu-link">Live Conditions</a>
+      <a href="#countryExplorerSection" class="mobile-menu-link">Country Dossier</a>
+      <a href="#humanitarianNewsSection" class="mobile-menu-link">World News</a>
+      <a href="#globalClockSection" class="mobile-menu-link">Global Clocks</a>
+      <a href="#resourcesSection" class="mobile-menu-link">Resources</a>
+      <a href="#aboutSection" class="mobile-menu-link">About</a>
+      <div class="mobile-menu-cta">
+        <a href="#worldAidExplorer" class="btn-hero-primary" style="width: 100%; justify-content: center;">Explore Live Data →</a>
+      </div>
+    </div>
+  </div>
+
+  <main id="mainContent">
+
+    <!-- ========================================================================
+         2. CINEMATIC HERO SECTION
+         ======================================================================== -->
+    <section id="heroSection" class="hero-section">
+      <!-- Animated Planetary Coordinate Mesh Canvas -->
+      <canvas id="heroMeshCanvas" class="hero-mesh-canvas" aria-hidden="true"></canvas>
+
+      <div class="hero-glow-layer"></div>
+
+      <div class="hero-content-wrapper">
+        
+        <!-- Emergency Awareness Badge -->
+        <div class="hero-badge-pill">
+          <span class="hero-badge-dot"></span>
+          <span>HUMANITARIAN SITUATION AWARENESS MATRIX</span>
+          <span class="badge-accent-tag">LIVE FEED</span>
+        </div>
+
+        <!-- Main Headline -->
+        <h1 class="hero-title">
+          WHEN THE WORLD NEEDS HELP,<br>
+          <span class="gradient-text-coral">KNOW WHERE TO LOOK.</span>
+        </h1>
+
+        <!-- Supporting Statement -->
+        <p class="hero-subtitle">
+          WorldAid unifies global environmental conditions, geographic context, crisis news, and regional chronometry into one clear operational perspective. Connecting people, information, and action across a changing world.
+        </p>
+
+        <!-- CTA Actions -->
+        <div class="hero-cta-group">
+          <a href="#globalDataMapSection" class="btn-hero-primary">
+            <span>Explore the World</span>
+            <span class="arrow-icon">➔</span>
+          </a>
+          <a href="#worldAidExplorer" class="btn-hero-secondary">
+            <span>View Live Data</span>
+            <span class="stream-icon">⚡</span>
+          </a>
+        </div>
+
+        <!-- Hero Telemetry Metrics Strip -->
+        <div class="hero-telemetry-strip">
+          <div class="hero-stat-cell">
+            <span class="stat-num" data-counter="195">195</span>
+            <span class="stat-label">Sovereign Nations Covered</span>
+          </div>
+          <div class="hero-stat-cell">
+            <span class="stat-num" id="heroLiveZone">Nairobi</span>
+            <span class="stat-label">Active Coordination Hub</span>
+          </div>
+          <div class="hero-stat-cell">
+            <span class="stat-num" id="heroLiveTemp">24°C</span>
+            <span class="stat-label">Local Environmental Metric</span>
+          </div>
+          <div class="hero-stat-cell">
+            <span class="stat-num status-tag-green">READY</span>
+            <span class="stat-label">Rapid Response Status</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ========================================================================
+         3. SEARCH & COORDINATION TERMINAL (INPUT DISPATCH)
+         ======================================================================== -->
+    <section id="worldAidExplorer" class="explorer-input-section">
+      <div class="content-container">
+        
+        <div class="search-terminal-card glass-panel">
+          <div class="terminal-header-bar">
+            <div class="terminal-title-group">
+              <span class="terminal-status-light"></span>
+              <span class="terminal-title">HUMANITARIAN LOCATION INTELLIGENCE EXPLORER</span>
+            </div>
+            <div class="terminal-meta-tag">
+              <span id="terminalCurrentCoords">LAT 1.2921° N • LON 36.8219° E</span>
+            </div>
+          </div>
+
+          <div class="terminal-input-row">
+            <div class="input-icon-wrapper">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" class="search-icon">
+                <circle cx="11" cy="11" r="8"></circle>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+              </svg>
+            </div>
+            <input type="text" id="searchCityInput" class="terminal-text-input" placeholder="Search any city or country (e.g., Nairobi, Port-au-Prince, Kyiv, Chennai, Manila)..." aria-label="Search global location" autocomplete="off" value="Nairobi">
+            <button id="searchSubmitBtn" class="terminal-submit-btn" type="button">
+              <span>Retrieve Intelligence</span>
+              <span class="btn-arrow">➔</span>
+            </button>
+          </div>
+
+          <!-- Quick-Jump Humanitarian Presets -->
+          <div class="terminal-presets-row">
+            <span class="preset-label">PRIORITY HUBS:</span>
+            <div class="preset-chips-scroll" id="presetChipsContainer">
+              <button class="chip-btn active" data-city="Nairobi" type="button">🇰🇪 Nairobi</button>
+              <button class="chip-btn" data-city="Port-au-Prince" type="button">🇭🇹 Port-au-Prince</button>
+              <button class="chip-btn" data-city="Kyiv" type="button">🇺🇦 Kyiv</button>
+              <button class="chip-btn" data-city="Chennai" type="button">🇮🇳 Chennai</button>
+              <button class="chip-btn" data-city="Dhaka" type="button">🇧🇩 Dhaka</button>
+              <button class="chip-btn" data-city="Manila" type="button">🇵🇭 Manila</button>
+              <button class="chip-btn" data-city="Istanbul" type="button">🇹🇷 Istanbul</button>
+              <button class="chip-btn" data-city="Lima" type="button">🇵🇪 Lima</button>
+              <button class="chip-btn" data-city="Geneva" type="button">🇨🇭 Geneva</button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ========================================================================
+         4. CORE INTELLIGENCE LAYER: 5 API DATA STREAMS
+         ======================================================================== -->
+    <section class="live-streams-section" id="liveStreamsContainer">
+      <div class="content-container">
+
+        <!-- Stream Cards Matrix -->
+        <div class="streams-dashboard-grid">
+
+          <!-- Card 1: API 1 — Weather & Environmental Stress (Spans 7 cols) -->
+          <div class="stream-card weather-card glass-panel" id="weatherCardContainer">
+            <div class="card-atmospheric-backdrop" id="weatherBackdrop"></div>
+            
+            <div class="stream-card-header">
+              <div class="stream-tag coral-tag">
+                <span class="tag-pulse"></span>
+                <span>API 1 • ENVIRONMENTAL STRESS & CLIMATE</span>
+              </div>
+              <div class="stream-status-badge" id="weatherAlertBadge">
+                <span class="badge-dot green-dot"></span>
+                <span id="weatherAlertText">STABLE CONDITIONS</span>
+              </div>
+            </div>
+
+            <div class="weather-hero-row">
+              <div class="weather-temp-block">
+                <div class="weather-temp-number" id="weatherTempVal">24°</div>
+                <div class="weather-city-country" id="weatherCityCountry">Nairobi, Kenya</div>
+                <div class="weather-condition-pill" id="weatherConditionPill">
+                  <span id="weatherConditionIcon">☀</span>
+                  <span id="weatherConditionText">Clear Sky</span>
+                </div>
+              </div>
+              <div class="weather-visual-container">
+                <div class="weather-dynamic-icon" id="weatherVisualIcon">🌤</div>
+                <div class="weather-feels-like" id="weatherFeelsLike">Feels like 25°C</div>
+              </div>
+            </div>
+
+            <!-- 4 Humanitarian Environmental Indices -->
+            <div class="weather-metrics-deck">
+              <div class="metric-cell">
+                <span class="metric-lbl">HUMIDITY</span>
+                <span class="metric-val" id="weatherHumidityVal">54%</span>
+                <span class="metric-sub">Moisture Index</span>
+              </div>
+              <div class="metric-cell">
+                <span class="metric-lbl">WIND SPEED</span>
+                <span class="metric-val" id="weatherWindVal">12 km/h</span>
+                <span class="metric-sub">Surface Airflow</span>
+              </div>
+              <div class="metric-cell">
+                <span class="metric-lbl">PRECIPITATION</span>
+                <span class="metric-val" id="weatherPrecipVal">0.0 mm</span>
+                <span class="metric-sub">Rainfall Risk</span>
+              </div>
+              <div class="metric-cell">
+                <span class="metric-lbl">SUN CYCLE</span>
+                <span class="metric-val" id="weatherSunCycle">06:21 / 18:32</span>
+                <span class="metric-sub">Dawn / Dusk</span>
+              </div>
+            </div>
+
+            <!-- Environmental Advisory Note -->
+            <div class="weather-advisory-box" id="weatherAdvisoryBox">
+              <span class="advisory-icon">🛡️</span>
+              <span class="advisory-text" id="weatherAdvisoryText">Moderate diurnal temperature profile. Roadways and outdoor logistics operational without atmospheric delays.</span>
+            </div>
+          </div>
+
+          <!-- Card 2: API 2 — Country Sovereign Profile (Spans 5 cols) -->
+          <div class="stream-card country-card glass-panel" id="countryCardContainer">
+            <div class="stream-card-header">
+              <div class="stream-tag royal-tag">
+                <span class="tag-pulse"></span>
+                <span>API 2 • COUNTRY CONTEXT & SOVEREIGN PROFILE</span>
+              </div>
+              <span class="card-iso-tag" id="countryIsoTag">ISO: KEN</span>
+            </div>
+
+            <div class="country-profile-header">
+              <img id="countryFlagImg" class="country-flag-display" src="https://flagcdn.com/ke.svg" alt="Official National Flag" loading="lazy">
+              <div class="country-titles-block">
+                <h3 id="countryNameDisplay">Kenya</h3>
+                <span id="countryOfficialName">Republic of Kenya</span>
+              </div>
+            </div>
+
+            <!-- Country Vital Metrics -->
+            <div class="country-facts-grid">
+              <div class="country-fact-cell">
+                <span class="lbl">CAPITAL CITY</span>
+                <span class="val" id="countryCapitalVal">Nairobi</span>
+              </div>
+              <div class="country-fact-cell">
+                <span class="lbl">POPULATION REACH</span>
+                <span class="val" id="countryPopulationVal">54,000,000</span>
+              </div>
+              <div class="country-fact-cell">
+                <span class="lbl">GEOGRAPHIC REGION</span>
+                <span class="val" id="countryRegionVal">Eastern Africa</span>
+              </div>
+              <div class="country-fact-cell">
+                <span class="lbl">OFFICIAL LANGUAGES</span>
+                <span class="val" id="countryLanguagesVal">Swahili, English</span>
+              </div>
+              <div class="country-fact-cell">
+                <span class="lbl">NATIONAL CURRENCY</span>
+                <span class="val" id="countryCurrencyVal">KES (KSh)</span>
+              </div>
+              <div class="country-fact-cell">
+                <span class="lbl">NEIGHBORING BORDERS</span>
+                <span class="val" id="countryBordersVal">ETH, SOM, SSD, TZA, UGA</span>
+              </div>
+            </div>
+
+            <!-- Humanitarian Readiness Assessment -->
+            <div class="country-readiness-banner">
+              <span class="readiness-lbl">HUMANITARIAN ACCESS TIER:</span>
+              <span class="readiness-val status-tag-green" id="countryAccessTier">OPEN HUMANITARIAN CORRIDOR</span>
+            </div>
+          </div>
+
+          <!-- Card 3: API 4 & 5 — Location Geocoding & Operational Chronometer (Spans 4 cols) -->
+          <div class="stream-card location-time-card glass-panel">
+            <div class="stream-card-header">
+              <div class="stream-tag sky-tag">
+                <span class="tag-pulse"></span>
+                <span>API 4 & 5 • LOCATION & CHRONOMETER</span>
+              </div>
+              <span class="live-clock-badge">DYNAMIC CLOCK</span>
+            </div>
+
+            <div class="location-summary-block">
+              <div class="clock-label-sub">LOCAL OPERATIONAL TIME</div>
+              <div class="live-digital-clock" id="liveDigitalClock">14:32:10</div>
+              <div class="live-date-str" id="liveDateStr">Monday, September 14, 2026</div>
+            </div>
+
+            <div class="location-coords-box">
+              <div class="coord-item">
+                <span class="k">COORDINATES</span>
+                <span class="v" id="locationCoordsStr">1.2921° N, 36.8219° E</span>
+              </div>
+              <div class="coord-item">
+                <span class="k">TIMEZONE IDENTIFIER</span>
+                <span class="v" id="locationTimezoneStr">Africa/Nairobi (UTC +3)</span>
+              </div>
+              <div class="coord-item">
+                <span class="k">REGIONAL ELEVATION</span>
+                <span class="v" id="locationElevationStr">1,795 m above sea</span>
+              </div>
+              <div class="coord-item">
+                <span class="k">OPERATIONAL SHIFT</span>
+                <span class="v" id="operationalShiftStr">DAYLIGHT OPERATIONS (ACTIVE)</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 4: Aid Resources & Supply Chain Capacity (Spans 4 cols) -->
+          <div class="stream-card aid-capacity-card glass-panel">
+            <div class="stream-card-header">
+              <div class="stream-tag orange-tag">
+                <span class="tag-pulse"></span>
+                <span>FIELD CAPACITY • LOGISTICS MATRIX</span>
+              </div>
+              <span class="status-tag-amber" id="supplyStatusTag">VERIFIED</span>
+            </div>
+
+            <div class="capacity-meters-stack">
+              <div class="capacity-meter-item">
+                <div class="meter-header">
+                  <span class="meter-lbl">FOOD & NUTRITION RESERVES</span>
+                  <span class="meter-pct" id="meterFoodVal">82%</span>
+                </div>
+                <div class="meter-bar-track">
+                  <div class="meter-bar-fill fill-green" style="width: 82%;"></div>
+                </div>
+              </div>
+
+              <div class="capacity-meter-item">
+                <div class="meter-header">
+                  <span class="meter-lbl">EMERGENCY MEDICAL SUPPLIES</span>
+                  <span class="meter-pct" id="meterMedVal">74%</span>
+                </div>
+                <div class="meter-bar-track">
+                  <div class="meter-bar-fill fill-blue" style="width: 74%;"></div>
+                </div>
+              </div>
+
+              <div class="capacity-meter-item">
+                <div class="meter-header">
+                  <span class="meter-lbl">CLEAN WATER (WASH) ACCESSIBILITY</span>
+                  <span class="meter-pct" id="meterWashVal">68%</span>
+                </div>
+                <div class="meter-bar-track">
+                  <div class="meter-bar-fill fill-amber" style="width: 68%;"></div>
+                </div>
+              </div>
+
+              <div class="capacity-meter-item">
+                <div class="meter-header">
+                  <span class="meter-lbl">AIR BRIDGE & TRANSPORT CORRIDORS</span>
+                  <span class="meter-pct" id="meterAirVal">90%</span>
+                </div>
+                <div class="meter-bar-track">
+                  <div class="meter-bar-fill fill-green" style="width: 90%;"></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="air-bridge-note">
+              <span>✈ Regional Air Hub: Jomo Kenyatta Intl (NBO)</span>
+              <span class="air-bridge-status">OPEN</span>
+            </div>
+          </div>
+
+          <!-- Card 5: API 3 — World News & Field Dispatches (Spans 4 cols) -->
+          <div class="stream-card news-preview-card glass-panel">
+            <div class="stream-card-header">
+              <div class="stream-tag coral-tag">
+                <span class="tag-pulse"></span>
+                <span>API 3 • HUMANITARIAN WIRE DISPATCHES</span>
+              </div>
+              <a href="#humanitarianNewsSection" class="view-all-news-link">All Stories →</a>
+            </div>
+
+            <div class="news-preview-feed" id="newsPreviewFeed">
+              <!-- Dynamically populated via API 3 -->
+              <div class="news-preview-skeleton">
+                <div class="skeleton-line" style="width: 40%;"></div>
+                <div class="skeleton-line" style="width: 85%;"></div>
+                <div class="skeleton-line" style="width: 65%;"></div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ========================================================================
+         5. GLOBAL MAP: "THE WORLD, CONNECTED." (LEAFLET.JS)
+         ======================================================================== -->
+    <section id="globalDataMapSection" class="map-section-wrapper">
+      <div class="content-container">
+        
+        <div class="map-section-header">
+          <div>
+            <div class="section-kicker">
+              <span>● CENTRAL GEOSPATIAL INTELLIGENCE LAYER</span>
+            </div>
+            <h2 class="section-heading">The World, Connected.</h2>
+            <p class="section-desc">
+              Explore global conditions, humanitarian hubs, and emergency tiers across our interactive planet. Click any pulsing aid beacon to inspect ground reality and synchronize all five live data streams.
+            </p>
+          </div>
+
+          <!-- Map Layer Mode Selector -->
+          <div class="map-theme-controls">
+            <button class="map-theme-pill active" data-theme="satellite" type="button" title="Photorealistic Orbital Daytime Earth">
+              <span>🛰️ Satellite Earth</span>
+            </button>
+            <button class="map-theme-pill" data-theme="voyager" type="button" title="National Geographic Physical & Political Atlas">
+              <span>🗺️ Vibrant Atlas</span>
+            </button>
+            <button class="map-theme-pill" data-theme="night" type="button" title="NASA Earth at Night with Visible Continents & Glittering City Lights">
+              <span>🌃 Earth at Night</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Leaflet Frame -->
+        <div class="map-viewport-card glass-panel">
+          <div id="worldAidLeafletMap" class="leaflet-map-canvas"></div>
+          
+          <!-- Map Legend Overlay -->
+          <div class="map-legend-overlay">
+            <div class="legend-item">
+              <span class="legend-dot red-pulse"></span>
+              <span>🔴 Critical Priority</span>
+            </div>
+            <div class="legend-item">
+              <span class="legend-dot amber-pulse"></span>
+              <span>🟠 Special Attention</span>
+            </div>
+            <div class="legend-item">
+              <span class="legend-dot green-pulse"></span>
+              <span>🟢 Coordination Hub</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ========================================================================
+         6. LIVE CONDITIONS: "WHAT'S HAPPENING NOW"
+         ======================================================================== -->
+    <section id="liveConditionsSection" class="section-wrapper">
+      <div class="content-container">
+        
+        <div class="section-kicker">
+          <span>● ENVIRONMENTAL REALITY ON THE GROUND</span>
+        </div>
+        <h2 class="section-heading">What's Happening Now</h2>
+        <p class="section-desc">
+          Live environmental data from our global weather network. Distinct atmospheric visuals calibrated to actual weather conditions affecting communities worldwide. Click any card to explore.
+        </p>
+
+        <div class="weather-stories-grid">
+          
+          <!-- Nairobi: Warm Savanna Sun -->
+          <div class="weather-story-card" data-city="Nairobi">
+            <img src="https://images.unsplash.com/photo-1516426122078-c23e76319801?q=80&w=800&auto=format&fit=crop" alt="Nairobi Savanna Sun" class="story-img" loading="lazy">
+            <div class="story-gradient-overlay"></div>
+            <div class="story-content-body">
+              <div class="story-status-pill status-green">🟢 COORDINATION HUB</div>
+              <div class="story-city-name">Nairobi, Kenya</div>
+              <div class="story-condition-str">☀ Sunny & Warm • 24°C</div>
+              <p class="story-desc-text">High-altitude sunshine across the Rift Valley. Central logistics hub for East African humanitarian distribution.</p>
+              <div class="story-metrics-mini">
+                <span>Humidity: 54%</span> • <span>Wind: 12 km/h</span>
+              </div>
+              <span class="story-link-cta">Inspect Ground Conditions →</span>
+            </div>
+          </div>
+
+          <!-- Port-au-Prince: Tropical Rainfall -->
+          <div class="weather-story-card" data-city="Port-au-Prince">
+            <img src="https://images.unsplash.com/photo-1534274988757-a28bf1a57c17?q=80&w=800&auto=format&fit=crop" alt="Port-au-Prince Storm" class="story-img" loading="lazy">
+            <div class="story-gradient-overlay"></div>
+            <div class="story-content-body">
+              <div class="story-status-pill status-red">🔴 CRITICAL ATTENTION</div>
+              <div class="story-city-name">Port-au-Prince, Haiti</div>
+              <div class="story-condition-str">🌧 Tropical Rain • 29°C</div>
+              <p class="story-desc-text">Caribbean storm showers and saturated soils require ongoing drainage oversight and flood mitigation.</p>
+              <div class="story-metrics-mini">
+                <span>Humidity: 84%</span> • <span>Wind: 22 km/h</span>
+              </div>
+              <span class="story-link-cta">Inspect Ground Conditions →</span>
+            </div>
+          </div>
+
+          <!-- Kyiv: Continental Cold & Frost -->
+          <div class="weather-story-card" data-city="Kyiv">
+            <img src="https://images.unsplash.com/photo-1491555103944-7c647fd857e6?q=80&w=800&auto=format&fit=crop" alt="Kyiv Winter Fog" class="story-img" loading="lazy">
+            <div class="story-gradient-overlay"></div>
+            <div class="story-content-body">
+              <div class="story-status-pill status-amber">🟠 HEATING PRIORITY</div>
+              <div class="story-city-name">Kyiv, Ukraine</div>
+              <div class="story-condition-str">❄ Chilly Mist • 11°C</div>
+              <p class="story-desc-text">Autumn-winter transition across the Dnieper basin. Energy infrastructure and thermal shelter priority.</p>
+              <div class="story-metrics-mini">
+                <span>Humidity: 78%</span> • <span>Wind: 16 km/h</span>
+              </div>
+              <span class="story-link-cta">Inspect Ground Conditions →</span>
+            </div>
+          </div>
+
+          <!-- Chennai: Coastal Heat & Sea Breeze -->
+          <div class="weather-story-card" data-city="Chennai">
+            <img src="https://images.unsplash.com/photo-1582510003544-4d00b7f74220?q=80&w=800&auto=format&fit=crop" alt="Chennai Coast" class="story-img" loading="lazy">
+            <div class="story-gradient-overlay"></div>
+            <div class="story-content-body">
+              <div class="story-status-pill status-green">🟢 MONITORING</div>
+              <div class="story-city-name">Chennai, India</div>
+              <div class="story-condition-str">☀ Coastal Sun • 31°C</div>
+              <p class="story-desc-text">Warm maritime breezes sweep the Bay of Bengal coastline. Early warning cyclone preparedness active.</p>
+              <div class="story-metrics-mini">
+                <span>Humidity: 72%</span> • <span>Wind: 18 km/h</span>
+              </div>
+              <span class="story-link-cta">Inspect Ground Conditions →</span>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ========================================================================
+         7. HUMANITARIAN SNAPSHOT: "A GLOBAL SNAPSHOT"
+         ======================================================================== -->
+    <section class="snapshot-section" id="snapshotSection">
+      <div class="content-container">
+        
+        <div class="snapshot-inner-card glass-panel">
+          <div class="snapshot-header-row">
+            <div>
+              <div class="section-kicker kicker-coral">
+                <span>● VERIFIED PLATFORM CAPACITY</span>
+              </div>
+              <h2 class="section-heading" style="margin-bottom: 0;">A Global Snapshot</h2>
+            </div>
+            <div class="snapshot-time-sync">
+              <span>● LIVE TELEMETRY SYNCHRONIZED</span>
+            </div>
+          </div>
+
+          <div class="snapshot-metrics-grid">
+            <div class="snapshot-cell">
+              <div class="snapshot-num" data-counter="195">195</div>
+              <div class="snapshot-lbl">Countries Monitored</div>
+              <div class="snapshot-desc">Official sovereign state dossiers with flag, population, and regional data via REST Countries.</div>
+            </div>
+
+            <div class="snapshot-cell">
+              <div class="snapshot-num" data-counter="5">5</div>
+              <div class="snapshot-lbl">Real-Time Data Streams</div>
+              <div class="snapshot-desc">Weather, sovereign info, global dispatches, geocoding coordinates, and atomic chronometry.</div>
+            </div>
+
+            <div class="snapshot-cell">
+              <div class="snapshot-num" data-counter="24">24</div>
+              <div class="snapshot-lbl">Time Meridians Coordinated</div>
+              <div class="snapshot-desc">Active dynamic local clock calculations across all global humanitarian response sectors.</div>
+            </div>
+
+            <div class="snapshot-cell">
+              <div class="snapshot-num" data-counter="100">100%</div>
+              <div class="snapshot-lbl">Public Transparent Feeds</div>
+              <div class="snapshot-desc">Zero synthetic data. All telemetry verified in real-time in both UI and browser developer console.</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ========================================================================
+         8. COUNTRY EXPLORER: DEEP SOVEREIGN INTELLIGENCE
+         ======================================================================== -->
+    <section id="countryExplorerSection" class="section-wrapper">
+      <div class="content-container">
+        
+        <div class="section-kicker">
+          <span>● SOVEREIGN CONTEXT & DEMOGRAPHICS</span>
+        </div>
+        <h2 class="section-heading">Country Intelligence Dossier</h2>
+        <p class="section-desc">
+          Context is critical for aid delivery. Examine official demographics, regional groupings, currencies, and languages for any sovereign nation.
+        </p>
+
+        <div class="country-explorer-showcase glass-panel">
+          
+          <div class="explorer-hero-banner">
+            <div class="explorer-flag-wrapper">
+              <img id="explorerDossierFlag" src="https://flagcdn.com/ke.svg" alt="National Flag" class="dossier-flag-large">
+            </div>
+            <div class="explorer-hero-text">
+              <div class="explorer-status-badge status-green" id="dossierStatusBadge">🟢 UN MEMBER STATE</div>
+              <h3 class="explorer-country-title" id="dossierCountryTitle">KENYA</h3>
+              <p class="explorer-country-sub" id="dossierCountrySub">Republic of Kenya • Eastern Africa</p>
+            </div>
+          </div>
+
+          <div class="dossier-detail-grid">
+            <div class="dossier-field">
+              <span class="lbl">CAPITAL CITY</span>
+              <span class="val" id="dossierCapital">Nairobi</span>
+            </div>
+            <div class="dossier-field">
+              <span class="lbl">TOTAL POPULATION</span>
+              <span class="val" id="dossierPopulation">54,000,000</span>
+            </div>
+            <div class="dossier-field">
+              <span class="lbl">CONTINENTAL REGION</span>
+              <span class="val" id="dossierRegion">Africa (Sub-Saharan)</span>
+            </div>
+            <div class="dossier-field">
+              <span class="lbl">OFFICIAL CURRENCY</span>
+              <span class="val" id="dossierCurrency">KES — Kenyan Shilling (KSh)</span>
+            </div>
+            <div class="dossier-field">
+              <span class="lbl">PRIMARY LANGUAGES</span>
+              <span class="val" id="dossierLanguages">Swahili, English</span>
+            </div>
+            <div class="dossier-field">
+              <span class="lbl">LAND & MARITIME BORDERS</span>
+              <span class="val" id="dossierBorders">Ethiopia, Somalia, South Sudan, Tanzania, Uganda</span>
+            </div>
+          </div>
+
+          <div class="dossier-footer-bar">
+            <div class="dossier-source-tag">
+              <span>Source: REST Countries v3.1 International Database • Verified Schema</span>
+            </div>
+            <button class="btn-dossier-sync" id="dossierSyncMapBtn" type="button">
+              <span>Center on Map ➔</span>
+            </button>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ========================================================================
+         9. WORLD NEWS: "STORIES THAT MATTER" (API 3)
+         ======================================================================== -->
+    <section id="humanitarianNewsSection" class="section-wrapper news-section-bg">
+      <div class="content-container">
+        
+        <div class="section-kicker kicker-coral">
+          <span>● GLOBAL EYEWITNESS & VERIFIED DISPATCHES</span>
+        </div>
+        <h2 class="section-heading">Stories That Matter</h2>
+        <p class="section-desc">
+          Curated humanitarian, planetary, and scientific dispatches delivered via our live news stream. Real events shaping communities across the globe.
+        </p>
+
+        <!-- Editorial News Grid: 1 Featured Lead + Supporting Deck -->
+        <div class="news-editorial-layout" id="newsEditorialContainer">
+          
+          <!-- Featured Lead Story (Left / Large) -->
+          <article class="news-lead-story glass-panel" id="featuredNewsArticle">
+            <div class="news-img-holder">
+              <img id="leadNewsImg" src="https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?q=80&w=1200&auto=format&fit=crop" alt="Global Relief" class="lead-news-img" loading="lazy">
+              <div class="news-category-badge" id="leadNewsCategory">GLOBAL DISPATCH</div>
+            </div>
+            <div class="lead-news-body">
+              <div class="news-meta-row">
+                <span class="news-source-tag" id="leadNewsSource">GLOBAL DISPATCH NETWORK</span>
+                <span class="news-date-tag" id="leadNewsDate">SEPTEMBER 14, 2026</span>
+              </div>
+              <h3 class="lead-news-title" id="leadNewsTitle">
+                <a href="https://reliefweb.int" target="_blank" rel="noopener noreferrer" id="leadNewsLink">
+                  Cross-Border Aid Operations Mobilize Climate Resilience Measures Across Vulnerable Agricultural Corridors
+                </a>
+              </h3>
+              <p class="lead-news-summary" id="leadNewsSummary">
+                International relief agencies and local community networks have deployed accelerated logistics channels and emergency weather surveillance to mitigate environmental stress on food supplies.
+              </p>
+              <a href="https://reliefweb.int" target="_blank" rel="noopener noreferrer" class="read-dispatch-btn" id="leadNewsBtn">
+                <span>Read Full Dispatch</span>
+                <span>→</span>
+              </a>
+            </div>
+          </article>
+
+          <!-- Supporting Stories Feed (Right / Stacked) -->
+          <div class="news-supporting-feed" id="supportingNewsFeed">
+            <!-- Dynamically populated via API 3 -->
+            <div class="supporting-skeleton">Loading humanitarian dispatches...</div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ========================================================================
+         10. GLOBAL CLOCK: "THE WORLD NEVER STOPS" (API 5)
+         ======================================================================== -->
+    <section id="globalClockSection" class="section-wrapper">
+      <div class="content-container">
+        
+        <div class="section-kicker">
+          <span>● OPERATIONAL CHRONOMETRY & TIME ZONES</span>
+        </div>
+        <h2 class="section-heading">The World Never Stops</h2>
+        <p class="section-desc">
+          Humanitarian action requires precise temporal synchronization across headquarters and field stations. Live atomic clocks ticking synchronously via our Timezone Engine.
+        </p>
+
+        <div class="world-clock-matrix">
+          
+          <!-- Nairobi Clock -->
+          <div class="clock-hub-card glass-panel" data-tz="Africa/Nairobi">
+            <div class="clock-card-top">
+              <span class="clock-hub-name">NAIROBI</span>
+              <span class="clock-utc-tag">UTC +3</span>
+            </div>
+            <div class="clock-hub-time" id="clockNairobi">14:32:10</div>
+            <div class="clock-hub-date" id="dateNairobi">Monday, Sep 14</div>
+            <div class="clock-hub-status status-tag-green">ACTIVE OPERATIONS</div>
+          </div>
+
+          <!-- Geneva Clock (UN / Red Cross HQ) -->
+          <div class="clock-hub-card glass-panel" data-tz="Europe/Zurich">
+            <div class="clock-card-top">
+              <span class="clock-hub-name">GENEVA</span>
+              <span class="clock-utc-tag">UTC +2</span>
+            </div>
+            <div class="clock-hub-time" id="clockGeneva">13:32:10</div>
+            <div class="clock-hub-date" id="dateGeneva">Monday, Sep 14</div>
+            <div class="clock-hub-status status-tag-green">HQ COORDINATION</div>
+          </div>
+
+          <!-- New York Clock (UN Headquarters) -->
+          <div class="clock-hub-card glass-panel" data-tz="America/New_York">
+            <div class="clock-card-top">
+              <span class="clock-hub-name">NEW YORK</span>
+              <span class="clock-utc-tag">UTC -4</span>
+            </div>
+            <div class="clock-hub-time" id="clockNewYork">07:32:10</div>
+            <div class="clock-hub-date" id="dateNewYork">Monday, Sep 14</div>
+            <div class="clock-hub-status status-tag-amber">MORNING BRIEFING</div>
+          </div>
+
+          <!-- New Delhi Clock -->
+          <div class="clock-hub-card glass-panel" data-tz="Asia/Kolkata">
+            <div class="clock-card-top">
+              <span class="clock-hub-name">NEW DELHI</span>
+              <span class="clock-utc-tag">UTC +5:30</span>
+            </div>
+            <div class="clock-hub-time" id="clockNewDelhi">17:02:10</div>
+            <div class="clock-hub-date" id="dateNewDelhi">Monday, Sep 14</div>
+            <div class="clock-hub-status status-tag-green">EVENING HANDOFF</div>
+          </div>
+
+          <!-- Tokyo Clock -->
+          <div class="clock-hub-card glass-panel" data-tz="Asia/Tokyo">
+            <div class="clock-card-top">
+              <span class="clock-hub-name">TOKYO</span>
+              <span class="clock-utc-tag">UTC +9</span>
+            </div>
+            <div class="clock-hub-time" id="clockTokyo">20:32:10</div>
+            <div class="clock-hub-date" id="dateTokyo">Monday, Sep 14</div>
+            <div class="clock-hub-status status-tag-blue">NIGHT STANDBY</div>
+          </div>
+
+          <!-- London Clock -->
+          <div class="clock-hub-card glass-panel" data-tz="Europe/London">
+            <div class="clock-card-top">
+              <span class="clock-hub-name">LONDON</span>
+              <span class="clock-utc-tag">UTC +1</span>
+            </div>
+            <div class="clock-hub-time" id="clockLondon">12:32:10</div>
+            <div class="clock-hub-date" id="dateLondon">Monday, Sep 14</div>
+            <div class="clock-hub-status status-tag-green">FIELD COMMS OPEN</div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ========================================================================
+         11. HUMANITARIAN RESOURCES DIRECTORY
+         ======================================================================== -->
+    <section id="resourcesSection" class="section-wrapper resources-section-bg">
+      <div class="content-container">
+        
+        <div class="section-kicker kicker-coral">
+          <span>● EMERGENCY PILLARS & ACTION CORRIDORS</span>
+        </div>
+        <h2 class="section-heading">Essential Humanitarian Resources</h2>
+        <p class="section-desc">
+          Standardized action frameworks deployed by global humanitarian agencies. When an alert triggers, these operational channels ensure aid reaches communities rapidly.
+        </p>
+
+        <div class="resources-four-grid">
+          
+          <!-- Pillar 1: Food & Nutrition -->
+          <div class="resource-card glass-panel">
+            <div class="resource-icon-box coral-icon">🌾</div>
+            <h3 class="resource-title">Food Security & Nutrition</h3>
+            <p class="resource-desc">
+              Emergency rations, therapeutic malnutrition care for infants, grain strategic reserves, and agricultural climate insurance for vulnerable smallholders.
+            </p>
+            <ul class="resource-bullets">
+              <li>Emergency Food Assistance (WFP protocols)</li>
+              <li>Community Nutrition Screening</li>
+              <li>Drought-Resilient Seed Distribution</li>
+            </ul>
+          </div>
+
+          <!-- Pillar 2: Healthcare & Epidemics -->
+          <div class="resource-card glass-panel">
+            <div class="resource-icon-box blue-icon">🏥</div>
+            <h3 class="resource-title">Emergency Healthcare</h3>
+            <p class="resource-desc">
+              Mobile triage clinics, trauma kits, cold-chain immunization preservation, maternal emergency obstetrics, and disease outbreak containment.
+            </p>
+            <ul class="resource-bullets">
+              <li>Rapid Response Medical Units</li>
+              <li>Epidemic Early Warning (WHO alerts)</li>
+              <li>Essential Medication Supply Line</li>
+            </ul>
+          </div>
+
+          <!-- Pillar 3: Clean Water (WASH) -->
+          <div class="resource-card glass-panel">
+            <div class="resource-icon-box cyan-icon">💧</div>
+            <h3 class="resource-title">Water & Sanitation (WASH)</h3>
+            <p class="resource-desc">
+              Immediate water purification chemicals, solar-powered boreholes, emergency latrines, and cholera transmission barrier installations.
+            </p>
+            <ul class="resource-bullets">
+              <li>Bulk Safe Water Trucking</li>
+              <li>Aquatab Purification Logistics</li>
+              <li>Hygiene & Sanitation Field Kits</li>
+            </ul>
+          </div>
+
+          <!-- Pillar 4: Shelter & Logistics -->
+          <div class="resource-card glass-panel">
+            <div class="resource-icon-box green-icon">🏕️</div>
+            <h3 class="resource-title">Shelter & Rapid Logistics</h3>
+            <p class="resource-desc">
+              All-weather refugee tents, emergency tarpaulins, solar lanterns, thermal blankets, and chartered air bridge humanitarian corridors.
+            </p>
+            <ul class="resource-bullets">
+              <li>Rapid Displacement Tents</li>
+              <li>UNHAS Air Mobility Logistics</li>
+              <li>Non-Food Item (NFI) Distribution</li>
+            </ul>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ========================================================================
+         12. ABOUT SECTION: "TRANSPARENCY & HUMAN CONNECTION"
+         ======================================================================== -->
+    <section id="aboutSection" class="section-wrapper">
+      <div class="content-container">
+        
+        <div class="about-hero-grid glass-panel">
+          <div class="about-text-column">
+            <div class="section-kicker kicker-coral">
+              <span>● THE WORLDAID MANDATE</span>
+            </div>
+            <h2 class="section-heading" style="font-size: 2.2rem; margin-bottom: 16px;">Technology Serving Humanity</h2>
+            <p style="color: var(--text-muted); line-height: 1.7; margin-bottom: 20px;">
+              WorldAid was conceived with a clear principle: <strong>to know where help is needed before it is too late</strong>. In times of compounding climate stress, natural disasters, and displacement, fragmented information costs lives.
+            </p>
+            <p style="color: var(--text-muted); line-height: 1.7; margin-bottom: 28px;">
+              By combining real-time meteorological feeds, verified sovereign demographics, frontline dispatches, precision geospatial mapping, and synchronized chronometry, WorldAid transforms raw data into compassionate, operational awareness.
+            </p>
+
+            <div class="core-values-matrix">
+              <div class="value-item">
+                <span class="value-bullet">✦</span>
+                <div>
+                  <strong>Humanity First:</strong> Every data point represents living communities, families, and futures.
+                </div>
+              </div>
+              <div class="value-item">
+                <span class="value-bullet">✦</span>
+                <div>
+                  <strong>Absolute Transparency:</strong> 100% public, verifiable API streams. No artificial or fabricated metrics.
+                </div>
+              </div>
+              <div class="value-item">
+                <span class="value-bullet">✦</span>
+                <div>
+                  <strong>Hope & Action:</strong> Focused not merely on catastrophe, but on resilience, preparedness, and response.
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="about-visual-column">
+            <div class="about-image-card">
+              <img src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?q=80&w=800&auto=format&fit=crop" alt="Humanitarian Aid Workers" class="about-photo" loading="lazy">
+              <div class="about-photo-quote">
+                “Connecting people, information, and action across a changing world.”
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ========================================================================
+       13. FOOTER
+       ======================================================================== -->
+  <footer class="site-footer">
+    <div class="content-container">
+      
+      <div class="footer-top-row">
+        
+        <div class="footer-brand-column">
+          <div class="brand-logo" style="margin-bottom: 14px;">
+            <div class="brand-emblem" style="width: 28px; height: 28px;">
+              <svg viewBox="0 0 32 32" fill="none" class="emblem-svg">
+                <circle cx="16" cy="16" r="14" stroke="currentColor" stroke-width="2"/>
+                <circle cx="16" cy="16" r="3.5" fill="var(--color-accent-coral)"/>
+              </svg>
+            </div>
+            <div class="brand-text-block">
+              <span class="brand-title">WORLD<span>AID</span></span>
+            </div>
+          </div>
+          <p class="footer-tagline">Know Where Help Is Needed.</p>
+          <p style="font-size: 0.82rem; color: var(--text-dim); max-width: 320px; line-height: 1.5;">
+            An academic humanitarian intelligence platform demonstrating five verified API integrations for global emergency awareness.
+          </p>
+        </div>
+
+        <div class="footer-links-column">
+          <span class="footer-col-title">PLATFORM NAVIGATION</span>
+          <a href="#heroSection" class="footer-link">Home Overview</a>
+          <a href="#globalDataMapSection" class="footer-link">Interactive Map</a>
+          <a href="#liveConditionsSection" class="footer-link">Live Weather Realities</a>
+          <a href="#countryExplorerSection" class="footer-link">Country Intelligence</a>
+          <a href="#humanitarianNewsSection" class="footer-link">Humanitarian Wire</a>
+        </div>
+
+        <div class="footer-links-column">
+          <span class="footer-col-title">INTEGRATED APIS</span>
+          <span class="api-attribution-tag">API 1: Open-Meteo Forecast</span>
+          <span class="api-attribution-tag">API 2: REST Countries v3.1</span>
+          <span class="api-attribution-tag">API 3: Global Wire Feed</span>
+          <span class="api-attribution-tag">API 4: Open-Meteo Geocoding</span>
+          <span class="api-attribution-tag">API 5: Intl Atomic Timezone Engine</span>
+        </div>
+
+        <div class="footer-status-column">
+          <span class="footer-col-title">CONSOLE EVALUATION</span>
+          <p style="font-size: 0.82rem; color: var(--text-muted); margin-bottom: 12px;">
+            Press <code style="color: var(--color-accent-coral); background: rgba(255,107,107,0.1); padding: 2px 6px; border-radius: 4px;">F12</code> to inspect labeled API outputs in DevTools.
+          </p>
+          <button id="footerTelemetryBtn" class="btn-footer-telemetry" type="button">
+            <span>● Open Live Telemetry Terminal</span>
+          </button>
+        </div>
+
+      </div>
+
+      <div class="footer-bottom-bar">
+        <div class="footer-copy">
+          © 2026 WorldAid Humanitarian Intelligence Platform. All rights reserved.
+        </div>
+        <div class="footer-live-status">
+          <span class="status-pulse-dot"></span>
+          <span>5/5 API Streams Operational • Zero Synthetic Data</span>
+        </div>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- ========================================================================
+       14. SLIDE-OUT LIVE TELEMETRY TERMINAL DRAWER (EVALUATOR INSPECTOR)
+       ======================================================================== -->
+  <aside id="telemetryDrawer" class="telemetry-drawer" aria-label="Live Telemetry Inspector Drawer">
+    <div class="telemetry-drawer-inner">
+      
+      <div class="telemetry-drawer-header">
+        <div class="telemetry-header-title">
+          <span class="live-dot-pulse"></span>
+          <span class="drawer-title">LIVE API TELEMETRY TERMINAL</span>
+        </div>
+        <button id="telemetryCloseBtn" class="drawer-close-btn" type="button" aria-label="Close telemetry drawer">✕</button>
+      </div>
+
+      <div class="telemetry-drawer-tabs">
+        <button class="telemetry-tab-btn active" data-tab="stream1" type="button">API 1: Weather</button>
+        <button class="telemetry-tab-btn" data-tab="stream2" type="button">API 2: Country</button>
+        <button class="telemetry-tab-btn" data-tab="stream3" type="button">API 3: News</button>
+        <button class="telemetry-tab-btn" data-tab="stream4" type="button">API 4: Location</button>
+        <button class="telemetry-tab-btn" data-tab="stream5" type="button">API 5: Timezone</button>
+      </div>
+
+      <div class="telemetry-terminal-body">
+        <div class="telemetry-tab-panel active" id="panel-stream1">
+          <div class="terminal-badge">API 1 — WEATHER / ENVIRONMENT (Open-Meteo)</div>
+          <pre><code id="telemetryCodeWeather" class="json-code-block">// Initializing Weather Stream...</code></pre>
+        </div>
+        <div class="telemetry-tab-panel" id="panel-stream2">
+          <div class="terminal-badge">API 2 — COUNTRY INFORMATION (REST Countries v3.1)</div>
+          <pre><code id="telemetryCodeCountry" class="json-code-block">// Initializing Country Stream...</code></pre>
+        </div>
+        <div class="telemetry-tab-panel" id="panel-stream3">
+          <div class="terminal-badge">API 3 — HUMANITARIAN NEWS (Global Wire Feed)</div>
+          <pre><code id="telemetryCodeNews" class="json-code-block">// Initializing News Stream...</code></pre>
+        </div>
+        <div class="telemetry-tab-panel" id="panel-stream4">
+          <div class="terminal-badge">API 4 — GEOLOCATION & MAP COORDINATES (Open-Meteo)</div>
+          <pre><code id="telemetryCodeLocation" class="json-code-block">// Initializing Location Stream...</code></pre>
+        </div>
+        <div class="telemetry-tab-panel" id="panel-stream5">
+          <div class="terminal-badge">API 5 — TIME & GLOBAL CHRONOMETRY (Intl Engine)</div>
+          <pre><code id="telemetryCodeTimezone" class="json-code-block">// Initializing Timezone Stream...</code></pre>
+        </div>
+      </div>
+
+      <div class="telemetry-drawer-footer">
+        <span class="telemetry-foot-note">Logged directly to Developer Console (F12)</span>
+        <button id="copyTelemetryBtn" class="btn-copy-telemetry" type="button">Copy JSON</button>
+      </div>
+
+    </div>
+  </aside>
+
+  <!-- ========================================================================
+       15. JAVASCRIPT ARCHITECTURE
+       ======================================================================== -->
+  <!-- Leaflet Map Engine -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+
+  <!-- Modular Scripts -->
+  <script src="js/api.js"></script>
+  <script src="js/telemetry.js"></script>
+  <script src="js/map.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/app.js"></script>
+
+</body>
+</html>

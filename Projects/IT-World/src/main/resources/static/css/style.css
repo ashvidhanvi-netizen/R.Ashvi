@@ -1,0 +1,1814 @@
+/* ==========================================================================
+   IT: THE WORLD WE BUILT — Editorial & Exhibition Design System
+   "Imagine tomorrow. Remove yesterday. Design what comes next."
+   ========================================================================== */
+
+:root {
+  /* Core Palette */
+  --bg-space: #07080b;
+  --bg-surface: #0d0f15;
+  --bg-surface-elevated: #13161f;
+  --bg-glass: rgba(16, 20, 29, 0.72);
+  --bg-glass-strong: rgba(21, 26, 38, 0.88);
+  
+  /* Text */
+  --text-primary: #f8fafc;
+  --text-secondary: #94a3b8;
+  --text-dim: #64748b;
+  --text-glow: rgba(248, 250, 252, 0.12);
+
+  /* Accents */
+  --accent-orange: #ff6b35;
+  --accent-orange-light: #ff8c5e;
+  --accent-orange-glow: rgba(255, 107, 53, 0.22);
+  
+  --accent-crimson: #dc2626;
+  --accent-crimson-glow: rgba(220, 38, 38, 0.2);
+  
+  --accent-emerald: #10b981;
+  --accent-emerald-glow: rgba(16, 185, 129, 0.2);
+  
+  --accent-cyan: #06b6d4;
+  --accent-amber: #f59e0b;
+
+  /* Borders & Dividers */
+  --border-subtle: rgba(255, 255, 255, 0.08);
+  --border-medium: rgba(255, 255, 255, 0.14);
+  --border-focus: rgba(255, 107, 53, 0.5);
+
+  /* Typography */
+  --font-display: 'Sora', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-mono: 'JetBrains Mono', 'SF Mono', Consolas, monospace;
+
+  /* Layout */
+  --nav-height: 76px;
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+  --radius-xl: 32px;
+
+  /* Transitions */
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-smooth: all 0.35s var(--ease-out-expo);
+}
+
+/* Page Chapter Overrides (Visual Evolution) */
+body[data-chapter="01"] {
+  --chapter-accent: var(--accent-orange);
+  --chapter-glow: var(--accent-orange-glow);
+}
+
+body[data-chapter="02"] {
+  --chapter-accent: #f97316;
+  --chapter-glow: rgba(249, 115, 22, 0.16);
+  --bg-surface: #0e0f13;
+}
+
+body[data-chapter="03"] {
+  --chapter-accent: var(--accent-emerald);
+  --chapter-glow: var(--accent-emerald-glow);
+}
+
+/* ==========================================================================
+   Base & Reset
+   ========================================================================== */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: calc(var(--nav-height) + 24px);
+  background-color: var(--bg-space);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background: var(--bg-space);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  line-height: 1.65;
+  overflow-x: hidden;
+  position: relative;
+  min-height: 100vh;
+}
+
+/* Subtle architectural background canvas grid */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-image: 
+    radial-gradient(circle at 15% 20%, rgba(255, 107, 53, 0.035) 0%, transparent 40%),
+    radial-gradient(circle at 85% 75%, rgba(16, 185, 129, 0.025) 0%, transparent 45%),
+    linear-gradient(rgba(255, 255, 255, 0.015) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.015) 1px, transparent 1px);
+  background-size: 100% 100%, 100% 100%, 64px 64px, 64px 64px;
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* ==========================================================================
+   Typography
+   ========================================================================== */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  color: var(--text-primary);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1.18;
+}
+
+.text-editorial-title {
+  font-size: clamp(2.4rem, 5.5vw, 4.4rem);
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  line-height: 1.08;
+}
+
+.text-editorial-hero {
+  font-size: clamp(1.8rem, 3.8vw, 3rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1.2;
+}
+
+.text-lead-editorial {
+  font-size: clamp(1.05rem, 1.3vw, 1.25rem);
+  color: var(--text-secondary);
+  font-weight: 400;
+  line-height: 1.7;
+}
+
+.text-mono {
+  font-family: var(--font-mono);
+  letter-spacing: -0.02em;
+}
+
+.text-accent-orange { color: var(--accent-orange); }
+.text-accent-emerald { color: var(--accent-emerald); }
+.text-accent-crimson { color: var(--accent-crimson); }
+.text-accent-amber { color: var(--accent-amber); }
+
+.tag-chapter {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border-subtle);
+  border-radius: 100px;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-secondary);
+  backdrop-filter: blur(10px);
+}
+
+.tag-chapter .indicator-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--chapter-accent, var(--accent-orange));
+  box-shadow: 0 0 10px var(--chapter-accent, var(--accent-orange));
+  animation: pulse-dot 2.5s infinite;
+}
+
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(0.85); }
+}
+
+/* ==========================================================================
+   Navigation Bar
+   ========================================================================== */
+.site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: var(--nav-height);
+  z-index: 1000;
+  background: rgba(8, 9, 13, 0.75);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border-subtle);
+  transition: var(--transition-smooth);
+}
+
+.site-header.scrolled {
+  background: rgba(8, 9, 13, 0.94);
+  border-bottom: 1px solid var(--border-medium);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.site-nav {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.brand-wrapper {
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+}
+
+.brand-title {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.brand-symbol {
+  width: 24px;
+  height: 24px;
+  background: linear-gradient(135deg, var(--accent-orange) 0%, var(--accent-crimson) 100%);
+  border-radius: 4px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  font-weight: 900;
+  color: #fff;
+  box-shadow: 0 0 12px var(--accent-orange-glow);
+}
+
+.brand-tagline {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  color: var(--text-dim);
+  letter-spacing: 0.04em;
+}
+
+.nav-chapters {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(255, 255, 255, 0.03);
+  padding: 4px;
+  border-radius: 100px;
+  border: 1px solid var(--border-subtle);
+}
+
+.nav-link-chapter {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 18px;
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  text-decoration: none;
+  border-radius: 100px;
+  transition: var(--transition-smooth);
+}
+
+.nav-link-chapter .ch-num {
+  font-size: 0.7rem;
+  opacity: 0.6;
+}
+
+.nav-link-chapter:hover {
+  color: var(--text-primary);
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.nav-link-chapter.active {
+  color: #ffffff;
+  background: var(--bg-surface-elevated);
+  border: 1px solid var(--border-medium);
+  box-shadow: 0 2px 14px rgba(0, 0, 0, 0.4);
+}
+
+.nav-link-chapter.active .ch-num {
+  color: var(--chapter-accent, var(--accent-orange));
+  opacity: 1;
+}
+
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.btn-audio-toggle {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-secondary);
+  padding: 8px 14px;
+  border-radius: 100px;
+  font-size: 0.75rem;
+  font-family: var(--font-mono);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: var(--transition-smooth);
+}
+
+.btn-audio-toggle:hover {
+  border-color: var(--border-medium);
+  color: var(--text-primary);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.btn-audio-toggle.active {
+  border-color: var(--accent-orange);
+  color: var(--accent-orange);
+  background: rgba(255, 107, 53, 0.1);
+}
+
+/* Mobile Nav Toggle */
+.mobile-nav-toggle {
+  display: none;
+  background: transparent;
+  border: 1px solid var(--border-subtle);
+  color: var(--text-primary);
+  border-radius: var(--radius-sm);
+  padding: 8px 12px;
+  font-size: 1.2rem;
+}
+
+/* ==========================================================================
+   Hero & Section Foundations
+   ========================================================================== */
+.chapter-hero {
+  padding-top: calc(var(--nav-height) + 60px);
+  padding-bottom: 80px;
+  position: relative;
+}
+
+.section-padding {
+  padding-top: 100px;
+  padding-bottom: 100px;
+  position: relative;
+}
+
+.section-divider {
+  height: 1px;
+  width: 100%;
+  background: linear-gradient(90deg, transparent 0%, var(--border-medium) 50%, transparent 100%);
+  margin: 0;
+  border: none;
+}
+
+.section-kicker {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--chapter-accent, var(--accent-orange));
+  margin-bottom: 14px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.section-kicker::before {
+  content: "";
+  display: inline-block;
+  width: 16px;
+  height: 1px;
+  background: currentColor;
+}
+
+.section-title {
+  font-size: clamp(2rem, 3.5vw, 3rem);
+  font-weight: 700;
+  margin-bottom: 16px;
+}
+
+.section-subtitle {
+  font-size: 1.1rem;
+  color: var(--text-secondary);
+  max-width: 680px;
+  line-height: 1.65;
+  margin-bottom: 48px;
+}
+
+/* ==========================================================================
+   Editorial Cards & Glassmorphism
+   ========================================================================== */
+.editorial-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: 32px;
+  position: relative;
+  transition: var(--transition-smooth);
+  backdrop-filter: blur(16px);
+  overflow: hidden;
+}
+
+.editorial-card::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--border-subtle), transparent);
+  opacity: 0.6;
+  transition: var(--transition-smooth);
+}
+
+.editorial-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--border-medium);
+  box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.6);
+}
+
+.editorial-card:hover::after {
+  background: linear-gradient(90deg, transparent, var(--chapter-accent, var(--accent-orange)), transparent);
+  opacity: 1;
+}
+
+/* ==========================================================================
+   Chapter 01: Timeline 2026 -> 2029
+   ========================================================================== */
+.timeline-container {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-xl);
+  padding: 40px;
+  position: relative;
+  box-shadow: 0 30px 60px -20px rgba(0, 0, 0, 0.7);
+}
+
+.timeline-nav {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  margin-bottom: 36px;
+  position: relative;
+}
+
+.timeline-step-btn {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 20px 16px;
+  text-align: left;
+  cursor: pointer;
+  color: var(--text-secondary);
+  transition: var(--transition-smooth);
+  position: relative;
+  overflow: hidden;
+}
+
+.timeline-step-btn .year {
+  font-family: var(--font-display);
+  font-size: 1.7rem;
+  font-weight: 800;
+  display: block;
+  color: var(--text-primary);
+  margin-bottom: 4px;
+  letter-spacing: -0.02em;
+}
+
+.timeline-step-btn .status {
+  font-family: var(--font-mono);
+  font-size: 0.76rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-dim);
+}
+
+.timeline-step-btn:hover {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: var(--border-medium);
+}
+
+.timeline-step-btn.active {
+  background: var(--bg-surface-elevated);
+  border-color: var(--accent-orange);
+  box-shadow: 0 0 24px var(--accent-orange-glow);
+}
+
+.timeline-step-btn.active .year {
+  color: var(--accent-orange);
+}
+
+.timeline-step-btn.active .status {
+  color: #fff;
+}
+
+.timeline-content-panel {
+  background: var(--bg-space);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: 36px;
+  min-height: 280px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  animation: fade-in-panel 0.4s var(--ease-out-expo);
+}
+
+@keyframes fade-in-panel {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.timeline-panel-badge {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--accent-orange);
+  background: var(--accent-orange-glow);
+  padding: 4px 12px;
+  border-radius: 100px;
+  display: inline-block;
+  margin-bottom: 14px;
+  width: fit-content;
+}
+
+.timeline-panel-title {
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-bottom: 14px;
+}
+
+.timeline-panel-desc {
+  font-size: 1.08rem;
+  color: var(--text-secondary);
+  line-height: 1.7;
+  margin-bottom: 24px;
+}
+
+.timeline-metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 16px;
+  padding-top: 20px;
+  border-top: 1px solid var(--border-subtle);
+}
+
+.timeline-metric-card {
+  background: rgba(255, 255, 255, 0.02);
+  padding: 14px 18px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-subtle);
+}
+
+.timeline-metric-val {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.timeline-metric-lbl {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--text-dim);
+}
+
+/* ==========================================================================
+   Chapter 01: Replace / Reshape / Create Cards
+   ========================================================================== */
+.trio-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: 34px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  cursor: pointer;
+  transition: var(--transition-smooth);
+  position: relative;
+  overflow: hidden;
+}
+
+.trio-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  background: var(--card-accent, var(--border-medium));
+  transition: var(--transition-smooth);
+}
+
+.trio-card.replace {
+  --card-accent: var(--accent-crimson);
+  --card-glow: var(--accent-crimson-glow);
+}
+
+.trio-card.reshape {
+  --card-accent: var(--accent-orange);
+  --card-glow: var(--accent-orange-glow);
+}
+
+.trio-card.create {
+  --card-accent: var(--accent-emerald);
+  --card-glow: var(--accent-emerald-glow);
+}
+
+.trio-card:hover, .trio-card.active-card {
+  transform: translateY(-5px);
+  border-color: var(--border-medium);
+  box-shadow: 0 20px 40px -10px var(--card-glow);
+}
+
+.trio-card.active-card {
+  border-color: var(--card-accent);
+}
+
+.trio-header {
+  margin-bottom: 20px;
+}
+
+.trio-tag {
+  font-family: var(--font-mono);
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--card-accent);
+  display: block;
+  margin-bottom: 8px;
+}
+
+.trio-title {
+  font-size: 1.9rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+.trio-desc {
+  color: var(--text-secondary);
+  font-size: 1.02rem;
+  line-height: 1.6;
+  margin-bottom: 24px;
+}
+
+.trio-examples-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 24px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.trio-examples-list li {
+  font-size: 0.92rem;
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.trio-examples-list li::before {
+  content: "";
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--card-accent);
+}
+
+.trio-expand-hint {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--card-accent);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 600;
+  margin-top: auto;
+}
+
+.trio-drawer {
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition: all 0.4s var(--ease-out-expo);
+  border-top: 1px dashed var(--border-subtle);
+  margin-top: 0;
+  padding-top: 0;
+}
+
+.trio-card.expanded .trio-drawer {
+  max-height: 400px;
+  opacity: 1;
+  margin-top: 20px;
+  padding-top: 20px;
+}
+
+/* ==========================================================================
+   Chapter 01: Your Job In 2029 (Role Simulator)
+   ========================================================================== */
+.simulator-wrapper {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-xl);
+  padding: 44px;
+  position: relative;
+}
+
+.role-selector-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 36px;
+}
+
+.role-pill-btn {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-secondary);
+  padding: 10px 22px;
+  border-radius: 100px;
+  font-family: var(--font-body);
+  font-size: 0.94rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: var(--transition-smooth);
+}
+
+.role-pill-btn:hover {
+  color: var(--text-primary);
+  background: rgba(255, 255, 255, 0.08);
+  border-color: var(--border-medium);
+}
+
+.role-pill-btn.active {
+  color: #fff;
+  background: var(--accent-orange);
+  border-color: var(--accent-orange);
+  box-shadow: 0 4px 18px var(--accent-orange-glow);
+}
+
+.role-simulation-stage {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  position: relative;
+}
+
+.sim-side-card {
+  background: var(--bg-space);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: 32px;
+  position: relative;
+}
+
+.sim-side-card.now-card {
+  border-left: 3px solid var(--text-dim);
+}
+
+.sim-side-card.future-card {
+  border-left: 3px solid var(--accent-orange);
+  box-shadow: 0 0 30px rgba(255, 107, 53, 0.06);
+}
+
+.sim-year-tag {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.sim-status-pill {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  padding: 3px 10px;
+  border-radius: 100px;
+  text-transform: uppercase;
+}
+
+.now-card .sim-status-pill {
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--text-secondary);
+}
+
+.future-card .sim-status-pill {
+  background: var(--accent-orange-glow);
+  color: var(--accent-orange);
+}
+
+.sim-body-text {
+  color: var(--text-secondary);
+  font-size: 1.05rem;
+  line-height: 1.7;
+  margin-bottom: 20px;
+}
+
+.sim-key-elements {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.sim-key-elements li {
+  font-family: var(--font-mono);
+  font-size: 0.84rem;
+  color: var(--text-secondary);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.sim-disclaimer {
+  margin-top: 24px;
+  padding: 12px 18px;
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: var(--radius-md);
+  border: 1px dashed var(--border-subtle);
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--text-dim);
+  text-align: center;
+}
+
+/* ==========================================================================
+   Chapter 01: Three Possible 2029s
+   ========================================================================== */
+.scenario-selector-tabs {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+  margin-bottom: 30px;
+}
+
+.scenario-tab-btn {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 22px;
+  cursor: pointer;
+  text-align: left;
+  transition: var(--transition-smooth);
+}
+
+.scenario-tab-btn .sc-letter {
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  color: var(--text-dim);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 6px;
+  display: block;
+}
+
+.scenario-tab-btn .sc-title {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.scenario-tab-btn:hover {
+  background: var(--bg-surface-elevated);
+  border-color: var(--border-medium);
+}
+
+.scenario-tab-btn.active {
+  background: var(--bg-surface-elevated);
+  border-color: var(--accent-orange);
+  box-shadow: 0 4px 20px var(--accent-orange-glow);
+}
+
+.scenario-tab-btn.active .sc-letter {
+  color: var(--accent-orange);
+}
+
+.scenario-active-display {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-xl);
+  padding: 40px;
+  position: relative;
+}
+
+.scenario-consequences-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+  margin-top: 24px;
+}
+
+.consequence-card {
+  background: var(--bg-space);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 20px;
+}
+
+.consequence-title {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--accent-orange);
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+
+.consequence-desc {
+  font-size: 0.94rem;
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+/* ==========================================================================
+   Chapter 01: Skill Shift Comparison
+   ========================================================================== */
+.skills-comparison-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px;
+}
+
+.skills-column {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-xl);
+  padding: 36px;
+}
+
+.skills-column-title {
+  font-size: 1.35rem;
+  font-weight: 700;
+  margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.skill-item-bar {
+  margin-bottom: 18px;
+}
+
+.skill-item-meta {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 6px;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+}
+
+.skill-progress-track {
+  height: 6px;
+  background: rgba(255, 255, 255, 0.06);
+  border-radius: 100px;
+  overflow: hidden;
+}
+
+.skill-progress-fill {
+  height: 100%;
+  border-radius: 100px;
+  transition: width 1.2s var(--ease-out-expo);
+}
+
+.skill-progress-fill.tech {
+  background: linear-gradient(90deg, var(--accent-orange), var(--accent-amber));
+}
+
+.skill-progress-fill.human {
+  background: linear-gradient(90deg, var(--accent-emerald), var(--accent-cyan));
+}
+
+.statement-banner {
+  background: linear-gradient(135deg, rgba(255, 107, 53, 0.08) 0%, rgba(16, 185, 129, 0.06) 100%);
+  border: 1px solid var(--border-medium);
+  border-radius: var(--radius-lg);
+  padding: 36px;
+  text-align: center;
+  margin-top: 40px;
+}
+
+.statement-banner p {
+  font-size: clamp(1.2rem, 2vw, 1.6rem);
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0;
+  line-height: 1.4;
+}
+
+/* ==========================================================================
+   Chapter 02: Alternate History Stepper (Day 0 to Today)
+   ========================================================================== */
+.alternate-history-timeline {
+  position: relative;
+  padding-left: 36px;
+}
+
+.alternate-history-timeline::before {
+  content: "";
+  position: absolute;
+  top: 10px;
+  bottom: 10px;
+  left: 11px;
+  width: 2px;
+  background: linear-gradient(180deg, var(--border-medium) 0%, rgba(255,255,255,0.02) 100%);
+}
+
+.alt-timeline-node {
+  position: relative;
+  margin-bottom: 40px;
+  cursor: pointer;
+  transition: var(--transition-smooth);
+}
+
+.alt-node-dot {
+  position: absolute;
+  left: -36px;
+  top: 6px;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: var(--bg-space);
+  border: 2px solid var(--border-medium);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: var(--transition-smooth);
+}
+
+.alt-node-dot::after {
+  content: "";
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--text-dim);
+  transition: var(--transition-smooth);
+}
+
+.alt-timeline-node:hover .alt-node-dot,
+.alt-timeline-node.active .alt-node-dot {
+  border-color: #f97316;
+  box-shadow: 0 0 16px rgba(249, 115, 22, 0.4);
+}
+
+.alt-timeline-node:hover .alt-node-dot::after,
+.alt-timeline-node.active .alt-node-dot::after {
+  background: #f97316;
+}
+
+.alt-node-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: 24px 28px;
+  transition: var(--transition-smooth);
+}
+
+.alt-timeline-node.active .alt-node-card {
+  border-color: rgba(249, 115, 22, 0.4);
+  background: var(--bg-surface-elevated);
+}
+
+.alt-node-epoch {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: #f97316;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  margin-bottom: 6px;
+  display: block;
+}
+
+.alt-node-title {
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.alt-node-body {
+  color: var(--text-secondary);
+  margin: 0;
+  font-size: 0.98rem;
+  line-height: 1.6;
+}
+
+/* ==========================================================================
+   Chapter 02: With IT / Without IT Domain Comparisons
+   ========================================================================== */
+.domain-comparison-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-xl);
+  padding: 36px;
+  margin-bottom: 32px;
+  position: relative;
+  overflow: hidden;
+}
+
+.domain-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 28px;
+  padding-bottom: 18px;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.domain-name {
+  font-size: 1.55rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.domain-dilemma-quote {
+  font-size: 1.15rem;
+  font-style: italic;
+  color: #fb923c;
+  background: rgba(249, 115, 22, 0.06);
+  border-left: 3px solid #f97316;
+  padding: 16px 20px;
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+  margin-top: 24px;
+}
+
+.comparison-dual-columns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+
+.comp-col {
+  background: var(--bg-space);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 24px;
+}
+
+.comp-col.our-world {
+  border-top: 3px solid var(--accent-cyan);
+}
+
+.comp-col.alt-world {
+  border-top: 3px solid #f97316;
+}
+
+.comp-col-tag {
+  font-family: var(--font-mono);
+  font-size: 0.76rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 14px;
+  display: block;
+}
+
+.comp-col.our-world .comp-col-tag { color: var(--accent-cyan); }
+.comp-col.alt-world .comp-col-tag { color: #f97316; }
+
+.comp-items-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.comp-items-list li {
+  font-size: 0.94rem;
+  color: var(--text-secondary);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* ==========================================================================
+   Chapter 02: The Trade-off Matrix
+   ========================================================================== */
+.tradeoff-table-wrapper {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+}
+
+.tradeoff-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding: 20px 32px;
+  border-bottom: 1px solid var(--border-subtle);
+  transition: var(--transition-smooth);
+}
+
+.tradeoff-row:last-child {
+  border-bottom: none;
+}
+
+.tradeoff-row:hover {
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.tradeoff-header-row {
+  background: rgba(255, 255, 255, 0.03);
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-dim);
+}
+
+.tradeoff-cell {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 0.98rem;
+}
+
+.tradeoff-cell.with-it {
+  color: var(--text-primary);
+  border-right: 1px solid var(--border-subtle);
+  padding-right: 20px;
+}
+
+.tradeoff-cell.without-it {
+  color: var(--text-secondary);
+  padding-left: 20px;
+}
+
+/* ==========================================================================
+   Chapter 03: Interactive Human Infrastructure Network Diagram
+   ========================================================================== */
+.network-diagram-container {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-xl);
+  padding: 40px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: hidden;
+}
+
+.network-svg-stage {
+  width: 100%;
+  max-width: 780px;
+  height: 480px;
+}
+
+.network-node-circle {
+  cursor: pointer;
+  transition: var(--transition-smooth);
+}
+
+.network-node-circle:hover {
+  filter: drop-shadow(0 0 14px rgba(16, 185, 129, 0.6));
+}
+
+.network-active-detail {
+  width: 100%;
+  max-width: 640px;
+  background: var(--bg-space);
+  border: 1px solid var(--accent-emerald);
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  margin-top: 24px;
+  text-align: center;
+  box-shadow: 0 0 30px var(--accent-emerald-glow);
+}
+
+/* ==========================================================================
+   Chapter 03: Knowledge Grid Simulator
+   ========================================================================== */
+.kg-simulator-box {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-xl);
+  padding: 38px;
+}
+
+.kg-input-group {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.kg-query-input {
+  flex: 1;
+  background: var(--bg-space);
+  border: 1px solid var(--border-medium);
+  border-radius: var(--radius-md);
+  padding: 14px 20px;
+  font-family: var(--font-body);
+  font-size: 1.05rem;
+  color: var(--text-primary);
+  outline: none;
+  transition: var(--transition-smooth);
+}
+
+.kg-query-input:focus {
+  border-color: var(--accent-emerald);
+  box-shadow: 0 0 20px var(--accent-emerald-glow);
+}
+
+.kg-submit-btn {
+  background: var(--accent-emerald);
+  color: #052e16;
+  font-weight: 700;
+  border: none;
+  border-radius: var(--radius-md);
+  padding: 14px 28px;
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: var(--transition-smooth);
+}
+
+.kg-submit-btn:hover {
+  background: #34d399;
+  box-shadow: 0 0 24px var(--accent-emerald-glow);
+}
+
+.kg-preset-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 28px;
+}
+
+.kg-preset-chip {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-secondary);
+  font-family: var(--font-mono);
+  font-size: 0.76rem;
+  padding: 5px 12px;
+  border-radius: 100px;
+  cursor: pointer;
+  transition: var(--transition-smooth);
+}
+
+.kg-preset-chip:hover {
+  border-color: var(--accent-emerald);
+  color: var(--text-primary);
+}
+
+.kg-result-dossier {
+  background: var(--bg-space);
+  border: 1px solid rgba(16, 185, 129, 0.35);
+  border-radius: var(--radius-lg);
+  padding: 30px;
+  display: none;
+  animation: fade-in-panel 0.4s var(--ease-out-expo);
+}
+
+.kg-result-dossier.active {
+  display: block;
+}
+
+.kg-dossier-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--border-subtle);
+  padding-bottom: 14px;
+  margin-bottom: 20px;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--accent-emerald);
+}
+
+.kg-stats-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 14px;
+  margin-bottom: 20px;
+}
+
+.kg-stat-box {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 14px;
+}
+
+.kg-stat-val {
+  font-family: var(--font-mono);
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.kg-stat-label {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--text-dim);
+  text-transform: uppercase;
+}
+
+/* ==========================================================================
+   Chapter 03: Civilization Builder Simulation
+   ========================================================================== */
+.civ-builder-stage {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-xl);
+  padding: 44px;
+}
+
+.civ-category-block {
+  margin-bottom: 32px;
+}
+
+.civ-cat-label {
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  color: var(--accent-emerald);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 12px;
+  display: block;
+}
+
+.civ-options-group {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+
+.civ-opt-card {
+  background: var(--bg-space);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 16px 20px;
+  cursor: pointer;
+  transition: var(--transition-smooth);
+}
+
+.civ-opt-card:hover {
+  background: var(--bg-surface-elevated);
+  border-color: var(--border-medium);
+}
+
+.civ-opt-card.selected {
+  background: rgba(16, 185, 129, 0.08);
+  border-color: var(--accent-emerald);
+  box-shadow: 0 0 16px var(--accent-emerald-glow);
+}
+
+.civ-opt-name {
+  font-family: var(--font-body);
+  font-size: 0.96rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  display: block;
+}
+
+.civ-build-trigger-btn {
+  width: 100%;
+  background: linear-gradient(135deg, var(--accent-emerald) 0%, #059669 100%);
+  color: #022c22;
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  padding: 20px;
+  border-radius: var(--radius-md);
+  border: none;
+  cursor: pointer;
+  transition: var(--transition-smooth);
+  box-shadow: 0 10px 30px var(--accent-emerald-glow);
+  margin-top: 16px;
+}
+
+.civ-build-trigger-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 40px rgba(16, 185, 129, 0.4);
+}
+
+.civ-result-dossier {
+  margin-top: 40px;
+  background: var(--bg-space);
+  border: 1px solid var(--border-medium);
+  border-radius: var(--radius-xl);
+  padding: 40px;
+  display: none;
+  animation: fade-in-panel 0.5s var(--ease-out-expo);
+}
+
+.civ-result-dossier.revealed {
+  display: block;
+}
+
+.civ-result-badge {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--accent-emerald);
+  background: var(--accent-emerald-glow);
+  padding: 4px 14px;
+  border-radius: 100px;
+  display: inline-block;
+  margin-bottom: 12px;
+}
+
+.civ-result-title {
+  font-size: 2.2rem;
+  font-weight: 800;
+  margin-bottom: 14px;
+}
+
+.civ-radar-bars {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 16px;
+  margin: 28px 0;
+  padding: 20px 0;
+  border-top: 1px solid var(--border-subtle);
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.civ-bar-item {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+}
+
+.civ-bar-item .bar-label {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 6px;
+  color: var(--text-secondary);
+}
+
+.civ-bar-track {
+  height: 5px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.civ-bar-fill {
+  height: 100%;
+  background: var(--accent-emerald);
+  border-radius: 10px;
+}
+
+/* ==========================================================================
+   Chapter 03: Final Question & Restart
+   ========================================================================== */
+.final-climax-box {
+  background: linear-gradient(180deg, var(--bg-surface) 0%, #08090d 100%);
+  border: 1px solid var(--border-medium);
+  border-radius: var(--radius-xl);
+  padding: 70px 48px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.final-climax-box::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(255, 107, 53, 0.08) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.btn-restart-experience {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  background: var(--text-primary);
+  color: #07080b;
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: 800;
+  padding: 18px 38px;
+  border-radius: 100px;
+  text-decoration: none;
+  transition: var(--transition-smooth);
+  margin-top: 32px;
+  box-shadow: 0 10px 30px rgba(255, 255, 255, 0.15);
+}
+
+.btn-restart-experience:hover {
+  transform: scale(1.04);
+  color: #000;
+  background: #ffffff;
+  box-shadow: 0 14px 40px rgba(255, 255, 255, 0.25);
+}
+
+/* ==========================================================================
+   Footer & Credible Sources Section
+   ========================================================================== */
+.site-footer {
+  border-top: 1px solid var(--border-subtle);
+  background: #050608;
+  padding-top: 70px;
+  padding-bottom: 40px;
+  font-size: 0.9rem;
+}
+
+.sources-box {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  margin-bottom: 40px;
+}
+
+.sources-title {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--text-dim);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 12px;
+}
+
+.sources-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.sources-list li {
+  font-size: 0.84rem;
+  color: var(--text-secondary);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.sources-list li::before {
+  content: "•";
+  color: var(--accent-orange);
+}
+
+/* Chapter Progress Pill (Floating HUD) */
+.chapter-hud-bar {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 999;
+  background: rgba(13, 15, 21, 0.88);
+  border: 1px solid var(--border-medium);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  padding: 6px 16px;
+  border-radius: 100px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+}
+
+.hud-track {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.hud-segment {
+  width: 28px;
+  height: 4px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.12);
+  transition: var(--transition-smooth);
+}
+
+.hud-segment.active {
+  background: var(--chapter-accent, var(--accent-orange));
+  box-shadow: 0 0 10px var(--chapter-accent, var(--accent-orange));
+}
+
+.hud-next-btn {
+  color: var(--text-primary);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-weight: 600;
+  transition: var(--transition-smooth);
+}
+
+.hud-next-btn:hover {
+  color: var(--chapter-accent, var(--accent-orange));
+}
+
+/* ==========================================================================
+   Responsive Overrides
+   ========================================================================== */
+@media (max-width: 992px) {
+  .nav-chapters {
+    display: none;
+  }
+  
+  .mobile-nav-toggle {
+    display: block;
+  }
+
+  .role-simulation-stage {
+    grid-template-columns: 1fr;
+  }
+
+  .skills-comparison-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .comparison-dual-columns {
+    grid-template-columns: 1fr;
+  }
+
+  .civ-options-group {
+    grid-template-columns: 1fr;
+  }
+
+  .timeline-nav {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .scenario-selector-tabs {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 576px) {
+  .section-padding {
+    padding-top: 70px;
+    padding-bottom: 70px;
+  }
+
+  .editorial-card {
+    padding: 24px;
+  }
+
+  .timeline-container, .simulator-wrapper, .civ-builder-stage {
+    padding: 24px 16px;
+  }
+
+  .timeline-nav {
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+
+  .timeline-step-btn {
+    padding: 12px 10px;
+  }
+
+  .timeline-step-btn .year {
+    font-size: 1.3rem;
+  }
+
+  .tradeoff-row {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .tradeoff-cell.with-it {
+    border-right: none;
+    border-bottom: 1px dashed var(--border-subtle);
+    padding-right: 0;
+    padding-bottom: 10px;
+  }
+
+  .tradeoff-cell.without-it {
+    padding-left: 0;
+  }
+
+  .kg-input-group {
+    flex-direction: column;
+  }
+
+  .chapter-hud-bar {
+    width: 92%;
+    justify-content: space-between;
+  }
+}

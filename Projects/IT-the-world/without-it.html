@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chapter 02: Without IT — The Alternate World | The World We Built</title>
+  <meta name="description" content="An alternate-history thought experiment: Imagine a world where Information Technology was never invented. Explore Chennai, India, and the World without software.">
+  <meta name="theme-color" content="#080406">
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/themes.css">
+  <link rel="stylesheet" href="css/components.css">
+</head>
+<body class="theme-chapter-2">
+
+  <!-- Reading Progress Bar -->
+  <div class="reading-progress-bar" id="readingProgressBar" aria-hidden="true"></div>
+
+  <!-- ========================================================================
+       1. UNIFIED EDITORIAL NAVIGATION HEADER (Chapter 02: Deep Burgundy/Maroon)
+       ======================================================================== -->
+  <header class="site-header">
+    <div class="site-container nav-container">
+      
+      <!-- Brand Identity -->
+      <a href="index.html" class="brand-logo" aria-label="Exhibition Home">
+        <div class="brand-emblem-box" style="background: linear-gradient(135deg, #881337 0%, #BE123C 100%); box-shadow: 0 0 20px rgba(225, 29, 72, 0.4);">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </div>
+        <div class="brand-text">THE WORLD <span>WE BUILT</span></div>
+      </a>
+
+      <!-- 3-Chapter Experience Switcher Pill -->
+      <nav class="nav-experience-tabs" aria-label="Chapter navigation">
+        <a href="index.html" class="nav-experience-tab" title="Chapter 01: IT — The World We Built">
+          <span>01. We Built It</span>
+        </a>
+        <a href="without-it.html" class="nav-experience-tab active" title="Chapter 02: Without IT">
+          <span>●</span>
+          <span>02. Without IT</span>
+        </a>
+        <a href="beyond-it.html" class="nav-experience-tab" title="Chapter 03: Beyond IT">
+          <span>03. Beyond IT</span>
+        </a>
+      </nav>
+
+      <!-- Desktop Links -->
+      <div class="nav-links-desktop">
+        <a href="#chennaiSection" class="nav-link">Chennai</a>
+        <a href="#indiaSection" class="nav-link">India</a>
+        <a href="#worldSection" class="nav-link">The World</a>
+        <a href="#breakdownSimulator" class="nav-link">Crisis Lab</a>
+        <a href="beyond-it.html" class="btn-primary-3d" style="background: linear-gradient(135deg, #881337 0%, #BE123C 50%, #E11D48 100%); box-shadow: 0 10px 25px rgba(225, 29, 72, 0.4), 0 3px 0 #881337; padding: 10px 22px; font-size: 0.88rem;">
+          <span>Chapter 03</span>
+          <span>➔</span>
+        </a>
+      </div>
+
+      <!-- Mobile Hamburger Button -->
+      <button id="mobileNavToggle" class="mobile-toggle" aria-label="Toggle navigation menu">☰</button>
+
+    </div>
+  </header>
+
+  <!-- Mobile Drawer -->
+  <aside id="mobileNavDrawer" class="mobile-nav-drawer" aria-label="Mobile Navigation">
+    <div style="font-family: var(--font-mono); font-size: 0.8rem; color: #FB7185; text-transform: uppercase;">Exhibition Trilogy</div>
+    <a href="index.html" class="mobile-nav-link">Chapter 01 — We Built It</a>
+    <a href="without-it.html" class="mobile-nav-link active">Chapter 02 — Without IT (Current)</a>
+    <a href="beyond-it.html" class="mobile-nav-link">Chapter 03 — Beyond IT</a>
+    <hr style="border: none; border-top: 1px solid var(--border-glass); margin: 8px 0;">
+    <a href="#chennaiSection" class="mobile-nav-link">Chennai Without IT</a>
+    <a href="#indiaSection" class="mobile-nav-link">India Without IT</a>
+    <a href="#worldSection" class="mobile-nav-link">The World Without IT</a>
+    <a href="#breakdownSimulator" class="mobile-nav-link">Society Outage Simulator</a>
+  </aside>
+
+  <main>
+
+    <!-- ========================================================================
+         2. HERO SECTION: CHAPTER 02 — WITHOUT IT
+         ======================================================================== -->
+    <section class="hero-wrapper" id="home">
+      <canvas id="heroMeshCanvas" class="hero-canvas"></canvas>
+      <div class="hero-glow-ambient" style="background: rgba(190, 18, 60, 0.18);"></div>
+
+      <div class="site-container">
+        <div class="hero-grid">
+          
+          <div class="hero-content">
+            <div class="chapter-badge" style="background: rgba(190, 18, 60, 0.16); border-color: rgba(244, 63, 94, 0.35); color: #FECDD3;">
+              <span class="status-light" style="background: #E11D48; box-shadow: 0 0 8px #E11D48;"></span>
+              <span>CHAPTER 02 // ALTERNATE-HISTORY THOUGHT EXPERIMENT</span>
+            </div>
+
+            <h1 class="title-monumental hero-title">
+              Without IT: <br>
+              <span class="gradient-title">The Alternate World.</span>
+            </h1>
+
+            <p class="hero-desc">
+              Imagine a world where Information Technology was never invented. No microprocessors. No internet. No digital code. The absence of IT would not mean the absence of technology. Humanity would still innovate, engineer, and build — but through mechanical levers, paper archives, pneumatic tubes, and physical presence.
+            </p>
+
+            <div class="hero-cta-group">
+              <a href="#chennaiSection" class="btn-primary-3d" style="background: linear-gradient(135deg, #881337 0%, #BE123C 50%, #E11D48 100%); box-shadow: 0 10px 25px rgba(225, 29, 72, 0.45), 0 3px 0 #881337;">
+                <span>Explore Chennai Without IT</span>
+                <span>➔</span>
+              </a>
+              <a href="#breakdownSimulator" class="btn-outline-glass">
+                <span>Test Fragility Simulator</span>
+              </a>
+            </div>
+
+            <!-- Alternate Reality Telemetry Counters -->
+            <div style="display: flex; gap: 32px; flex-wrap: wrap; border-top: 1px solid var(--border-glass); padding-top: 28px;">
+              <div>
+                <div style="font-family: var(--font-mono); font-size: 1.5rem; font-weight: 800; color: #FB7185;" data-counter-target="14" data-counter-suffix=" Days">14 Days</div>
+                <div style="font-size: 0.8rem; color: var(--color-text-dim); text-transform: uppercase;">Inter-City Check Clearing</div>
+              </div>
+              <div>
+                <div style="font-family: var(--font-mono); font-size: 1.5rem; font-weight: 800; color: #FB7185;" data-counter-target="40" data-counter-suffix=" WPM">40 WPM</div>
+                <div style="font-size: 0.8rem; color: var(--color-text-dim); text-transform: uppercase;">Telegraph Line Bandwidth</div>
+              </div>
+              <div>
+                <div style="font-family: var(--font-mono); font-size: 1.5rem; font-weight: 800; color: #FB7185;" data-counter-target="100" data-counter-suffix="% Analog">100% Analog</div>
+                <div style="font-size: 0.8rem; color: var(--color-text-dim); text-transform: uppercase;">Railway Signal Cabin Interlocking</div>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Right Column: 3D System Vulnerability Console -->
+          <div class="hero-visual-col">
+            <div class="hero-console-card" style="border-color: rgba(244, 63, 94, 0.25);">
+              
+              <div class="console-header">
+                <div class="console-dots">
+                  <span class="console-dot red" style="background: #E11D48;"></span>
+                  <span class="console-dot yellow"></span>
+                  <span class="console-dot green" style="background: rgba(255,255,255,0.2);"></span>
+                </div>
+                <span>ANALOG_TELEMETRY_ENGINE</span>
+                <span style="color: #FB7185; font-weight: bold;">● MECHANICAL MODE</span>
+              </div>
+
+              <div class="telemetry-metrics-stack">
+                <div>
+                  <div class="telemetry-row">
+                    <span class="telemetry-label">📜 Physical Paper Archives</span>
+                    <span class="telemetry-value" style="color: #FB7185;">100% Active</span>
+                  </div>
+                  <div class="telemetry-bar-track">
+                    <div class="telemetry-bar-fill" style="width: 100%; background: #BE123C;"></div>
+                  </div>
+                </div>
+
+                <div>
+                  <div class="telemetry-row">
+                    <span class="telemetry-label">⚙️ Mechanical Lever Signals</span>
+                    <span class="telemetry-value" style="color: #FB7185;">100% Operational</span>
+                  </div>
+                  <div class="telemetry-bar-track">
+                    <div class="telemetry-bar-fill" style="width: 100%; background: #BE123C;"></div>
+                  </div>
+                </div>
+
+                <div>
+                  <div class="telemetry-row">
+                    <span class="telemetry-label">📠 Telex & Morse Dispatch</span>
+                    <span class="telemetry-value" style="color: #FB7185;">Dedicated Copper Wire</span>
+                  </div>
+                  <div class="telemetry-bar-track">
+                    <div class="telemetry-bar-fill" style="width: 78%; background: #9F1239;"></div>
+                  </div>
+                </div>
+
+                <div>
+                  <div class="telemetry-row">
+                    <span class="telemetry-label">🏥 Hospital Index Card Registry</span>
+                    <span class="telemetry-value" style="color: #FB7185;">Manual Clerical Entry</span>
+                  </div>
+                  <div class="telemetry-bar-track">
+                    <div class="telemetry-bar-fill" style="width: 90%; background: #881337;"></div>
+                  </div>
+                </div>
+              </div>
+
+              <div style="margin-top: 24px; padding: 14px 18px; border-radius: 12px; background: rgba(0,0,0,0.5); border: 1px solid var(--border-glass); font-family: var(--font-mono); font-size: 0.78rem; color: #FECDD3;">
+                <code>ALTERNATE_SOCIETY: Zero microprocessors. Civilization functions on mechanical engineering, paper registries, and physical human labor.</code>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================================
+         3. NARRATIVE STATEMENT BAND
+         ======================================================================== -->
+    <section class="narrative-statement-band" style="background: #0E050A; border-color: rgba(244, 63, 94, 0.16);">
+      <div class="site-container">
+        <blockquote class="statement-quote">
+          “The absence of IT would not mean the absence of technology. Humanity would still innovate, engineer, and create — but through levers, gears, paper, and physical human presence.”
+        </blockquote>
+        <div class="statement-author" style="color: #FB7185;">
+          The Alternate History Manifesto — Chapter II
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================================
+         4. GEOGRAPHIC STEP 01: CHENNAI WITHOUT IT
+         ======================================================================== -->
+    <section class="geographic-tier-block" id="chennaiSection">
+      <div class="site-container">
+        
+        <div class="geo-scope-indicator">
+          GEOGRAPHIC PROGRESSION // 01. LOCAL LEVEL
+        </div>
+
+        <div class="editorial-split-60-40">
+          <div>
+            <h2 class="title-editorial" style="margin-bottom: 20px;">
+              Chennai Without IT: <br><em>The Mechanical Metropolis.</em>
+            </h2>
+            <p class="lead" style="margin-bottom: 20px;">
+              What would Chennai look like if software companies never existed?
+            </p>
+            <p>
+              Old Mahabalipuram Road (OMR) wouldn't be known as the glittering "IT Corridor" packed with software export hubs and glass-walled tech parks. Instead, it would be an expanse of automotive assembly plants, precision machine tool factories, textile spinning mills, or biomedical research stations.
+            </p>
+            <p>
+              Thousands of young graduates who today write Python and JavaScript would instead work as mechanical draftsmen, chemical process controllers, electrical power engineers, and administrative registry supervisors. The economic heartbeat of the city would remain robust — but driven by physical goods rather than cloud algorithms.
+            </p>
+
+            <!-- Detailed Breakdown Rows for Chennai -->
+            <div class="geo-breakdown-table">
+              
+              <div class="geo-breakdown-row">
+                <div class="geo-row-sector">Workplaces</div>
+                <div class="geo-row-with-it">Software developers coding on laptops in air-conditioned tech parks.</div>
+                <div class="geo-row-without-it">Thousands of typists, drafting tables with T-squares, and floor-to-ceiling physical file registries.</div>
+              </div>
+
+              <div class="geo-breakdown-row">
+                <div class="geo-row-sector">Banking</div>
+                <div class="geo-row-with-it">Instant UPI QR scans at local tea stalls and mobile apps.</div>
+                <div class="geo-row-without-it">Morning queues at bank branches in George Town, brass token numbers, and manual passbook ink stamps.</div>
+              </div>
+
+              <div class="geo-breakdown-row">
+                <div class="geo-row-sector">Hospitals</div>
+                <div class="geo-row-with-it">Cloud Electronic Health Records and AI diagnostic imaging.</div>
+                <div class="geo-row-without-it">Paper dossiers in manila folders, analog film X-ray lightboxes, and landline intercom paging at General Hospital.</div>
+              </div>
+
+              <div class="geo-breakdown-row">
+                <div class="geo-row-sector">Transport</div>
+                <div class="geo-row-with-it">App-based dynamic cab tracking and smart Metro cards.</div>
+                <div class="geo-row-without-it">Cardboard printed tickets, bus conductors with coin punches, and mechanical signal levers at Chennai Central.</div>
+              </div>
+
+              <div class="geo-breakdown-row">
+                <div class="geo-row-sector">Communication</div>
+                <div class="geo-row-with-it">Instant WhatsApp messages and continuous video calls.</div>
+                <div class="geo-row-without-it">Postal letters, yellow telegrams, and long evening queues at local P&T and STD/ISD booths.</div>
+              </div>
+
+            </div>
+
+          </div>
+
+          <div class="editorial-media-wrapper" style="border-color: rgba(244, 63, 94, 0.25);">
+            <img src="https://images.unsplash.com/photo-1582510003544-4d00b7f74220?q=80&w=1200&auto=format&fit=crop" alt="Bright daylight architectural view of Chennai and urban landscape" loading="lazy" onerror="this.style.display='none'">
+            <div class="editorial-media-overlay">
+              <span class="editorial-media-kicker" style="color: #FB7185;">CHENNAI // ALTERNATE REALITY</span>
+              <h3 class="editorial-media-title">The City of Hardware</h3>
+              <p class="editorial-media-caption">
+                Without software export campuses, Chennai thrives as Asia's premier mechanical, automotive, and industrial engineering hub.
+              </p>
+            </div>
+            <div class="floating-stat-capsule" style="border-color: rgba(244, 63, 94, 0.4);">
+              <div class="stat-capsule-num" style="color: #FB7185;">0 Lines</div>
+              <div class="stat-capsule-label">Of Code Written<br>100% Precision Steel</div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ========================================================================
+         5. GEOGRAPHIC STEP 02: INDIA WITHOUT IT
+         ======================================================================== -->
+    <section class="geographic-tier-block" id="indiaSection" style="background: var(--color-bg-secondary);">
+      <div class="site-container">
+        
+        <div class="geo-scope-indicator">
+          GEOGRAPHIC PROGRESSION // 02. NATIONAL SCALE
+        </div>
+
+        <div class="editorial-split-40-60">
+          
+          <div class="editorial-media-wrapper" style="border-color: rgba(244, 63, 94, 0.25);">
+            <img src="https://images.unsplash.com/photo-1561361513-2d000a50f0dc?q=80&w=1200&auto=format&fit=crop" alt="Bright daylight Indian passenger train and railway infrastructure in motion" loading="lazy" onerror="this.style.display='none'">
+            <div class="editorial-media-overlay">
+              <span class="editorial-media-kicker" style="color: #FB7185;">INDIA // NATIONAL ARTERIES</span>
+              <h3 class="editorial-media-title">The Mechanical Titan</h3>
+              <p class="editorial-media-caption">
+                The world's largest railway network orchestrated through interlocking steel levers, physical charts, and telegraphic precision.
+              </p>
+            </div>
+            <div class="floating-stat-capsule" style="border-color: rgba(244, 63, 94, 0.4);">
+              <div class="stat-capsule-num" style="color: #FB7185;">12,000+</div>
+              <div class="stat-capsule-label">Trains Dispatched<br>By Morse & Levers</div>
+            </div>
+          </div>
+
+          <div>
+            <h2 class="title-editorial" style="margin-bottom: 20px;">
+              India Without IT: <br><em>Industrial Might & Heavy Engineering.</em>
+            </h2>
+            <p class="lead" style="margin-bottom: 20px;">
+              Zooming out to the national scale: The absence of IT would not mean India falls behind. India would lead the world in mechanical innovation.
+            </p>
+            <p>
+              Rather than becoming the software back-office of the world, India would become a global colossus of heavy manufacturing, civil infrastructure, metallurgy, and mechanical fabrication. Talented minds that went into computer science would invent ultra-efficient railway engines, breakthrough textile automation, and world-class mechanical precision instruments.
+            </p>
+
+            <!-- Detailed Breakdown Rows for India -->
+            <div class="geo-breakdown-table">
+              
+              <div class="geo-breakdown-row">
+                <div class="geo-row-sector">Indian Railways</div>
+                <div class="geo-row-with-it">Algorithmic ticket booking (IRCTC), computerized signaling, GPS fleet tracking.</div>
+                <div class="geo-row-without-it">Cabin signal levers with mechanical interlocking, paper reservation charts glued to train doors, telegraphic block tokens.</div>
+              </div>
+
+              <div class="geo-breakdown-row">
+                <div class="geo-row-sector">Manufacturing</div>
+                <div class="geo-row-with-it">Automated robotic arms, 3D CAD modeling, automated CNC mills.</div>
+                <div class="geo-row-without-it">Massive drafting rooms with hand-drawn blueprints, master toolmakers, precision mechanical lathes, and foundry craftsmen.</div>
+              </div>
+
+              <div class="geo-breakdown-row">
+                <div class="geo-row-sector">National Trade</div>
+                <div class="geo-row-with-it">Instant NEFT, RTGS, e-invoicing, automated GST portals.</div>
+                <div class="geo-row-without-it">Physical check clearing houses in Mumbai and Kolkata taking 7–14 days; ledgers audited by legions of chartered accountants.</div>
+              </div>
+
+              <div class="geo-breakdown-row">
+                <div class="geo-row-sector">Aviation & Travel</div>
+                <div class="geo-row-with-it">Instant web check-in, smartphone boarding passes, digital radar corridors.</div>
+                <div class="geo-row-without-it">Printed booklet tickets, mechanical flap departure boards, paper passenger manifests, and radio beacon navigation.</div>
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ========================================================================
+         6. GEOGRAPHIC STEP 03: THE WORLD WITHOUT IT
+         ======================================================================== -->
+    <section class="geographic-tier-block" id="worldSection">
+      <div class="site-container">
+        
+        <div class="geo-scope-indicator">
+          GEOGRAPHIC PROGRESSION // 03. GLOBAL LEVEL
+        </div>
+
+        <div class="editorial-split-60-40">
+          <div>
+            <h2 class="title-editorial" style="margin-bottom: 20px;">
+              The World Without IT: <br><em>A Slower, Physical Earth.</em>
+            </h2>
+            <p class="lead" style="margin-bottom: 20px;">
+              On the global scale, modern civilization would operate at the speed of physical transport rather than the speed of light.
+            </p>
+            <p>
+              Intercontinental trade would still cross oceans, international diplomacy would still bridge nations, and financial capitals would still flourish. But every international exchange would demand physical verification, paper manifests, and human presence.
+            </p>
+            <p>
+              Cities would be designed around physical mail distribution and pneumatic tube systems. Without digital algorithms managing air traffic, flight corridors would be widely separated, reducing civilian air congestion while making aviation a deliberate, carefully planned endeavor.
+            </p>
+
+            <!-- Detailed Breakdown Rows for The World -->
+            <div class="geo-breakdown-table">
+              
+              <div class="geo-breakdown-row">
+                <div class="geo-row-sector">Global Finance</div>
+                <div class="geo-row-with-it">Algorithmic high-frequency trading servers executing in nanoseconds.</div>
+                <div class="geo-row-without-it">Physical trading pits on Wall Street and London with hand signals, paper ticker tape, and pneumatic messaging tubes.</div>
+              </div>
+
+              <div class="geo-breakdown-row">
+                <div class="geo-row-sector">Global Shipping</div>
+                <div class="geo-row-with-it">Automated container tracking sensors and robotic port gantry cranes.</div>
+                <div class="geo-row-without-it">Paper bills of lading, manual warehouse sorting, physical customs stamp registries taking days per vessel.</div>
+              </div>
+
+              <div class="geo-breakdown-row">
+                <div class="geo-row-sector">Global Air Travel</div>
+                <div class="geo-row-with-it">100,000 daily flights guided by GPS satellite coordinates.</div>
+                <div class="geo-row-without-it">Constrained flight paths, analog gyro compasses, radio beacon waypoints, and strictly manual air traffic log sheets.</div>
+              </div>
+
+              <div class="geo-breakdown-row">
+                <div class="geo-row-sector">Telecommunications</div>
+                <div class="geo-row-with-it">Subsea fiber optic cables transmitting 1,420 Terabits per second.</div>
+                <div class="geo-row-without-it">Electro-mechanical crossbar telephone exchanges, international shortwave radio links, and telex networks.</div>
+              </div>
+
+            </div>
+
+          </div>
+
+          <div class="editorial-media-wrapper" style="border-color: rgba(244, 63, 94, 0.25);">
+            <img src="https://images.unsplash.com/photo-1578575437130-527eed3abbec?q=80&w=1200&auto=format&fit=crop" alt="Bright daylight ocean cargo container ship and port cranes" loading="lazy" onerror="this.style.display='none'">
+            <div class="editorial-media-overlay">
+              <span class="editorial-media-kicker" style="color: #FB7185;">GLOBAL COMMERCE</span>
+              <h3 class="editorial-media-title">The Physical Planet</h3>
+              <p class="editorial-media-caption">
+                International trade moves on physical bills of lading and human maritime expertise rather than cloud logistics algorithms.
+              </p>
+            </div>
+            <div class="floating-stat-capsule" style="border-color: rgba(244, 63, 94, 0.4);">
+              <div class="stat-capsule-num" style="color: #FB7185;">Weeks</div>
+              <div class="stat-capsule-label">For Global Trade<br>Paper Settlement</div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ========================================================================
+         7. THE DEPENDENCY MOMENT & INTERACTIVE SOCIETY OUTAGE SIMULATOR
+         ======================================================================== -->
+    <section class="section-padding" id="breakdownSimulator" style="background: var(--color-bg-secondary);">
+      <div class="site-container">
+        
+        <div style="max-width: 860px; margin-bottom: 40px;">
+          <div class="chapter-badge" style="background: rgba(190, 18, 60, 0.16); border-color: rgba(244, 63, 94, 0.35); color: #FECDD3;">
+            <span class="status-light" style="background: #E11D48;"></span>
+            <span>CRITICAL INQUIRY // THE DEPENDENCY MOMENT</span>
+          </div>
+          <h2 class="title-editorial">
+            What If The Digital World <em>Disappeared Today?</em>
+          </h2>
+          <p class="lead">
+            A world that <em>never built IT</em> would have developed resilient analog systems. But our *actual current world* dismantled its analog backups. When modern digital systems fail, civilization does not gracefully step back into 1950 — it collapses into immediate paralysis.
+          </p>
+        </div>
+
+        <div class="simulator-crisis-dashboard">
+          
+          <div class="simulator-header-row">
+            <div>
+              <div style="display: flex; align-items: center; gap: 14px; margin-bottom: 8px; flex-wrap: wrap;">
+                <h3 style="font-size: 1.4rem; color: var(--color-heading); margin-bottom: 0;">Civilizational Breakdown Index</h3>
+                <div id="crisisSeverityTier" class="crisis-tier-badge">STATUS: RESILIENT (NOMINAL)</div>
+              </div>
+              <p style="font-size: 0.92rem; color: var(--color-text-muted); margin-bottom: 0;">Click any sector below to sever digital connectivity.</p>
+            </div>
+
+            <div class="crisis-meter-box">
+              <div>
+                <div style="font-size: 0.75rem; font-family: var(--font-mono); color: var(--color-text-dim); text-transform: uppercase;">Criticality Score</div>
+                <div class="crisis-gauge-num" id="crisisGaugeVal">0%</div>
+              </div>
+              <div style="border-left: 1px solid var(--border-glass); padding-left: 20px;">
+                <div style="font-size: 0.75rem; font-family: var(--font-mono); color: var(--color-text-dim); text-transform: uppercase;">Estimated Economic Loss</div>
+                <div style="font-family: var(--font-mono); font-size: 1.35rem; font-weight: 800; color: #FCE7F3;" id="crisisDailyDamage">$0.0B</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 5 Sector Toggles -->
+          <div class="crisis-sectors-grid">
+            
+            <div class="sector-card-toggle" data-sector="banking">
+              <div class="sector-top-row">
+                <span class="sector-icon-symbol">🏦</span>
+                <div class="switch-toggle-pill"></div>
+              </div>
+              <div class="sector-name">Banking & Payment Clearing</div>
+              <div class="sector-impact-status">STATUS: ONLINE (NOMINAL)</div>
+            </div>
+
+            <div class="sector-card-toggle" data-sector="power">
+              <div class="sector-top-row">
+                <span class="sector-icon-symbol">⚡</span>
+                <div class="switch-toggle-pill"></div>
+              </div>
+              <div class="sector-name">Power Grid & SCADA Turbines</div>
+              <div class="sector-impact-status">STATUS: ONLINE (NOMINAL)</div>
+            </div>
+
+            <div class="sector-card-toggle" data-sector="supply">
+              <div class="sector-top-row">
+                <span class="sector-icon-symbol">✈️</span>
+                <div class="switch-toggle-pill"></div>
+              </div>
+              <div class="sector-name">Air Traffic & Supply Chain</div>
+              <div class="sector-impact-status">STATUS: ONLINE (NOMINAL)</div>
+            </div>
+
+            <div class="sector-card-toggle" data-sector="healthcare">
+              <div class="sector-top-row">
+                <span class="sector-icon-symbol">🏥</span>
+                <div class="switch-toggle-pill"></div>
+              </div>
+              <div class="sector-name">Hospital Patient Telemetry</div>
+              <div class="sector-impact-status">STATUS: ONLINE (NOMINAL)</div>
+            </div>
+
+            <div class="sector-card-toggle" data-sector="comms">
+              <div class="sector-top-row">
+                <span class="sector-icon-symbol">📡</span>
+                <div class="switch-toggle-pill"></div>
+              </div>
+              <div class="sector-name">Cellular Towers & Fiber Optics</div>
+              <div class="sector-impact-status">STATUS: ONLINE (NOMINAL)</div>
+            </div>
+
+          </div>
+
+          <!-- Live Emergency Alert Ticker Box -->
+          <div class="simulation-ticker-box">
+            <span class="ticker-pulse-alert"></span>
+            <div style="flex: 1;" id="simulationTickerText">
+              ALL SYSTEMS NOMINAL — Real-time telemetry operating across global sectors.
+            </div>
+          </div>
+
+          <!-- Actions -->
+          <div style="display: flex; gap: 14px; margin-top: 26px; justify-content: flex-end; flex-wrap: wrap;">
+            <button id="blackoutAllBtn" class="btn-outline-glass" style="color: #FB7185; border-color: rgba(225, 29, 72, 0.45);" type="button">
+              <span>⚠️ Trigger Total Civilizational Blackout</span>
+            </button>
+            <button id="resetSimulationBtn" class="btn-primary-3d" style="background: linear-gradient(135deg, #10B981, #059669);" type="button">
+              <span>Restore All Systems ✓</span>
+            </button>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ========================================================================
+         8. TIMELINE OF COLLAPSE (MINUTE 1 TO DAY 30)
+         ======================================================================== -->
+    <section class="section-padding" id="anatomyCollapse">
+      <div class="site-container">
+        
+        <div style="max-width: 820px; margin-bottom: 50px;">
+          <div class="chapter-badge" style="background: rgba(190, 18, 60, 0.16); border-color: rgba(244, 63, 94, 0.35); color: #FECDD3;">
+            <span class="status-light" style="background: #E11D48;"></span>
+            <span>CHRONOLOGY OF A SUDDEN OUTAGE</span>
+          </div>
+          <h2 class="title-editorial">
+            The 30-Day Anatomy of <em>Civilizational Paralysis.</em>
+          </h2>
+          <p class="lead">
+            When a digitally dependent society loses its software layer, the domino cascade is merciless.
+          </p>
+        </div>
+
+        <div style="display: flex; flex-direction: column; gap: 28px; max-width: 1060px; margin: 0 auto;">
+          
+          <div style="padding: 32px; border-radius: 22px; background: var(--color-surface); border: 1px solid var(--border-glass); display: grid; grid-template-columns: 180px 1fr; gap: 28px; align-items: center;">
+            <div>
+              <div style="font-family: var(--font-mono); font-size: 1.25rem; font-weight: 800; color: #FB7185;">MINUTE 1 TO 60</div>
+              <div style="font-size: 0.8rem; color: var(--color-text-dim); text-transform: uppercase;">The Blind Horizon</div>
+            </div>
+            <div>
+              <h3 style="font-size: 1.28rem; color: #FFFFFF; margin-bottom: 8px;">Screens Freeze Globally</h3>
+              <p style="font-size: 0.95rem; color: var(--color-text-muted); margin-bottom: 0;">
+                Mobile phone signals drop. Air traffic controllers lose radar feeds and switch to emergency battery-powered UHF radios. Credit card payment gateways reject all transactions worldwide.
+              </p>
+            </div>
+          </div>
+
+          <div style="padding: 32px; border-radius: 22px; background: var(--color-surface); border: 1px solid var(--border-glass); display: grid; grid-template-columns: 180px 1fr; gap: 28px; align-items: center;">
+            <div>
+              <div style="font-family: var(--font-mono); font-size: 1.25rem; font-weight: 800; color: #FB7185;">HOUR 6 TO 24</div>
+              <div style="font-size: 0.8rem; color: var(--color-text-dim); text-transform: uppercase;">Gridlock & SCADA Failure</div>
+            </div>
+            <div>
+              <h3 style="font-size: 1.28rem; color: #FFFFFF; margin-bottom: 8px;">Power Grids Lose Frequency Synchronization</h3>
+              <p style="font-size: 0.95rem; color: var(--color-text-muted); margin-bottom: 0;">
+                Without microsecond SCADA software balancing electrical turbine loads, automated protective breakers trip, causing cascade blackouts across regional power grids. Fuel stations cannot pump gasoline.
+              </p>
+            </div>
+          </div>
+
+          <div style="padding: 32px; border-radius: 22px; background: var(--color-surface); border: 1px solid var(--border-glass); display: grid; grid-template-columns: 180px 1fr; gap: 28px; align-items: center;">
+            <div>
+              <div style="font-family: var(--font-mono); font-size: 1.25rem; font-weight: 800; color: #FB7185;">DAY 3</div>
+              <div style="font-size: 0.8rem; color: var(--color-text-dim); text-transform: uppercase;">Supply Starvation</div>
+            </div>
+            <div>
+              <h3 style="font-size: 1.28rem; color: #FFFFFF; margin-bottom: 8px;">Supermarkets Empty Completely</h3>
+              <p style="font-size: 0.95rem; color: var(--color-text-muted); margin-bottom: 0;">
+                Urban grocery store shelves sit bare. Municipal water purification plants lose chemical dosing algorithms and pipeline pressure drops, triggering emergency boiling notices that cannot reach the public.
+              </p>
+            </div>
+          </div>
+
+          <div style="padding: 32px; border-radius: 22px; background: var(--color-surface); border: 1px solid var(--border-glass); display: grid; grid-template-columns: 180px 1fr; gap: 28px; align-items: center;">
+            <div>
+              <div style="font-family: var(--font-mono); font-size: 1.25rem; font-weight: 800; color: #FB7185;">WEEK 2</div>
+              <div style="font-size: 0.8rem; color: var(--color-text-dim); text-transform: uppercase;">Medical Crisis</div>
+            </div>
+            <div>
+              <h3 style="font-size: 1.28rem; color: #FFFFFF; margin-bottom: 8px;">Cold-Chain Pharmaceutical Spoilage</h3>
+              <p style="font-size: 0.95rem; color: var(--color-text-muted); margin-bottom: 0;">
+                Insulin, antibiotics, and vaccines spoil in unpowered warehouses. Hospital diesel generators exhaust fuel reserves. Emergency medical teams must ration mechanical ventilators by hand.
+              </p>
+            </div>
+          </div>
+
+          <div style="padding: 32px; border-radius: 22px; background: var(--color-surface); border: 1px solid var(--border-glass); display: grid; grid-template-columns: 180px 1fr; gap: 28px; align-items: center;">
+            <div>
+              <div style="font-family: var(--font-mono); font-size: 1.25rem; font-weight: 800; color: #FB7185;">MONTH 1</div>
+              <div style="font-size: 0.8rem; color: var(--color-text-dim); text-transform: uppercase;">The Analog Void</div>
+            </div>
+            <div>
+              <h3 style="font-size: 1.28rem; color: #FFFFFF; margin-bottom: 8px;">The Realization of Irreversible Dependence</h3>
+              <p style="font-size: 0.95rem; color: var(--color-text-muted); margin-bottom: 0;">
+                Governments discover that manual paper records do not scale to billions of citizens. Humanity confronts the profound truth: Information Technology was never just software — it was the lung of human survival.
+              </p>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ========================================================================
+         9. TRANSITION CALLOUT TO CHAPTER 03
+         ======================================================================== -->
+    <section class="section-padding" style="background: var(--color-bg-secondary);">
+      <div class="site-container">
+        <div class="chapter-cross-carpet" style="border-color: rgba(16, 185, 129, 0.35);">
+          <div class="chapter-badge" style="background: rgba(16, 185, 129, 0.12); border-color: rgba(52, 211, 153, 0.32); color: #A7F3D0;">
+            <span class="status-light" style="background: #10B981; box-shadow: 0 0 8px #10B981;"></span>
+            <span>THE NEXT QUESTION // CHAPTER 03</span>
+          </div>
+          <h2 class="title-editorial" style="font-size: clamp(2rem, 4vw, 3.4rem); margin-bottom: 20px;">
+            If IT disappeared, something else would have to fill the gap. <br><em>What would that world build instead?</em>
+          </h2>
+          <p class="lead" style="max-width: 740px; margin: 0 auto 36px; color: var(--color-text-muted);">
+            If Information Technology had never existed, where would human genius, engineering talent, and capital have flowed? What industries, machines, and careers would have shaped humanity? Step into the world Beyond IT.
+          </p>
+          <a href="beyond-it.html" class="btn-primary-3d" style="background: linear-gradient(135deg, #059669 0%, #10B981 50%, #34D399 100%); box-shadow: 0 12px 28px rgba(16, 185, 129, 0.45), 0 3px 0 #059669; color: #05070B; font-size: 1.05rem; padding: 16px 36px;">
+            <span style="color: #05070B; font-weight: 800;">ENTER BEYOND IT →</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ========================================================================
+       10. UNIFIED FOOTER (Chapter 02: Deep Burgundy)
+       ======================================================================== -->
+  <footer class="site-footer">
+    <div class="site-container">
+      
+      <div class="footer-top-grid">
+        
+        <div>
+          <div class="brand-logo" style="margin-bottom: 18px;">
+            <div class="brand-emblem-box" style="background: linear-gradient(135deg, #881337, #BE123C);">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+                <line x1="18" y1="6" x2="6" y2="18"></line>
+                <line x1="6" y1="6" x2="18" y2="18"></line>
+              </svg>
+            </div>
+            <div class="brand-text">THE WORLD <span>WE BUILT</span></div>
+          </div>
+          <p style="font-size: 0.92rem; max-width: 360px; color: var(--color-text-muted); line-height: 1.6;">
+            Chapter 02: An alternate-history thought experiment exploring Chennai, India, and the World without Information Technology.
+          </p>
+        </div>
+
+        <div>
+          <div class="footer-col-title">Exhibition Trilogy</div>
+          <ul class="footer-links">
+            <li><a href="index.html">Chapter 01: We Built It</a></li>
+            <li><a href="without-it.html">Chapter 02: Without IT</a></li>
+            <li><a href="beyond-it.html">Chapter 03: Beyond IT</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="footer-col-title">Chapter 02 Progression</div>
+          <ul class="footer-links">
+            <li><a href="#chennaiSection">Chennai Without IT</a></li>
+            <li><a href="#indiaSection">India Without IT</a></li>
+            <li><a href="#worldSection">The World Without IT</a></li>
+            <li><a href="#breakdownSimulator">Society Outage Simulator</a></li>
+            <li><a href="#anatomyCollapse">The 30-Day Outage</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="footer-col-title">Simulation Status</div>
+          <p style="font-family: var(--font-mono); font-size: 0.82rem; color: #FB7185; margin-bottom: 8px;">
+            ● OUTAGE LAB NOMINAL
+          </p>
+          <p style="font-size: 0.84rem; color: var(--color-text-dim); line-height: 1.5;">
+            Dynamic Breakdown Math • All Selectors Verified • Zero Broken Assets.
+          </p>
+        </div>
+
+      </div>
+
+      <div class="footer-bottom-bar">
+        <div>© 2026 IT: The World We Built. All rights reserved.</div>
+        <div style="font-family: var(--font-mono); font-size: 0.82rem; color: var(--color-text-dim);">
+          Chapter 02: <span style="color: #FB7185;">Without IT (Near-Black & Deep Burgundy)</span>
+        </div>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/main.js"></script>
+  <script src="js/simulation.js"></script>
+
+</body>
+</html>
